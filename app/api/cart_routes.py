@@ -20,23 +20,29 @@ def get_cart():
     my_cart = Cart.query.filter_by(user_id=current_user.id).first()
     print("This is my cart===>", my_cart.to_dict())
 
-    if my_cart:
-        cart_product_items = []
-        columns = db.session.query(Product, cart_products.c.quantity) #selecting both columns
-        selected_columns=columns.join(cart_products, Product.id == cart_products.c.product_id)
-        matching_rows = selected_columns.filter(cart_products.c.cart_id == my_cart.id)
-        product_quantity = matching_rows.all()
+    return [my_cart.to_dict()]
+
+    # print(current_user.id)
+    # my_cart = Cart.query.filter_by(user_id=current_user.id).first()
+    # print("This is my cart===>", my_cart.to_dict())
+
+    # if my_cart:
+    #     cart_product_items = []
+    #     columns = db.session.query(Product, cart_products.c.quantity) #selecting both columns
+    #     selected_columns=columns.join(cart_products, Product.id == cart_products.c.product_id)
+    #     matching_rows = selected_columns.filter(cart_products.c.cart_id == my_cart.id)
+    #     product_quantity = matching_rows.all()
 
 
-        print("this is queryyyy!!!!===>", product_quantity)
-        for product, quantity in product_quantity:
-            cart_product_items.append({
-                'product': product.to_dict(),
-                'quantity': quantity
-        })
+    #     print("this is queryyyy!!!!===>", product_quantity)
+    #     for product, quantity in product_quantity:
+    #         cart_product_items.append({
+    #             'product': product.to_dict(),
+    #             'quantity': quantity
+    #     })
 
-        my_cart_data = my_cart.to_dict()
-        my_cart_data['products'] = cart_product_items
-        return my_cart_data
-    else:
-        return "Cart not found"
+    #     my_cart_data = my_cart.to_dict()
+    #     my_cart_data['products'] = cart_product_items
+    #     return [my_cart_data]
+    # else:
+    #     return []

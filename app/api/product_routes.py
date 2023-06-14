@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from app.models.review import Review
 from app.models.product import Product
 from app.models.cart_product import cart_products
@@ -53,6 +53,21 @@ def get_single_product(id):
     """
     single_product = Product.query.get(id)
     return single_product.to_dict()
+
+@product_routes.route('/curr')
+@login_required
+def get_curr_product():
+    user_id = current_user.id
+
+    cart = Cart.query.filter_by(user_id=user_id).first()
+
+    if cart:
+        products = db.session.query(Product).join(cart_products).filter(cart_products.c.cart_id == cart.id).all()
+        product_data = [product.to_dict() for product in products]
+
+        return jsonify(product_data)
+    else:
+        return "Cart not found"
 
 @product_routes.route('/<int:id>/cart', methods=["POST"])
 @login_required
