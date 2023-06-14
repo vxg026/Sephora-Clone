@@ -7,7 +7,7 @@ from app.models import User
 from app.models.db import db
 from ..forms import ReviewForm
 from ..forms import CartForm
-
+from app.models.cart import Cart
 product_routes = Blueprint('products', __name__, url_prefix="")
 
 @product_routes.route('/all')
@@ -46,3 +46,61 @@ def get_all_hair_products():
     hair_obj = [hair.to_dict() for hair in hair_products_obj]
     return hair_obj
 
+@product_routes.route('/<int:id>')
+def get_single_product(id):
+    """
+    Gets single product by id
+    """
+    single_product = Product.query.get(id)
+    return single_product.to_dict()
+
+@product_routes.route('/<int:id>/cart', methods=["POST"])
+def add_to_cart(id):
+    """
+    Make a post request to add to cart
+    """
+    form = CartForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    product_obj = Product.query.get(id)
+    quantity = int(form.quantity.data)
+
+    if form.validate_on_submit():
+        cart = Cart.query.filter_by(user_id=current_user.id).first()
+        print('this is cart===>', cart)
+        if cart is None:
+            cart = Cart(user_id=current_user.id)
+
+        item_price = float(product_obj.price) * quantity
+
+        cart.total_price =str(float(cart.total_price) + item_price)
+
+        cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
+
+
+        if cart_product is None:
+            db.session.execute(cart_products.insert().values(
+                cart_id=cart.id,
+                product_id=product_obj.id,
+                quantity=quantity
+                ))
+        else:
+            db.session.execute(cart_products.update().values(
+                quantity=cart_product.quantity + quantity
+            ).where((cart_products.c.cart_id == cart.id) &
+                    (cart_products.c.product_id ==product_obj.id
+                    )))
+        # cart_product = cart_products.insert().values(
+        #     cart_id=cart.id,
+        #     product_id = product_obj.id,
+        #     quantity=quantity
+        #     )
+
+
+        print("cart total price===>", cart.total_price)
+        # cart.products.append(product_obj)
+        print("cart products===>", cart.products)
+        db.session.commit()
+
+        return "added to cart"
+    return "form validation failed"
