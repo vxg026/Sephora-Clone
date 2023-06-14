@@ -17,7 +17,7 @@ class Product(db.Model):
     category = db.Column(db.String(50), nullable=False)
     created_at= db.Column(db.DateTime(),default=datetime.now)
 
-    reviews = db.relationship("Review", back_populates="product")
+    reviews = db.relationship("Review", back_populates="product", cascade="all, delete")
 
     carts = db.relationship(
         "Cart",
