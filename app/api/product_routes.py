@@ -55,6 +55,7 @@ def get_single_product(id):
     return single_product.to_dict()
 
 @product_routes.route('/<int:id>/cart', methods=["POST"])
+@login_required
 def add_to_cart(id):
     """
     Make a post request to add to cart
@@ -103,4 +104,4 @@ def add_to_cart(id):
         db.session.commit()
 
         return "added to cart"
-    return "form validation failed"
+    return form.errors
