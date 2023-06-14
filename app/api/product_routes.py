@@ -62,8 +62,11 @@ def get_curr_product():
     cart = Cart.query.filter_by(user_id=user_id).first()
 
     if cart:
-        products = db.session.query(Product).join(cart_products).filter(cart_products.c.cart_id == cart.id).all()
-        product_data = [product.to_dict() for product in products]
+        products = db.session.query(Product, cart_products.c.quantity).join(cart_products).filter(cart_products.c.cart_id == cart.id).all()
+        product_data = [{
+            'product': product.to_dict(),
+            'quantity': quantity
+        } for product, quantity in products]
 
         return jsonify(product_data)
     else:
