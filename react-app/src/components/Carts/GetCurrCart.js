@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom"
-
+import GetCurrProducts from '../Products/GetCurrProducts'
 import { thunkCurrUserCart } from "../../store/cart";
 
 const GetCurrCart = () =>{
@@ -21,7 +21,8 @@ const GetCurrCart = () =>{
     return(
         <>
         in cart!
-        {cart_info?.total_price}
+        <GetCurrProducts/>
+        <h3>Total: ${cart_info?.total_price}</h3>
         </>
     )
 }

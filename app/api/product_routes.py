@@ -82,12 +82,14 @@ def add_to_cart(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     product_obj = Product.query.get(id)
+    if not product_obj:
+        return "item not found"
     quantity = int(form.quantity.data)
-
+    print("this is productob=======>", product_obj)
     if form.validate_on_submit():
         cart = Cart.query.filter_by(user_id=current_user.id).first()
         print('this is cart===>', cart)
-        if cart is None:
+        if not cart:
             cart = Cart(user_id=current_user.id)
 
         item_price = float(product_obj.price) * quantity
@@ -97,7 +99,7 @@ def add_to_cart(id):
         cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
 
 
-        if cart_product is None:
+        if not cart_product:
             db.session.execute(cart_products.insert().values(
                 cart_id=cart.id,
                 product_id=product_obj.id,
@@ -123,3 +125,81 @@ def add_to_cart(id):
 
         return "added to cart"
     return form.errors
+# @product_routes.route('/<int:id>/cart', methods=["PUT"])
+# @login_required
+# def update_cart(id):
+#     """
+#     Make a put request to update the quantity of a product in the cart
+#     """
+
+    # form = CartForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
+    # product_obj = Product.query.get(id)
+    # print("this is product obj!==>", product_obj)
+    # if not product_obj:
+    #     return "Product is not in cart:()"
+    # quantity = int(form.quantity.data)
+
+    # cart = Cart.query.filter_by(user_id=current_user.id).first()
+
+    # print("this is cart==>", cart)
+    # if not cart:
+    #     return "Please log in"
+    # if form.validate_on_submit():
+
+
+    #     cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
+
+    #     if not cart_product:
+    #         db.session.execute(cart_products.insert().values(
+    #             cart_id=cart.id,
+    #             product_id=product_obj.id,
+    #             quantity=quantity
+    #             ))
+    #     else:
+    #         db.session.execute(cart_products.update().values(
+    #             quantity=quantity
+    #         ).where((cart_products.c.cart_id == cart.id) &
+    #                 (cart_products.c.product_id ==product_obj.id
+    #                 )))
+    #     old_quantity = cart_product.quantity
+    #     print('this is old quantity====>', old_quantity)
+    #     item_price = float(product_obj.price) * quantity
+    #     print('this is total price===>', item_price)
+    #     item_price_difference = (quantity - old_quantity) * item_price
+    #     print("thi sis the difference------>", item_price_difference)
+    #     cart.total_price = str(float(cart.total_price) + item_price_difference)
+    #     print("this is cart total price===>", cart.total_price)
+    #     db.session.commit()
+
+    #     return product_obj.to_dict()
+
+    # return form.errors
+
+@product_routes.route('/delete/<int:id>', methods=["DELETE"])
+@login_required
+def remove_item(id):
+    """
+    remove item from cart
+    """
+
+    product_obj = Product.query.get(id)
+    cart = Cart.query.filter_by(user_id=current_user.id).first()
+
+    if not cart:
+        return "No cart"
+
+    cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
+
+    if not cart_product:
+        return "Item not found in cart"
+
+    item_price = float(product_obj.price) * cart_product.quantity
+
+    cart.products.remove(product_obj)
+    cart.total_price = str(float(cart.total_price) - item_price)
+
+    db.session.commit()
+
+    return "Item successfully removed from cart"
