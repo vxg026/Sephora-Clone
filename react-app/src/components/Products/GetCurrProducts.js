@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
 import { thunkCurrProducts } from "../../store/product";
-
+import CartForm from "../Products/CartForm";
+import EditQuantity from "./EditQuantity";
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
@@ -16,13 +17,14 @@ const GetCurrProducts=()=>{
         Curr user products!
         {productArr.map((product) => (
             <div>
-       <h2 key={product.product.id}>{product.product.name}</h2>
-          <h3>{product.product.price}</h3>
-          <h3>{product.product.description}</h3>
-          <h3>{product.quantity}</h3>
+       <h2 key={product?.product?.id}>{product?.product?.name}</h2>
+          <h3>{product?.product?.price}</h3>
+          <h3>{product?.product?.description}</h3>
+          <h3>{product?.quantity}</h3>
             </div>
 
         ))}
+    
       </>
     )
 }
