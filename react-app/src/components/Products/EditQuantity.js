@@ -8,17 +8,9 @@ import {thunkOneProduct} from '../../store/product'
 //make this route /products/:productId/edit
 const EditQuantity = ({product_curr}) => {
     const dispatch = useDispatch()
-    // const {productId} = useParams()
+
     console.log("This is product id======>", product_curr)
-    // const product = useSelector(state=>state.products.allProducts[product_curr.id])
-    // console.log("this is one product inside eidit ", product)
-    // useEffect(()=>{
-    //     console.log("this is useeffect in edit.........")
-    //     dispatch(thunkOneProduct(product_curr))
-    // }, [dispatch])
-    // if (!product){
-    //     return null
-    // }
+
     if(!product_curr){
         return null
     }

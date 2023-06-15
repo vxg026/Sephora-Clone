@@ -2,7 +2,7 @@ const GET_ALL_PRODUCTS = "products/getallproducts"
 const GET_CURR_PRODUCTS = "products/getcurrproducts"
 const GET_ONE_PRODUCT = "products/getoneproduct"
 const EDIT_PRODUCT = "products/editproduct"
-
+const ADD_PRODUCT = "products/addproducts"
 const getAllProductsAction= (products)=>({
     type: GET_ALL_PRODUCTS,
     products
@@ -16,11 +16,29 @@ const getProductAction = product =>({
     type: GET_ONE_PRODUCT,
     product
 })
-const editProduct = product =>({
+const editProduct = (product, quantity) =>({
     type: EDIT_PRODUCT,
+    product, quantity
+})
+const addProduct = product =>({
+    type: ADD_PRODUCT,
     product
 })
 
+export const thunkAddProduct = (product)=>async dispatch=>{
+    const response = await fetch(`/api/products/:productId/cart`,{
+
+            "method": "POST",
+            "headers": { 'Content-Type': 'application/json' },
+            "body": JSON.stringify(
+                {quantity:1}
+            )
+    })
+    if(response.ok){
+        const data = await response.json()
+        dispatch(addProduct(data))
+    }
+}
 export const thunkEditProduct = (productId, quantity)=>async dispatch=>{
     console.log("insde product edit thunk", productId)
     const response = await fetch(`/api/products/${productId}/cart`, {
@@ -32,7 +50,7 @@ export const thunkEditProduct = (productId, quantity)=>async dispatch=>{
     })
     if(response.ok){
         const data = await response.json()
-        dispatch(editProduct(data))
+        dispatch(editProduct(productId, quantity))
     }
 }
 export const thunkOneProduct =(productId) => async dispatch =>{
@@ -88,13 +106,27 @@ const productsReducer = (state = initialState, action)=>{
             }
         }
         case EDIT_PRODUCT:{
-            const newState = {}
-            const newProduct = action.product
-            newState[newProduct.id] = newProduct
-            return {
-                ...state, allProducts: newState
-            }
+            const newState = {...state, currProducts:{...state.currProducts}}
+            console.log("this is new stat===>", newState)
+            const productId = action.product
+            const quantity = action.quantity
+            console.log("this is new sta=======t===>", typeof(productId), quantity)
+
+            newState.currProducts[`${productId}`].quantity = quantity
+
+            return newState
+
         }
+        // case ADD_PRODUCT:{
+        //     const newState={}
+        //     const newProduct = action.product
+        //     newState[newProduct.id] = newProduct
+        //     return{
+        //         ...state,
+        //         currProducts:newState,
+
+        //     }
+        // }
         default: return state
     }
 }

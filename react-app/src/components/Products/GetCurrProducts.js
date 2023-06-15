@@ -6,7 +6,6 @@ import EditQuantity from "./EditQuantity";
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
-    // console.log("this is all product", products)
     useEffect(()=>{
         dispatch(thunkCurrProducts())
     }, [dispatch])
@@ -15,6 +14,8 @@ const GetCurrProducts=()=>{
     if(!products){
         return
     }
+    console.log("this is all product-------------------->", products)
+
     const productArr = Object.values(products)
 //    console.log(",....", productArr)
     return (
@@ -24,12 +25,12 @@ const GetCurrProducts=()=>{
             <div>
                 {/* {const [id, name, price, description]=product.product} */}
        <h2 key={product.product.id}>{product.product.name}</h2>
-       {console.log("porduct.product", product?.product)}
+       {console.log("porduct.product`````````", product.quantity)}
           <h3>{product.product.price}</h3>
           <h3>{product.product.description}</h3>
           <h3>{product.quantity}</h3>
             <EditQuantity
-            product_curr={product?.product}
+            product_curr={product.product}
             />
             </div>
         ))}

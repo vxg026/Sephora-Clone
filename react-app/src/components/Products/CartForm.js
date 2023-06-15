@@ -9,7 +9,7 @@ const CartForm = ({product, formType})=>{
     console.log("THISISI S product inside cart from!!!!!!========>", product)
     // console.log("inside cart form id==>", product.id)
 
-    // const product = useSelector(state=>state.products.allProducts[productId])
+    // const product = useSelector(state=>state.products.currProducts)
 
     const [quantity, setQuantity] = useState(1 || quantity)
 
@@ -34,12 +34,12 @@ const CartForm = ({product, formType})=>{
             console.log("this is quantity", quantity)
 
             if(formType =="Edit Quantity"){
-                console.log("im product inside before dispatch!!!===>", updatedProduct.id)
-                console.log("im quantity inside the if statement before dispatch===>", quantity)
+                // console.log("im product inside before dispatch!!!===>", updatedProduct.id)
+                // console.log("im quantity inside the if statement before dispatch===>", quantity)
                 dispatch(thunkEditProduct(updatedProduct.id, updatedProduct.quantity))
                 dispatch(thunkCurrProducts())
-                history.push('/products/curr')
-                // history.push(`/products/curr`)
+                // history.push('/products/curr')
+
             }
 
     }
