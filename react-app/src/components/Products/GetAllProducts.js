@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 const GetAllProducts = () =>{
     const dispatch = useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
-    console.log(allProducts)
+    console.log("all rpoucts=====>", allProducts)
     // const allProductsArr=Object.values(allProducts)
     // console.log("alll products!!", allProductsArr[0])
 

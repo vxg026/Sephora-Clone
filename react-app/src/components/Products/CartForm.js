@@ -7,29 +7,38 @@ const CartForm = ({product, formType})=>{
     const dispatch = useDispatch()
     const history = useHistory()
     console.log("THISISI S product inside cart from!!!!!!========>", product)
-    console.log("inside cart form id==>", product?.id)
-    const [quantity, setQuantity] = useState(String(product?.quantity) || "")
+    // console.log("inside cart form id==>", product.id)
+
+    // const product = useSelector(state=>state.products.allProducts[productId])
+
+    const [quantity, setQuantity] = useState(1 || quantity)
 
     const [validationErrors, setValidationErrors] = useState("")
 
 
     const handleSubmit = async (e)=>{
-        "in handle submit?"
         e.preventDefault()
+        console.log("in handle submit?")
             // product = {
             //     ...product
             // }
+            console.log(quantity, "this is quantity")
             const updatedProduct = {
                 ...product,
                 quantity: Number(quantity)
               };
-            console.log(updatedProduct?.id, "aggain-------")
+
+
+
+            console.log("aggain-------", updatedProduct.id)
             console.log("this is quantity", quantity)
+
             if(formType =="Edit Quantity"){
-                console.log("im product inside before dispatch!!!===>", updatedProduct?.id)
+                console.log("im product inside before dispatch!!!===>", updatedProduct.id)
                 console.log("im quantity inside the if statement before dispatch===>", quantity)
-                dispatch(thunkEditProduct(updatedProduct?.id, updatedProduct?.quantity))
+                dispatch(thunkEditProduct(updatedProduct.id, updatedProduct.quantity))
                 dispatch(thunkCurrProducts())
+                history.push('/products/curr')
                 // history.push(`/products/curr`)
             }
 

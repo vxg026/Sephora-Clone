@@ -57,7 +57,7 @@ export const thunkAllProducts = () => async (dispatch) =>{
         dispatch(getAllProductsAction(data))
     }
 }
-const initialState = {allProducts:{}}
+const initialState = {allProducts:{}, currProducts:{}}
 
 const productsReducer = (state = initialState, action)=>{
     switch(action.type){
@@ -70,7 +70,14 @@ const productsReducer = (state = initialState, action)=>{
             return {...state, allProducts: newState}
         }
         case GET_CURR_PRODUCTS:{
-            return { ...state, allProducts: action.products };
+            // return { ...state, allProducts: action.products };
+            const newState={currProducts:{}, allProducts:{...state.allProducts}}
+            const products = action.products
+            products.map(product=>{
+                console.log("this is products====>", product)
+                newState.currProducts[product.product.id]=product
+            })
+            return newState
         }
         case GET_ONE_PRODUCT:{
             const newState={}

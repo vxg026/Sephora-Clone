@@ -5,26 +5,35 @@ import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
-    const allProducts = useSelector(state=>state.products.allProducts)
-    console.log(allProducts)
+    const products = useSelector(state=>state.products.currProducts)
+    // console.log("this is all product", products)
     useEffect(()=>{
         dispatch(thunkCurrProducts())
     }, [dispatch])
-   const productArr = Object.values(allProducts)
+    // console.log("all products", products)
+    //    console.log("this is array", productArr)
+    if(!products){
+        return
+    }
+    const productArr = Object.values(products)
 //    console.log(",....", productArr)
     return (
         <>
         Curr user products!
         {productArr.map((product) => (
             <div>
-       <h2 key={product?.product?.id}>{product?.product?.name}</h2>
-          <h3>{product?.product?.price}</h3>
-          <h3>{product?.product?.description}</h3>
-          <h3>{product?.quantity}</h3>
+                {/* {const [id, name, price, description]=product.product} */}
+       <h2 key={product.product.id}>{product.product.name}</h2>
+       {console.log("porduct.product", product?.product)}
+          <h3>{product.product.price}</h3>
+          <h3>{product.product.description}</h3>
+          <h3>{product.quantity}</h3>
+            <EditQuantity
+            product_curr={product?.product}
+            />
             </div>
-
         ))}
-    
+
       </>
     )
 }

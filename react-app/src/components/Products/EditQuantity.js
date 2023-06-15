@@ -6,33 +6,27 @@ import GetCurrProducts from '../Products/GetCurrProducts'
 import { thunkCurrProducts, thunkCurrUserCart } from "../../store/product";
 import {thunkOneProduct} from '../../store/product'
 //make this route /products/:productId/edit
-const EditQuantity = () => {
+const EditQuantity = ({product_curr}) => {
     const dispatch = useDispatch()
-    const {productId} = useParams()
-    console.log("This is product id", productId)
-    const product = useSelector(state=>state.products.allProducts[productId])
-    console.log("this is one product inside eidit com", product)
-    // const allProducts = useSelector(state=>state.products.allProducts)
-    // console.log("this is prdocut in edit componenet===> ", allProducts)
-    // const arr=Object.values(allProducts).map(product=>{
-    //     if(product.product.id==productId){
-    //         return product
-    //     }
-    // })
-    // console.log("arr=========>",arr)
+    // const {productId} = useParams()
+    console.log("This is product id======>", product_curr)
+    // const product = useSelector(state=>state.products.allProducts[product_curr.id])
+    // console.log("this is one product inside eidit ", product)
     // useEffect(()=>{
-    //     dispatch(thunkCurrProducts(productId))
-    // }, [dispatch, productId])
-    // if(!product) return "no product"
-    // console.log("arr=========>",arr)
-    useEffect(()=>{
-        dispatch(thunkOneProduct(productId))
-    }, [dispatch, productId])
+    //     console.log("this is useeffect in edit.........")
+    //     dispatch(thunkOneProduct(product_curr))
+    // }, [dispatch])
+    // if (!product){
+    //     return null
+    // }
+    if(!product_curr){
+        return null
+    }
     return(
         <>
         Inside the edit compoenent
         <CartForm
-        product = {product}
+        product = {product_curr}
         formType = "Edit Quantity"
         />
         </>
