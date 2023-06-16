@@ -5,7 +5,7 @@ from app.models.db import db
 from app.forms.review_form import ReviewForm
 review_routes = Blueprint('reviews', __name__, url_prefix='')
 
-@review_routes.route('/currentUser')
+@review_routes.route('/curr')
 @login_required
 def get_current_reviews():
     """
