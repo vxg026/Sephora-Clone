@@ -18,7 +18,12 @@ const initialState = { currentUserCart: {}}
 const cartReducer = (state = initialState, action)=>{
     switch(action.type){
         case GET_CART:{
-
+            // const newState = {...state, currentUserCart:{...state.currentUserCart}}
+            // const allItems = action.cart
+            // allItems.map(item=>{
+            //     newState.currentUserCart[item.id]=item
+            // })
+            // return newState
             const newState={}
             const allItems = action.cart
             allItems.forEach(item=>{

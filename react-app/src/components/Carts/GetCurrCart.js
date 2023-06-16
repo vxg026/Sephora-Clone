@@ -3,13 +3,14 @@ import { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom"
 import GetCurrProducts from '../Products/GetCurrProducts'
 import { thunkCurrUserCart } from "../../store/cart";
+import { useState } from "react";
 
 const GetCurrCart = () =>{
     const dispatch = useDispatch()
 
     const cart_obj = useSelector(state=> state.cart.currentUserCart)
-    console.log("cart_objs====>", cart_obj
-    )
+    // const cart_arr = Object.values(cart_obj)
+    // console.log("this is cart arr````````````", cart_arr)
     // const cart_arr = Object.values(cart_obj)
     // console.log("cart_arrrr", cart_arr[0])
     // const cart_info = cart_arr[0]
@@ -17,6 +18,8 @@ const GetCurrCart = () =>{
     useEffect(()=>{
         dispatch(thunkCurrUserCart())
     }, [dispatch])
+
+    // console.log("thi sis cart_obj!!```````````````````````````", cart_obj)
     if (!cart_obj) return "..."
     return(
         <>
@@ -27,10 +30,11 @@ const GetCurrCart = () =>{
             console.log("....", item)
             return(
                 <div>
-                    <h3>Total: ${item.total_price}</h3>
+                    {/* <h3>Total: ${item.total_price}</h3> */}
                 </div>
             )
         })}
+
         </>
     )
 }

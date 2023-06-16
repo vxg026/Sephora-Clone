@@ -16,9 +16,18 @@ const GetCurrProducts=()=>{
     if(!products){
         return
     }
-    console.log("this is all product-------------------->", products)
+    // console.log("this is all product-------------------->", products)
 
     const productArr = Object.values(products)
+
+
+  let totalSum = 0;
+
+  for (let i = 0; i < productArr.length; i++) {
+    const price = parseInt(productArr[i].product.price);
+    const quantity = parseInt(productArr[i].quantity);
+    totalSum += price * quantity;
+  }
 //    console.log(",....", productArr)
     return (
         <>
@@ -27,7 +36,7 @@ const GetCurrProducts=()=>{
             <div>
                 {/* {const [id, name, price, description]=product.product} */}
        <h2 key={product.product.id}>{product.product.name}</h2>
-       {console.log("porduct.product`````````", product.quantity)}
+       {/* {console.log("porduct.product`````````", product.quantity)} */}
           <h3>{product.product.price}</h3>
           <h3>{product.product.description}</h3>
           <h3>{product.quantity}</h3>
@@ -40,6 +49,7 @@ const GetCurrProducts=()=>{
             </div>
 
         ))}
+ <div>Total Sum: {totalSum}</div>
         {/* <GetCurrCart/> */}
       </>
     )

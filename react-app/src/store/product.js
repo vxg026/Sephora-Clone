@@ -96,12 +96,19 @@ const initialState = {allProducts:{}, currProducts:{}}
 const productsReducer = (state = initialState, action)=>{
     switch(action.type){
         case GET_ALL_PRODUCTS:{
-            const newState={}
-            const allProducts = action.products
-            allProducts.forEach(product=>{
-                newState[product.id]=product
+
+            const newState = {currProducts:{...state.currProducts}, allProducts:{}}
+            const products = action.products
+            products.map(product=>{
+                newState.allProducts[product.id]=product
             })
-            return {...state, allProducts: newState}
+            return newState
+        //     const newState={}
+        //     const allProducts = action.products
+        //     allProducts.forEach(product=>{
+        //         newState[product.id]=product
+        //     })
+        //     return {...state, allProducts: newState}
         }
         case GET_CURR_PRODUCTS:{
             // return { ...state, allProducts: action.products };
