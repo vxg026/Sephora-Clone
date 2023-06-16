@@ -26,7 +26,8 @@ const addProduct = product =>({
 })
 
 export const thunkAddProduct = (product)=>async dispatch=>{
-    const response = await fetch(`/api/products/:productId/cart`,{
+    console.log("this is product in thunk", product)
+    const response = await fetch(`/api/products/${product.id}/cart`,{
 
             "method": "POST",
             "headers": { 'Content-Type': 'application/json' },
@@ -117,16 +118,16 @@ const productsReducer = (state = initialState, action)=>{
             return newState
 
         }
-        // case ADD_PRODUCT:{
-        //     const newState={}
-        //     const newProduct = action.product
-        //     newState[newProduct.id] = newProduct
-        //     return{
-        //         ...state,
-        //         currProducts:newState,
+        case ADD_PRODUCT:{
+            const newState={}
+            const newProduct = action.product
+            newState[newProduct.id] = newProduct
+            return{
+                ...state,
+                currProducts:newState,
 
-        //     }
-        // }
+            }
+        }
         default: return state
     }
 }

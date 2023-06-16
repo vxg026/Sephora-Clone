@@ -3,6 +3,7 @@ import { useEffect, Fragment } from "react";
 import { thunkCurrProducts } from "../../store/product";
 import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
+import GetCurrCart from "../Carts/GetCurrCart";
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
@@ -33,8 +34,9 @@ const GetCurrProducts=()=>{
             product_curr={product.product}
             />
             </div>
-        ))}
 
+        ))}
+        {/* <GetCurrCart/> */}
       </>
     )
 }
