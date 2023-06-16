@@ -198,3 +198,35 @@ def remove_item(id):
     db.session.commit()
 
     return "Item successfully removed from cart"
+
+@product_routes.route('/<int:id>/reviews', methods=["POST"])
+@login_required
+def create_review(id):
+    """
+    Post a review on product page
+    """
+
+    product_obj = Product.query.get(id)
+
+    print("this is product_obj---------->", product_obj)
+
+    print("this is userr---------->", current_user.id)
+    form = ReviewForm()
+    form["csrf_token"].data=request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        user_new_review=Review(
+            product_id = id,
+            user_id=current_user.id,
+            star_rating=form.data["star_rating"],
+            review_text=form.data["review_text"],
+            img1=form.data["img1"],
+            img2=form.data["img2"],
+            img3=form.data["img3"],
+            img4=form.data["img4"],
+
+            )
+        db.session.add(user_new_review)
+        db.session.commit()
+        return user_new_review.to_dict()
+    return form.errors
