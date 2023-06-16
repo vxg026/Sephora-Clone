@@ -39,9 +39,19 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+    <div className="button-image">
+         <button className="login-button" onClick={openMenu}>
+          <div>
+        <img className="img-login" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119323050186387546/sephora.png"/>
+        {/* <i className="fas fa-user-circle" /> */}
+          </div>
+          <div className="login-words">
+            <h5 className="sign-in-btn">Sign In</h5>
+            <h6 className="start-in-btn">To start Shopping</h6>
+          </div>
       </button>
+    </div>
+
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

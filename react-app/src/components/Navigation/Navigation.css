@@ -5,3 +5,64 @@
 .hidden {
   display: none;
 }
+.sephoria-home{
+  text-decoration: none;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: large;
+  font-weight: 400;
+  color:black;
+}
+.login-button{
+  padding-top: 1rem;
+  background-color: transparent;
+  /* border: 1px solid black; */
+  border-radius: 100%;
+  height: fit-content;
+  width: fit-content;
+  padding:0;
+  object-fit:cover;
+  border: none;
+  display:flex;
+  align-items: center;
+
+}
+.img-login{
+  object-fit:cover;
+  height: 2.8rem;
+  width: 2.8rem;
+  /* border: 1px solid pink; */
+  border-radius: 100%;
+  height: fit-content
+  /* margin:.5rem */
+
+}
+.button-image{
+  height: 2rem;;
+  /* border: 2px solid red; */
+  width: 8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav-icons-logo{
+  /* border:2px solid red; */
+  display:flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+.login-words{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* border:2px solid pink; */
+  align-items: start;
+}
+.sign-in-btn{
+  padding:none;
+  margin:0;
+}
+.start-in-btn{
+  /* padding:none; */
+  margin:0
+}

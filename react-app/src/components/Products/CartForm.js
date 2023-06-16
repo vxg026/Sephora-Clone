@@ -49,7 +49,7 @@ const CartForm = ({product, formType})=>{
     return(
         <form onSubmit={handleSubmit}>
             <div>
-            <select  onChange={(e) => setQuantity(e.target.value)}>
+            <select onChange={(e) => setQuantity(e.target.value)}>
                 <option
                 value="1"
                 >1</option>
@@ -84,7 +84,6 @@ const CartForm = ({product, formType})=>{
             </div>
             <button type="submit">submit</button>
 
-            {/* <button type="submit" style={{ display: "none" }}></button> */}
         </form>
     )
 }

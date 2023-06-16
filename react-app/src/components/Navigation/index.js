@@ -9,14 +9,20 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
+			<div className="nav-icons-logo">
+				<div>
+
+				<NavLink className="sephoria-home" exact to="/">S E P H O R I A</NavLink>
+				</div>
+
 			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
+						<div>
+							<ProfileButton user={sessionUser} />
+						</div>
+
+
 			)}
+			</div>
 		</ul>
 	);
 }
