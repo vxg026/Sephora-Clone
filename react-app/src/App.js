@@ -8,7 +8,9 @@ import Navigation from "./components/Navigation";
 import GetCurrCart from "./components/Carts/GetCurrCart";
 import GetAllProducts from "./components/Products/GetAllProducts";
 import GetCurrProducts from "./components/Products/GetCurrProducts";
-
+import CartForm from "./components/Products/CartForm";
+import EditQuantity from "./components/Products/EditQuantity";
+import AddToCart from "./components/Products/AddToCart";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,6 +32,9 @@ function App() {
         <Route exact path="/cart" component={GetCurrCart}></Route>
         <Route exact path="/products/curr" component={GetCurrProducts}></Route>
         <Route exact path="/products/all" component={GetAllProducts}></Route>
+        {/* <Route exact path="/cart/update" component={CartForm}></Route> */}
+        <Route exact path="/products/:productId/edit" component={EditQuantity}></Route>
+        {/* <Route exact path="/products/:productId/cart" component={EditQuantity}></Route> */}
 
         </Switch>
       )}
