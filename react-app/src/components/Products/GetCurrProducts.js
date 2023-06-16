@@ -4,6 +4,7 @@ import { thunkCurrProducts } from "../../store/product";
 import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
 import GetCurrCart from "../Carts/GetCurrCart";
+import RemoveProduct from "./RemoveProduct";
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
@@ -31,6 +32,9 @@ const GetCurrProducts=()=>{
           <h3>{product.product.description}</h3>
           <h3>{product.quantity}</h3>
             <EditQuantity
+            product_curr={product.product}
+            />
+            <RemoveProduct
             product_curr={product.product}
             />
             </div>

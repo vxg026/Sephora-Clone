@@ -3,6 +3,12 @@ const GET_CURR_PRODUCTS = "products/getcurrproducts"
 const GET_ONE_PRODUCT = "products/getoneproduct"
 const EDIT_PRODUCT = "products/editproduct"
 const ADD_PRODUCT = "products/addproducts"
+const REMOVE_PRODUCT = "products/removeproducts"
+
+const removeProduct = (productId) =>({
+    type: REMOVE_PRODUCT,
+    productId
+})
 const getAllProductsAction= (products)=>({
     type: GET_ALL_PRODUCTS,
     products
@@ -25,6 +31,15 @@ const addProduct = product =>({
     product
 })
 
+export const thunkRemoveProduct = (productId)=>async dispatch=>{
+    const response = await fetch(`/api/products/delete/${productId}`, {
+        method:'DELETE'
+    })
+    if(response.ok){
+        // const data = await response.json()
+        dispatch(removeProduct(productId))
+    }
+}
 export const thunkAddProduct = (product)=>async dispatch=>{
     console.log("this is product in thunk", product)
     const response = await fetch(`/api/products/${product.id}/cart`,{
@@ -127,6 +142,17 @@ const productsReducer = (state = initialState, action)=>{
                 currProducts:newState,
 
             }
+        }
+        case REMOVE_PRODUCT:{
+            // const newState = {...state.currProducts}
+            // const newSingleState = {...state.allProducts}
+            // const productId = action.product.productId
+            // delete newState[productId]
+            // return {
+            //     currProducts: newState
+            // }
+             const newState = {...state, currProducts:{...state.currProducts}}
+             delete newState.currProducts[action.productId]
         }
         default: return state
     }
