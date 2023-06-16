@@ -117,7 +117,7 @@ def add_to_cart(id):
         print("cart products===>", cart.products)
         db.session.commit()
 
-        return "added to cart"
+        return {"message":"added to cart"}
     return form.errors
 
 @product_routes.route('/<int:id>/cart', methods=["PUT"])
