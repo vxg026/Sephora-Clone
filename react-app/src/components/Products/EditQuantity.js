@@ -7,7 +7,7 @@ import { thunkCurrProducts, thunkCurrUserCart } from "../../store/product";
 import {thunkOneProduct} from '../../store/product'
 //make this route /products/:productId/edit
 const EditQuantity = ({product_curr}) => {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     console.log("This is product id======>", product_curr)
 
