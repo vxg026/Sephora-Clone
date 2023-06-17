@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
 import { thunkCurrReviews } from "../../store/review";
+import EditReview from "./EditForm";
+import OpenModalButton from "../OpenModalButton";
 
 const GetCurrReviews = () =>{
     const dispatch = useDispatch()
@@ -30,7 +32,10 @@ if(!reviews) return ".."
             {review?.img2}
             {review?.img3}
             {review?.img4}
-
+            <OpenModalButton
+                buttonText='Edit'
+                modalComponent={<EditReview review={review} />}
+                />
         </dvi>
 
 

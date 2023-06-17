@@ -1,7 +1,12 @@
 const GET_ALL_REVIEWS="reviews/getallreviews"
 const CURR_USER_REVIEWS="reviews/getallcurrreviews"
 const CREATE_REVIEW = "reviews/createreview"
+const EDIT_REVIEW = "review/editreview"
 
+const editReviewAction = (review)=>({
+    type:EDIT_REVIEW,
+    review
+})
 const createReviewAction = (review)=>({
     type: CREATE_REVIEW,
     review
@@ -14,6 +19,18 @@ const currReviewsAction = (reviews)=>({
     type: CURR_USER_REVIEWS,
     reviews
 })
+
+export const thunkEditReview = (review)=>async dispatch=>{
+    const response = await fetch(`/api/reviews/edit/${review.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+    if (response.ok){
+        const data = await response.json()
+        dispatch(editReviewAction(data))
+    }
+}
 
 export const thunkCreateReview = (review)=> async dispatch=>{
     const response = await fetch(`/api/products/${review.product_id}/reviews`, {
@@ -47,6 +64,14 @@ export const thunkAllReviews=()=>async(dispatch)=>{
 const initialState={allReviews:{}}
 const reviewsReducer = ( state = initialState, action)=>{
     switch(action.type){
+        case EDIT_REVIEW:{
+            const newState={}
+            const newReview=action.review
+            newState[newReview.id]=newReview
+            return{
+                allReviews:{...state.allReviews, ...newState}
+            }
+       }
         case CREATE_REVIEW:{
             const newState={}
             const newReview = action.review

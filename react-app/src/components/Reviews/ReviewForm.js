@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory} from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/review";
+import { thunkEditReview } from "../../store/review";
 const ReviewForm = ({review, formType, disabled})=>{
     const dispatch = useDispatch()
     const history = useHistory()
@@ -68,17 +69,15 @@ const ReviewForm = ({review, formType, disabled})=>{
             img3,
             img4
         }
-        // if(review.review_text.length<5){
-        //     errors.review_text = "Review needs to be at least 5 characters"
-        // }
-        // if(!review.star_rating){
 
-        //     errors.star_rating= "please select a star rating"
-        // }
          if (formType ==="Create Review"){
          await dispatch(thunkCreateReview(review))
             .then(closeModal)
-            // history.push(`/products/${product_id}`)
+
+         }
+         if(formType==="Edit Review"){
+            await dispatch(thunkEditReview(review))
+            .then(closeModal)
          }
     }
 
