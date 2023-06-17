@@ -3,7 +3,7 @@ import { useEffect, Fragment } from "react";
 import { thunkCurrReviews } from "../../store/review";
 import EditReview from "./EditForm";
 import OpenModalButton from "../OpenModalButton";
-
+import DeleteReview from "./DeleteReview";
 const GetCurrReviews = () =>{
     const dispatch = useDispatch()
 
@@ -35,6 +35,11 @@ if(!reviews) return ".."
             <OpenModalButton
                 buttonText='Edit'
                 modalComponent={<EditReview review={review} />}
+                />
+               <OpenModalButton
+                className="one-button"
+                buttonText='Delete'
+                modalComponent={<DeleteReview review={review}/>}
                 />
         </dvi>
 
