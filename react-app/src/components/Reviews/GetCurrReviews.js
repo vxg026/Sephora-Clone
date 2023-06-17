@@ -5,7 +5,7 @@ import { thunkCurrReviews } from "../../store/review";
 const GetCurrReviews = () =>{
     const dispatch = useDispatch()
 
-    const reviews = useSelector(state=>state.reviews.currReviews)
+    const reviews = useSelector(state=>state.reviews.allReviews)
     console.log("this is reviews --------->", reviews)
 
     useEffect(()=>{

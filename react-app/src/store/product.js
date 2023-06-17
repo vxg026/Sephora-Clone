@@ -5,6 +5,7 @@ const EDIT_PRODUCT = "products/editproduct"
 const ADD_PRODUCT = "products/addproducts"
 const REMOVE_PRODUCT = "products/removeproducts"
 
+
 const removeProduct = (productId) =>({
     type: REMOVE_PRODUCT,
     productId

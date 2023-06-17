@@ -12,6 +12,8 @@ import CartForm from "./components/Products/CartForm";
 import EditQuantity from "./components/Products/EditQuantity";
 import AddToCart from "./components/Products/AddToCart";
 import GetCurrReviews from "./components/Reviews/GetCurrReviews";
+import GetOneProduct from "./components/Products/GetOneProduct";
+import CreateReview from "./components/Reviews/CreateReview";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -37,6 +39,9 @@ function App() {
         <Route exact path="/products/:productId/edit" component={EditQuantity}></Route>
         {/* <Route exact path="/products/:productId/cart" component={EditQuantity}></Route> */}
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
+        <Route exact path="/products/:productId" component={GetOneProduct}></Route>
+        {/* <Route exact path="/products/:productId/reviews/new" component={GetOneProduct}></Route> */}
+
         </Switch>
       )}
     </>

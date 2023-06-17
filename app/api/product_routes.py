@@ -199,6 +199,8 @@ def remove_item(id):
 
     return "Item successfully removed from cart"
 
+
+
 @product_routes.route('/<int:id>/reviews', methods=["POST"])
 @login_required
 def create_review(id):

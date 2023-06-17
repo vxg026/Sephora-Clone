@@ -1,6 +1,11 @@
 const GET_ALL_REVIEWS="reviews/getallreviews"
 const CURR_USER_REVIEWS="reviews/getallcurrreviews"
+const CREATE_REVIEW = "reviews/createreview"
 
+const createReviewAction = (review)=>({
+    type: CREATE_REVIEW,
+    review
+})
 const allReviewsAction = (reviews)=>({
     type: GET_ALL_REVIEWS,
     reviews
@@ -10,6 +15,17 @@ const currReviewsAction = (reviews)=>({
     reviews
 })
 
+export const thunkCreateReview = (review)=> async dispatch=>{
+    const response = await fetch(`/api/products/${review.product_id}/reviews`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+    if(response.ok){
+        const data = await response.json()
+        dispatch(createReviewAction(data))
+    }
+}
 export const thunkCurrReviews = () => async(dispatch)=>{
     const response = await fetch(`/api/reviews/curr`)
 
@@ -28,17 +44,27 @@ export const thunkAllReviews=()=>async(dispatch)=>{
     }
 }
 
-const initialState={currReviews:{}, singleReview:{}, allReviews:{}}
+const initialState={allReviews:{}}
 const reviewsReducer = ( state = initialState, action)=>{
     switch(action.type){
+        case CREATE_REVIEW:{
+            const newState={}
+            const newReview = action.review
+            newState[newReview.id]=newReview
+            return{
+                ...state,
+                allReviews:{...state.allReviews, ...newState}
+            }
+        }
+
         case CURR_USER_REVIEWS:{
             const newState={}
-            const currReviews = action.reviews
-            currReviews.forEach(review=>{
+            const allReviews = action.reviews
+            allReviews.forEach(review=>{
                 newState[review.id]=review
             })
             return {
-                ...state, currReviews:newState
+                ...state, allReviews:newState
             }
         }
         case GET_ALL_REVIEWS:{
