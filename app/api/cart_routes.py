@@ -10,17 +10,17 @@ from ..forms import CartForm
 from app.models.cart import Cart
 cart_routes = Blueprint('carts', __name__, url_prefix="")
 
-@cart_routes.route('/')
-@login_required
-def get_cart():
-    """
-    shows the user's cart
-    """
-    print(current_user.id)
-    my_cart = Cart.query.filter_by(user_id=current_user.id).first()
-    print("This is my cart===>", my_cart.to_dict())
+# @cart_routes.route('/')
+# @login_required
+# def get_cart():
+#     """
+#     shows the user's cart
+#     """
+#     print(current_user.id)
+#     my_cart = Cart.query.filter_by(user_id=current_user.id).first()
+#     print("This is my cart===>", my_cart.to_dict())
 
-    return [my_cart.to_dict()]
+#     return [my_cart.to_dict()]
 
     # print(current_user.id)
     # my_cart = Cart.query.filter_by(user_id=current_user.id).first()

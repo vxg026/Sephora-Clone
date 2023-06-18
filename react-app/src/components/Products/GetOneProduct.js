@@ -54,10 +54,10 @@ const GetOneProduct = () => {
                     <>
                         {review.review_text}
                         {review.star_rating}
-                        {review.img1}
-                        {review.img2}
-                        {review.img3}
-                        {review.img4}
+                        <img src={review.img1}/>
+                        <img src={review.img2}/>
+                        <img src={review.img3}/>
+                        <img src={review.img4}/>
 
                     </>
 

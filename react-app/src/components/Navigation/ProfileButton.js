@@ -42,7 +42,9 @@ function ProfileButton({ user }) {
     <div className="button-image">
          <button className="login-button" onClick={openMenu}>
           <div>
-        <img className="img-login" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119323050186387546/sephora.png"/>
+        <img  className="img-login" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119323050186387546/sephora.png"
+
+        />
         {/* <i className="fas fa-user-circle" /> */}
           </div>
           <div className="login-words">
@@ -63,17 +65,25 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <OpenModalButton
+          <div className="modal-login">
+            <div>
+                       <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
+            </div>
 
-            <OpenModalButton
+            <div>
+                    <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+            </div>
+
+          </div>
+
           </>
         )}
       </ul>

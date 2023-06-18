@@ -3,29 +3,19 @@ import { useEffect, useState } from "react";
 import { useHistory} from 'react-router-dom';
 import { thunkCurrProducts } from "../../store/product";
 import { thunkEditProduct } from "../../store/product";
-const CartForm = ({product, formType})=>{
+const CartForm = ({product, formType, quantitys})=>{
     const dispatch = useDispatch()
     const history = useHistory()
     console.log("THISISI S product inside cart from!!!!!!========>", product)
-    // console.log("inside cart form id==>", product.id)
 
-    // const product = useSelector(state=>state.products.currProducts)
-
-    // const [quantity, setQuantity] = useState("")
-    // const [quantity, setQuantity] = useState(String(product.quantity))
-    const [quantity, setQuantity] = useState(() => {
-        return localStorage.getItem("selectedQuantity") || product.quantity;
-      });
-
+    const [quantity, setQuantity] = useState(quantitys)
 
     const handleSubmit = async (e)=>{
         // e.preventDefault()
 
 
         console.log("in handle submit?")
-            // product = {
-            //     ...product
-            // }
+
             console.log(quantity, "this is quantity")
             const updatedProduct = {
                 ...product,
@@ -44,14 +34,16 @@ const CartForm = ({product, formType})=>{
                 dispatch(thunkCurrProducts())
                 // history.push('/products/curr')
 
+            }else {
+                setQuantity("1")
             }
 
     }
 
 
-    useEffect(() => {
-        localStorage.setItem("selectedQuantity", quantity);
-      }, [quantity]);
+    // useEffect(() => {
+    //     localStorage.setItem("selectedQuantity", quantity);
+    //   }, [quantity]);
 
     useEffect(()=>{
         handleSubmit()

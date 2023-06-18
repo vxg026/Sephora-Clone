@@ -1,0 +1,34 @@
+.card1{
+    height: fit-content;
+    /* border: 2px solid red; */
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #FAE99C ;
+}
+.card-img{
+    height: 21rem;
+    /* margin:0; */
+}
+.card-details{
+    background-color:#FAE99C ;
+    margin: 1rem;
+}
+.card-link{
+    text-decoration: none;
+}
+.info-card1{
+    color:black;
+    margin:0;
+    padding: 0;
+}
+.info-card2{
+    color:black;
+
+}.info-card3{
+    color:black;
+}
+
+.card-link:hover{
+    text-decoration: underline;
+}

@@ -19,7 +19,7 @@ def get_all_products():
     all_products = [product.to_dict() for product in all_products_obj]
     return all_products
 
-@product_routes.route('sunscreen')
+@product_routes.route('/sunscreen')
 def get_all_sunscreen_products():
     """
     Gets all the products that are sunscreens
@@ -28,7 +28,7 @@ def get_all_sunscreen_products():
     sunscreen_obj = [sunscreen.to_dict() for sunscreen in sunscreen_products_obj ]
     return sunscreen_obj
 
-@product_routes.route('makeup')
+@product_routes.route('/makeup')
 def get_all_makeup_products():
     """
     Gets all the products that are makeup
@@ -37,7 +37,7 @@ def get_all_makeup_products():
     makeup_obj = [makeup.to_dict() for makeup in makeup_products_obj ]
     return makeup_obj
 
-@product_routes.route('hair')
+@product_routes.route('/hair')
 def get_all_hair_products():
     """
     Gets all the products that are hair
@@ -57,18 +57,30 @@ def get_single_product(id):
 @product_routes.route('/curr')
 @login_required
 def get_curr_product():
-    user_id = current_user.id
+    curr_user_id = current_user.id
 
-    cart = Cart.query.filter_by(user_id=user_id).first()
-
+    cart = Cart.query.filter_by(user_id=curr_user_id).first()
+    print("this is cart===========", cart.id)
     if cart:
-        products = db.session.query(Product, cart_products.c.quantity).join(cart_products).filter(cart_products.c.cart_id == cart.id).all()
-        product_data = [{
-            'product': product.to_dict(),
-            'quantity': quantity
-        } for product, quantity in products]
+        #search for produt table and associated quanitity for join table.
+        all_products = db.session.query(Product, cart_products.c.quantity)
+        print(all_products, "<------all Products")
+        joined_products = all_products.join(cart_products)
 
-        return jsonify(product_data)
+        products= joined_products.filter(cart_products.c.cart_id==cart.id).all()
+        print("~~~~~~~~~~~~~~~~~", products)
+
+        product_quantity_obj = []
+
+        for product, quantity in products:
+            print("`````````````````", products)
+            product_obj= {
+                "product": product.to_dict(),
+                "quantity":quantity
+            }
+            product_quantity_obj.append(product_obj)
+
+        return jsonify(product_quantity_obj)
     else:
         return "Cart not found"
 
@@ -84,6 +96,7 @@ def add_to_cart(id):
     product_obj = Product.query.get(id)
     if not product_obj:
         return "item not found"
+
     quantity = int(form.quantity.data)
     print("this is productob=======>", product_obj)
     if form.validate_on_submit():
@@ -91,10 +104,6 @@ def add_to_cart(id):
         print('this is cart===>', cart)
         if not cart:
             cart = Cart(user_id=current_user.id)
-
-        item_price = float(product_obj.price) * quantity
-
-        cart.total_price =str(float(cart.total_price) + item_price)
 
         cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
 
@@ -158,14 +167,7 @@ def update_cart(id):
             ).where((cart_products.c.cart_id == cart.id) &
                     (cart_products.c.product_id ==product_obj.id
                     )))
-        old_quantity = cart_product.quantity
-        print('this is old quantity====>', old_quantity)
-        item_price = float(product_obj.price) * quantity
-        print('this is total price===>', item_price)
-        item_price_difference = (quantity - old_quantity) * item_price
-        print("thi sis the difference------>", item_price_difference)
-        cart.total_price = str(float(cart.total_price) + item_price_difference)
-        print("this is cart total price===>", cart.total_price)
+
         db.session.commit()
 
         return product_obj.to_dict()
@@ -193,7 +195,7 @@ def remove_item(id):
     item_price = float(product_obj.price) * cart_product.quantity
 
     cart.products.remove(product_obj)
-    cart.total_price = str(float(cart.total_price) - item_price)
+    # cart.total_price = str(float(cart.total_price) - item_price)
 
     db.session.commit()
 

@@ -28,7 +28,7 @@ if(!reviews) return ".."
             <i className="fas fa-star"/>{(review?.star_rating)}
 
             {review?.review_text}
-            {review?.img1}
+            <img src={review?.img1}/>
             {review?.img2}
             {review?.img3}
             {review?.img4}

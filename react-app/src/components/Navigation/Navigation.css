@@ -8,9 +8,10 @@
 .sephoria-home{
   text-decoration: none;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: large;
-  font-weight: 400;
+  font-size: larger;
+  font-weight: 440;
   color:black;
+  padding:1rem;
 }
 .login-button{
   padding-top: 1rem;
@@ -28,14 +29,15 @@
 }
 .img-login{
   object-fit:cover;
-  height: 2.8rem;
-  width: 2.8rem;
+  height: 2.3rem;
+  width: 2.3rem;
   /* border: 1px solid pink; */
   border-radius: 100%;
-  height: fit-content
+  height: fit-content;
+  padding-right:.4rem;
   /* margin:.5rem */
-
 }
+
 .button-image{
   height: 2rem;;
   /* border: 2px solid red; */
@@ -48,7 +50,11 @@
   /* border:2px solid red; */
   display:flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  /* padding-top: 1.5rem;
+  padding-bottom: 1.5rem; */
+  height:5.8rem;
+  justify-content: center;
 
 }
 .login-words{
@@ -64,5 +70,102 @@
 }
 .start-in-btn{
   /* padding:none; */
-  margin:0
+  margin:0;
+  font-weight: 300;
+}
+
+.blue-div{
+  border: 2px solid rgb(192, 220, 241);
+  background-color: rgb(192, 220, 241);
+  display: flex;
+  justify-content: center;
+  height: 3.5rem;
+  align-items: center;
+  font-size: small;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.search-bar-nav{
+  border: 2px solid rgb(248, 246, 246);
+  background-color: rgb(248, 246, 246);
+  border-radius: 1em;
+  height:1.8rem;
+  width: 26rem;
+  display:flex;
+  align-items: center;
+  gap:.5rem;
+  /* justify-content: center; */
+}
+.search-text{
+  border:none;
+  background-color: transparent;
+
+}
+.fa-search{
+  color: rgb(200, 198, 198);
+  padding-left:.5rem;
+}
+.store-review-likes{
+  height:1.8rem;
+  width:2.3rem;
+}
+.community-forum-icon{
+  height:2rem;
+  width: 2.2rem;
+}
+.community-image{
+  display:flex;
+  /* border:2px solid red; */
+  align-items: center;
+
+}
+.com-word{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: smaller;
+
+}
+.store-location-icon{
+  display:flex;
+  /* border: 2px solid red; */
+  align-items: center;
+
+}
+.store-serv{
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 300;
+}
+.marina-sqr{
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 300;
+}
+.reviews-chat-icon{
+  height: 1.8rem;
+
+}
+.link-to-spec-products{
+  border:2px solid black;
+  height:2.5rem;
+  background-color: black;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.black-bar-style{
+  color:white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: small;
+}
+.modal-login{
+  /* border: 2px solid red; */
+  height: 15rem;
+  width: 20rem;
+  background-color: white;
+  border-radius: .3rem;
+  box-shadow: 1px 1px 6px lightgray;
+  display:flex;
+  
 }

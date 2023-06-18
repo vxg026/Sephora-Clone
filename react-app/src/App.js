@@ -14,6 +14,11 @@ import AddToCart from "./components/Products/AddToCart";
 import GetCurrReviews from "./components/Reviews/GetCurrReviews";
 import GetOneProduct from "./components/Products/GetOneProduct";
 import CreateReview from "./components/Reviews/CreateReview";
+import Home from "./components/Products/HomePage";
+import Suncscreen from "./components/Products/Sunscreen";
+import Makeup from "./components/Products/Makeup";
+import Hair from "./components/Products/Hair";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,9 +43,14 @@ function App() {
         {/* <Route exact path="/cart/update" component={CartForm}></Route> */}
         <Route exact path="/products/:productId/edit" component={EditQuantity}></Route>
         {/* <Route exact path="/products/:productId/cart" component={EditQuantity}></Route> */}
+        <Route exact path="/products/makeup" component={Makeup}></Route>
+        <Route exact path="/products/sunscreen" component={Suncscreen}></Route>
+        <Route exact path="/products/hair" component={Hair}></Route>
+
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
         <Route exact path="/products/:productId" component={GetOneProduct}></Route>
         {/* <Route exact path="/products/:productId/reviews/new" component={GetOneProduct}></Route> */}
+        <Route exact path="/" component={Home}></Route>
 
         </Switch>
       )}
