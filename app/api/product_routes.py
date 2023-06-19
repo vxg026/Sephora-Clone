@@ -58,10 +58,16 @@ def get_single_product(id):
 @login_required
 def get_curr_product():
     curr_user_id = current_user.id
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",curr_user_id)
+    # cart = Cart.query.filter_by(user_id=curr_user_id).first()
 
-    cart = Cart.query.filter_by(user_id=curr_user_id).first()
-    print("this is cart===========", cart.id)
-    if cart:
+
+    # print("this is user_id===========", cart.user_id)
+    cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
+    print("this is cart===========", cart)
+
+    if cart and cart is not None:
+
         #search for produt table and associated quanitity for join table.
         all_products = db.session.query(Product, cart_products.c.quantity)
         print(all_products, "<------all Products")
@@ -81,8 +87,15 @@ def get_curr_product():
             product_quantity_obj.append(product_obj)
 
         return jsonify(product_quantity_obj)
-    else:
-        return "Cart not found"
+    if cart is None:
+        new_cart = Cart(user_id=curr_user_id)
+        db.session.add(new_cart)
+        db.session.commit()
+
+        cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
+
+
+
 
 @product_routes.route('/<int:id>/cart', methods=["POST"])
 @login_required
