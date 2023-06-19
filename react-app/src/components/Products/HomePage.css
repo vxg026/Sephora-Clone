@@ -1,34 +1,174 @@
 .card1{
     height: fit-content;
     /* border: 2px solid red; */
-    width: fit-content;
+    max-width: 105%;
     display: flex;
     flex-direction: column;
     background-color: #FAE99C ;
+    margin-top:.5rem;
+    margin-left:1rem;
+    /* object-fit: fill; */
+
+}
+
+.card2{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 92.9%;
+    /* width: fit-content; */
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(252, 164, 56);
+    margin:0;
+    margin-top:.5rem;
+    margin-left:.75rem;
+    padding-right:1rem;
+    margin-right:0;
+    /* object-fit: fill; */
+
+}
+.card3{
+    /* border: 2px solid red; */
+
+    height: fit-content;
+    max-width: 95.8%;
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(252, 109, 137);
+    margin-top:.5rem;
+    margin-left:0;
+
+}
+.card4{
+    /* border: 2px solid red; */
+
+    height: fit-content;
+    max-width: 95.8%;
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(252, 109, 137);
+    margin-top:.5rem;
+
+
+}
+.card-link{
+    margin-left:0;
+
 }
 .card-img{
-    height: 21rem;
-    /* margin:0; */
+    /* height: 5%; */
+    width: 100%;
+    height: 100%;
+    /* border:2px solid purple */
+
 }
-.card-details{
+.card-img2{
+    /* height: 5%; */
+    width: 103%;
+    height: 98%;
+    /* border:2px solid pink */
+
+}
+.card-img3{
+    /* height: 5%; */
+    width: 100%;
+    height: 98%;
+    /* border:2px solid pink */
+
+}
+.card-img4{
+    /* height: 5%; */
+    width: 100%;
+    height: 98%;
+    /* border:2px solid pink */
+
+}
+.card-details1{
     background-color:#FAE99C ;
+    margin: 1rem;
+    width: 90%;
+    height:100%;
+}
+.card-details2{
+    background-color:rgb(252, 164, 56) ;
+    margin: 1rem;
+}
+.card-details3{
+    background-color:rgb(252, 109, 137) ;
     margin: 1rem;
 }
 .card-link{
     text-decoration: none;
+
 }
 .info-card1{
     color:black;
     margin:0;
     padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 .info-card2{
     color:black;
-
-}.info-card3{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+}
+.info-card3{
     color:black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 
 .card-link:hover{
     text-decoration: underline;
+}
+.bottom-tiles{
+    border-top:2px solid #F2F2F2;
+    border-bottom:2px solid #F2F2F2;
+    height: 33rem;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:2rem;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.f-img1{
+    /* height: 60% */
+    width:100%;
+}
+.f1-text{
+    background-color: #F2F2F2;
+    height: 7rem;
+    width:93%;
+    /* width: 100%;, */
+    padding:1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.f-card1{
+    width:25%;
+    /* border: 2px solid red; */
+
+}
+.f-feedback{
+    background-color:#CCCCCC;
+    height: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.f-fbck-txt{
+    font-weight: 500;
+}
+.cards-con-car{
+    /* border: 2px solid blue; */
+    /* display:flex; */
+    width: 100%;
+    display:inline-block;
+    gap:0;
 }

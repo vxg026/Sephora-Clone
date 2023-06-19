@@ -37,6 +37,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+        <Route exact path="/" component={Home}></Route>
         <Route exact path="/cart" component={GetCurrCart}></Route>
         <Route exact path="/products/curr" component={GetCurrProducts}></Route>
         <Route exact path="/products/all" component={GetAllProducts}></Route>
@@ -50,7 +51,6 @@ function App() {
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
         <Route exact path="/products/:productId" component={GetOneProduct}></Route>
         {/* <Route exact path="/products/:productId/reviews/new" component={GetOneProduct}></Route> */}
-        <Route exact path="/" component={Home}></Route>
 
         </Switch>
       )}

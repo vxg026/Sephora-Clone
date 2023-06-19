@@ -15,6 +15,7 @@ class Product(db.Model):
     price=db.Column(db.String(50), nullable=False)
     description=db.Column(db.String(2000), nullable=False)
     category = db.Column(db.String(50), nullable=False)
+    image=db.Column(db.String, nullable=False)
     created_at= db.Column(db.DateTime(),default=datetime.now)
 
     reviews = db.relationship("Review", back_populates="product", cascade="all, delete")
@@ -30,5 +31,7 @@ class Product(db.Model):
             'name':self.name,
             'price':self.price,
             'description':self.description,
+            'category':self.category,
+            'image':self.image,
             'created_at':self.created_at,
         }

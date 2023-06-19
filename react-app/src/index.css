@@ -4,6 +4,9 @@
     height: 100%;
     width: 100%;
     padding:0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
 }
 .ul-root{
@@ -13,4 +16,6 @@
 body{
     margin:0;
     height: fit-content;
+     /* min-width:1440x; */
+    /* max-width: 1440px; */
 }

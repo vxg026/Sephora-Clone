@@ -65,23 +65,31 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-          <div className="modal-login">
-            <div>
+
+
+            <div className="modal-login">
+              <div className="modal-txt">
+                <h3 className="h3-hi">Hi, there!</h3>
+              <h4 className="h4-sign-in">Sign in to shop and receive FREE standard shipping on all orders.</h4>
+              </div>
+              <div className="jst-modal-btns">
+            <div className="login-modal-btn">
                        <OpenModalButton
-              buttonText="Log In"
+className="login-modal-btn1"
+              buttonText="Sign In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
             </div>
 
-            <div>
+            <div className="signup-modal-btn">
                     <OpenModalButton
-              buttonText="Sign Up"
+              buttonText="Create Account"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
             </div>
-
+</div>
           </div>
 
           </>
