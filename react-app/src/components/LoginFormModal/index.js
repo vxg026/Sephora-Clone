@@ -20,37 +20,81 @@ function LoginFormModal() {
         closeModal()
     }
   };
-
+const autoLogin = e=> {
+  setEmail('demo@aa.io')
+  setPassword('password')
+  return dispatch(login({email, password}))
+  .then(closeModal)
+}
   return (
-    <>
-      <h1>Log In</h1>
+
+    <div className="modal-form-login">
+      <div className="sign-in-div-modal">
+      <h1 className="login-h1-modal">Sign In</h1>
+      </div>
+      <div className="modal-form-sign-div">
+        <h3 className="sign-in-other-text">Sign in to your account to enjoy FREE standard shipping on all orders. </h3>
+      </div>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <div>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="errors-p" key={idx}>{error}</li>
           ))}
-        </ul>
-        <label>
-          Email
+        </div>
+        <div>
+
+<div className="email-login-div">
+       {/* <label> */}
           <input
+          placeholder="Email Address"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        {/* </label> */}
+</div>
+
+        <div>
+
+
+        {errors.email && <p className="errors-p">{errors.email}</p>}
+        </div>
+        </div>
+
+
+
+        <div>
+          <div className="email-login-div">
+                {/* <label> */}
           <input
+          placeholder="Password*"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+        {/* </label> */}
+          </div>
+<div>
+
+        {errors.password && <p className="errors-p">{errors.password}</p>}
+</div>
+        </div>
+        <div className="login-buttons">
+          <div>
+
+        <button style={{ backgroundColor: (!email|| !password) ? 'lightgray' : 'black' , border: (!email || !password) ? "2px solid lightgray":"black"}}className="log-in-btn-black" type="submit" disabled={!email || !password}>Log In</button>
+          </div>
+
+<div>
+
+        <button className="demo-log-btn" onClick={autoLogin}>Login in as Demo User</button>
+</div>
+         </div>
       </form>
-    </>
+      </div>
+
   );
 }
 
