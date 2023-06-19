@@ -18,16 +18,19 @@ const GetCurrProducts=()=>{
     }
     // console.log("this is all product-------------------->", products)
 
-    const productArr = Object.values(products)
+  const productArr = Object.values(products)
 
 
   let totalSum = 0;
 
-  for (let i = 0; i < productArr.length; i++) {
-    const price = parseInt(productArr[i].product.price);
-    const quantity = parseInt(productArr[i].quantity);
+ for (let i = 0; i < productArr.length; i++) {
+    const price = parseInt(productArr[i].product?.price);
+    const quantity = parseInt(productArr[i]?.quantity);
     totalSum += price * quantity;
   }
+
+
+
 //    console.log(",....", productArr)
     return (
         <>
@@ -35,6 +38,7 @@ const GetCurrProducts=()=>{
         {productArr.map((product) => (
             <div>
                 {/* {const [id, name, price, description]=product.product} */}
+                {console.log("this is product.product~~~~~~~~~~~", product)}
        <h2 key={product.product.id}>{product.product.name}</h2>
        {/* {console.log("porduct.product`````````", product.quantity)} */}
           <h3>{product.product.price}</h3>
@@ -42,6 +46,7 @@ const GetCurrProducts=()=>{
           <h3>{product.quantity}</h3>
             <EditQuantity
             product_curr={product.product}
+            quantity={product.quantity}
             />
             <RemoveProduct
             product_curr={product.product}

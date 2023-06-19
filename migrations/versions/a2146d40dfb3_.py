@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 4408aa98e03a
+Revision ID: a2146d40dfb3
 Revises:
-Create Date: 2023-06-13 20:01:50.643030
+Create Date: 2023-06-18 23:41:46.160791
 
 """
 from alembic import op
@@ -12,8 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-# revision identifiers, used by Alembic
-revision = '4408aa98e03a'
+# revision identifiers, used by Alembic.
+revision = 'a2146d40dfb3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,11 +27,14 @@ def upgrade():
     sa.Column('price', sa.String(length=50), nullable=False),
     sa.Column('description', sa.String(length=2000), nullable=False),
     sa.Column('category', sa.String(length=50), nullable=False),
+    sa.Column('image', sa.String(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('first_name', sa.String(length=50), nullable=False),
+    sa.Column('last_name', sa.String(length=50), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('phone_number', sa.String(length=50), nullable=False),
@@ -73,7 +76,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('product_id', 'cart_id')
     )
     # ### end Alembic commands ###
-
     if environment == "production":
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")

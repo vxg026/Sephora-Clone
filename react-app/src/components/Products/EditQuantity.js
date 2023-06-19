@@ -6,7 +6,7 @@ import GetCurrProducts from '../Products/GetCurrProducts'
 import { thunkCurrProducts, thunkCurrUserCart } from "../../store/product";
 import {thunkOneProduct} from '../../store/product'
 //make this route /products/:productId/edit
-const EditQuantity = ({product_curr}) => {
+const EditQuantity = ({product_curr, quantity}) => {
     const dispatch = useDispatch()
 
     console.log("This is product id======>", product_curr)
@@ -20,6 +20,7 @@ const EditQuantity = ({product_curr}) => {
         <CartForm
         product = {product_curr}
         formType = "Edit Quantity"
+        quantitys={quantity}
         />
         </>
     )

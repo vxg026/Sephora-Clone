@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import AddToCart from "./AddToCart";
 import { thunkAllProducts } from "../../store/product";
 import thunk from "redux-thunk";
-
+import "./GetAllProducts.css"
 const GetAllProducts = () =>{
     const dispatch = useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
@@ -20,21 +20,31 @@ const GetAllProducts = () =>{
     return(
         <>
         All Items!
+        <div className="all-obj-contianer">
         {Object.values(allProducts).map(product=>{
             return(
-                <div>
+                <div className="div-products-all">
+                    <div>
+                           <img className="img-all" src={product.image}/>
+</div>
+                    <div className="product-detail-all">
 
                     <h3>{product.name}</h3>
                     <h4>{product.price}</h4>
-                    <h4>{product.description}</h4>
+                    {/* <h4>{product.description}</h4> */}
                     {console.log("product before passing it", product)}
-                    <AddToCart
+
+                           <AddToCart
                     product={product}
                     />
+
+
+                    </div>
                 </div>
 
             )
         })}
+        </div>
         </>
     )
 }

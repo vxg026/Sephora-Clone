@@ -5,3 +5,243 @@
 .hidden {
   display: none;
 }
+.sephoria-home{
+  text-decoration: none;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 150%;
+  font-weight: 440;
+  color:black;
+  padding:1rem;
+}
+.login-button{
+  padding-top: 1rem;
+  background-color: transparent;
+  border-radius: 100%;
+  height: fit-content;
+  width: 10%;
+  padding:0;
+  object-fit:cover;
+  border: none;
+  display:flex;
+  align-items: center;
+
+
+}
+.img-login{
+  object-fit:cover;
+  height: 2.3rem;
+  width: 2.3rem;
+  /* border: 1px solid pink; */
+  border-radius: 100%;
+  height: fit-content;
+  padding-right:.4rem;
+  /* margin:.5rem */
+}
+
+.button-image{
+  height: 2rem;;
+  /* border: 2px solid red; */
+  width: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav-icons-logo{
+  /* border:2px solid red; */
+  display:flex;
+  align-items: center;
+  gap: 1.5rem;
+  /* padding-top: 1.5rem;
+  padding-bottom: 1.5rem; */
+  height:7rem;
+  justify-content: space-around;
+  padding-left:8rem;
+  padding-right:8rem;
+
+}
+.login-words{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* border:2px solid pink; */
+  align-items: start;
+}
+.sign-in-btn{
+  padding:none;
+  margin:0;
+  font-size: 110%;;
+}
+.start-in-btn{
+  /* padding:none; */
+  margin:0;
+  font-weight: 300;
+  font-size:100%;
+  width:190%;
+  /* border:2px solid red; */
+}
+
+.blue-div{
+  border: 2px solid rgb(192, 220, 241);
+  background-color: rgb(192, 220, 241);
+  display: flex;
+  justify-content: center;
+  height: 4.5rem;
+  align-items: center;
+  font-size: 110%;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.search-bar-nav{
+  border: 2px solid rgb(248, 246, 246);
+  background-color: rgb(248, 246, 246);
+  border-radius: 1em;
+  height:1.8rem;
+  width: 26rem;
+  display:flex;
+  align-items: center;
+  gap:.5rem;
+  /* justify-content: center; */
+}
+.search-text{
+  border:none;
+  background-color: transparent;
+
+}
+.fa-search{
+  color: rgb(200, 198, 198);
+  padding-left:.5rem;
+}
+.store-review-likes{
+  height:2.5rem;
+  width:3rem;
+}
+.community-forum-icon{
+  height:2.5rem;
+  width: 3rem;
+}
+.community-image{
+  display:flex;
+  /* border:2px solid red; */
+  align-items: center;
+
+}
+.com-word{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+
+}
+.store-location-icon{
+  display:flex;
+  /* border: 2px solid red; */
+  align-items: center;
+  gap: .3rem;
+
+}
+.store-serv{
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 300;
+font-size:100%;
+}
+.marina-sqr{
+  margin:0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 300;
+font-size: 80%;;
+}
+.reviews-chat-icon{
+  height: 1.8rem;
+
+}
+.link-to-spec-products{
+  border:2px solid black;
+  height:3rem;
+  background-color: black;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.black-bar-style{
+  color:white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+}
+.modal-login{
+  /* border: 2px solid red; */
+  height: 9rem;
+  width: 25rem;
+  background-color: white;
+  border-radius: .3rem;
+  box-shadow: 1px 1px 6px lightgray;
+  display:flex;
+  flex-direction: column;
+  position:absolute;
+  z-index: 1;
+  right:-250px;
+  top:10px;
+  display:flex;
+  gap:1rem;
+  z-index:2;
+
+
+}
+.login-modal-btn{
+  border:2px solid black;
+  width: 45%;
+border-radius:2rem;
+height:2.4rem;
+background-color: black;
+display:flex;
+align-items: center;
+justify-content: center;
+
+margin-left:.25rem;
+margin-right:.5rem;
+margin-bottom:1rem;
+
+}
+.login-modal-btn button{
+  background-color: black;
+  color:white;
+  border:none;
+  font-size: 90%;
+}
+.signup-modal-btn{
+  border:2px solid black;
+  width: 45%;
+border-radius:2rem;
+height:2.4rem;
+background-color: white;
+display:flex;
+align-items: center;
+justify-content: center;
+margin-left:.25rem;
+margin-right:.5rem;
+margin-bottom:1rem;
+
+}
+.signup-modal-btn button{
+  background-color: white;
+  border: none;
+  font-weight: bold;
+}
+.jst-modal-btns{
+  display:flex;
+  /* border:2px solid red; */
+  align-items: center;
+  justify-content: center;
+}
+.modal-txt{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin:0;
+}
+.h4-sign-in{
+  margin:0;
+}
+.h3-hi{
+  margin-top:.3rem;
+  margin-bottom:.3rem;
+}

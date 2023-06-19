@@ -39,9 +39,21 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+    <div className="button-image">
+         <button className="login-button" onClick={openMenu}>
+          <div>
+        <img  className="img-login" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119323050186387546/sephora.png"
+
+        />
+        {/* <i className="fas fa-user-circle" /> */}
+          </div>
+          <div className="login-words">
+            <h5 className="sign-in-btn">Sign In</h5>
+            <h6 className="start-in-btn">To start Shopping</h6>
+          </div>
       </button>
+    </div>
+
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
@@ -53,17 +65,33 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <OpenModalButton
-              buttonText="Log In"
+
+
+            <div className="modal-login">
+              <div className="modal-txt">
+                <h3 className="h3-hi">Hi, there!</h3>
+              <h4 className="h4-sign-in">Sign in to shop and receive FREE standard shipping on all orders.</h4>
+              </div>
+              <div className="jst-modal-btns">
+            <div className="login-modal-btn">
+                       <OpenModalButton
+className="login-modal-btn1"
+              buttonText="Sign In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
+            </div>
 
-            <OpenModalButton
-              buttonText="Sign Up"
+            <div className="signup-modal-btn">
+                    <OpenModalButton
+              buttonText="Create Account"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+            </div>
+</div>
+          </div>
+
           </>
         )}
       </ul>

@@ -5,6 +5,7 @@ const EDIT_PRODUCT = "products/editproduct"
 const ADD_PRODUCT = "products/addproducts"
 const REMOVE_PRODUCT = "products/removeproducts"
 
+
 const removeProduct = (productId) =>({
     type: REMOVE_PRODUCT,
     productId
@@ -91,6 +92,29 @@ export const thunkAllProducts = () => async (dispatch) =>{
         dispatch(getAllProductsAction(data))
     }
 }
+export const thunkSunScreen =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/sunscreen')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+
+export const thunkMakeUp =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/makeup')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+export const thunkHair =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/hair')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+
 const initialState = {allProducts:{}, currProducts:{}}
 
 const productsReducer = (state = initialState, action)=>{
@@ -99,6 +123,7 @@ const productsReducer = (state = initialState, action)=>{
 
             const newState = {currProducts:{...state.currProducts}, allProducts:{}}
             const products = action.products
+            console.log("products in all products reducer`````````", products)
             products.map(product=>{
                 newState.allProducts[product.id]=product
             })

@@ -3,25 +3,19 @@ import { useEffect, useState } from "react";
 import { useHistory} from 'react-router-dom';
 import { thunkCurrProducts } from "../../store/product";
 import { thunkEditProduct } from "../../store/product";
-const CartForm = ({product, formType})=>{
+const CartForm = ({product, formType, quantitys})=>{
     const dispatch = useDispatch()
     const history = useHistory()
     console.log("THISISI S product inside cart from!!!!!!========>", product)
-    // console.log("inside cart form id==>", product.id)
 
-    // const product = useSelector(state=>state.products.currProducts)
-
-    const [quantity, setQuantity] = useState(1 || quantity)
-
-    const [validationErrors, setValidationErrors] = useState("")
-
+    const [quantity, setQuantity] = useState(quantitys)
 
     const handleSubmit = async (e)=>{
-        e.preventDefault()
+        // e.preventDefault()
+
+
         console.log("in handle submit?")
-            // product = {
-            //     ...product
-            // }
+
             console.log(quantity, "this is quantity")
             const updatedProduct = {
                 ...product,
@@ -40,16 +34,28 @@ const CartForm = ({product, formType})=>{
                 dispatch(thunkCurrProducts())
                 // history.push('/products/curr')
 
+            }else {
+                setQuantity("1")
             }
 
     }
-    // useEffect(()=>{
-    //     dispatch()
-    // })
+
+
+    // useEffect(() => {
+    //     localStorage.setItem("selectedQuantity", quantity);
+    //   }, [quantity]);
+
+    useEffect(()=>{
+        handleSubmit()
+    }, [quantity])
+
+
+
     return(
-        <form onSubmit={handleSubmit}>
+        // <form onSubmit={handleSubmit}>
+        <form>
             <div>
-            <select  onChange={(e) => setQuantity(e.target.value)}>
+            <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                 <option
                 value="1"
                 >1</option>
@@ -82,9 +88,8 @@ const CartForm = ({product, formType})=>{
                 >10</option>
             </select>
             </div>
-            <button type="submit">submit</button>
+            {/* // <button type="submit">submit</button> */}
 
-            {/* <button type="submit" style={{ display: "none" }}></button> */}
         </form>
     )
 }
