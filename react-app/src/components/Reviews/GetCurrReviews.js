@@ -37,10 +37,19 @@ if(!reviews) return ".."
             {review?.review_text}
             </div>
             <div className="mng-all-images">
+                {review?.img1 &&
             <div className="images-container-mng-review"><img className="images-mng-reviews" src={review?.img1}/></div>
+                }
+                {review?.img2 &&
             <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img2}/></div>
+                }
+                {
+                    review?.img3 &&
             <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img3}/></div>
+                }
+                {review?.img4 &&
             <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img4}/></div>
+                }
             </div>
 
 

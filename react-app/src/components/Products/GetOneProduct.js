@@ -31,11 +31,11 @@ const GetOneProduct = () => {
     console.log(productReviews, "---------------------------------------)")
     // productReviews.forEach(review=>)
 
-        let leftReview;
-if(currUser){
+    let leftReview;
+    if (currUser) {
 
-    leftReview = productReviews.find(review => review.user_id==parseInt(currUser.id))
-}
+        leftReview = productReviews.find(review => review.user_id == parseInt(currUser.id))
+    }
 
 
 
@@ -45,94 +45,106 @@ if(currUser){
     return (
         <>
             <div className="one-prod-comp">
-            Single product
-            <div className="single-container1">
-                      <div className="container1-iamge">
-            <img className="sing-image-div" src={singleProduct.image}/>
-            </div>
+                Single product
+                <div className="single-container1">
+                    <div className="container1-iamge">
+                        <img className="sing-image-div" src={singleProduct.image} />
+                    </div>
 
-            <div className="single-product-details">
-                {/* <div className="single-product-id">
+                    <div className="single-product-details">
+                        {/* <div className="single-product-id">
                 {singleProduct.id}
                 </div> */}
-                <div className="single-product-name">
-            {singleProduct.name}
-                </div>
-            <div  className="single-product-description">
-            {singleProduct.description}
-            </div>
-            <div className="single-product-star-rating">
-                <div>
-                <i className="fas fa-star"></i>
+                        <div className="single-product-name">
+                            {singleProduct.name}
+                        </div>
+                        <div className="single-product-description">
+                            {singleProduct.description}
+                        </div>
+                        <div className="single-product-star-rating">
+                            <div>
+                                <i className="fas fa-star"></i>
+                            </div>
+
+                            <div>
+                                <p className="highly-rate-p-tag">Highly rated by customers</p>
+                            </div>
+                        </div>
+                        <div className="single-product-price">
+                            <h3>${singleProduct.price}</h3>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div>
-                    <p className="highly-rate-p-tag">Highly rated by customers</p>
-                </div>
-            </div>
-                <div className="single-product-price">
-            <h3>${singleProduct.price}</h3>
-                </div>
-            </div>
 
-            </div>
-
-
-                    <div className="single-product-reviews-container">
+                <div className="single-product-reviews-container">
                     <div className="ratings-header">
                         <h2 className="ratings-reviews">Ratings & Reviews</h2>
                     </div>
-            <div className="modal-review-button">
-                {currUser && !leftReview &&
-                <OpenModalButton
-                    buttonText='Write a Review'
-                    modalComponent={<CreateReview productId={singleProduct.id} />}
-                />
-                }
+                    <div className="modal-review-button">
+                        {currUser && !leftReview &&
+                            <OpenModalButton
+                                buttonText='Write a Review'
+                                modalComponent={<CreateReview productId={singleProduct.id} />}
+                            />
+                        }
 
-            </div>
-
-            <div className="review-details-single-product">
-                {productReviews.map(review => (
-                    <>
-                    <div className="individual-review-container">
-
-
-                    <div className="star-rating-div">
-                        <p className="date-reviews-container">{review.created_at}</p>
-                        <p>{review.star_rating}<i className="fas fa-star"></i></p>
                     </div>
-                        <div className="contianer-second-review">
-                            <div>
-                            <p className="review-text-div-single">{review.review_text}</p>
-                            </div>
-                            <div className="reviews-all-imgs">
 
-                                <div className="reviews-images-image-container">
-                        <img className="reviews-images-image" src={review.img1}/>
-                                </div>
-                                <div className="reviews-images-image-container">
-                        <img className="reviews-images-image" src={review.img2}/>
-                                </div>
-                                <div className="reviews-images-image-container">
-                        <img className="reviews-images-image" src={review.img3}/>
-                                </div>
-                                <div className="reviews-images-image-container">
-                        <img className="reviews-images-image" src={review.img4}/>
-                                </div>
-                            </div>
+                    <div className="review-details-single-product">
+                        {productReviews.map(review => (
+                            <>
+                                <div className="individual-review-container">
 
-                        </div>
 
-   </div>
-                    </>
+                                    <div className="star-rating-div">
+                                        <p className="date-reviews-container">{review.created_at}</p>
+                                        <p>{review.star_rating}<i className="fas fa-star"></i></p>
+                                    </div>
+                                    <div className="contianer-second-review">
+                                        <div>
+                                            <p className="review-text-div-single">{review.review_text}</p>
+                                        </div>
+                                        <div className="reviews-all-imgs">
 
-                ))}
-            </div>
+                                            <div className="reviews-images-image-container">
+                                                {
+                                                    review.img1 &&
+                                                <img className="reviews-images-image" src={review.img1} />
+                                                }
+                                            </div>
+                                            <div className="reviews-images-image-container">
+                                                {review.img2 &&
+
+                                                    <img className="reviews-images-image" src={review.img2} />
+                                                }
+                                            </div>
+                                            <div className="reviews-images-image-container">
+                                                {
+                                                review.img3 &&
+                                                <img className="reviews-images-image" src={review.img3} />
+                                                }
+                                            </div>
+                                            <div className="reviews-images-image-container">
+                                                {
+                                                    review.img4 &&
+                                                <img className="reviews-images-image" src={review.img4} />
+                                                }
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </>
+
+                        ))}
                     </div>
-                    <div className="single-product-footer">
-                        <h1>hi</h1>
-                    </div>
+                </div>
+                <div className="single-product-footer">
+                    <h1>hi</h1>
+                </div>
 
             </div>
         </>
