@@ -59,7 +59,8 @@ const ReviewForm = ({review, formType, disabled})=>{
     }
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        let errors = {}
+
+
         review = {
             ...review,
             review_text,
@@ -70,14 +71,36 @@ const ReviewForm = ({review, formType, disabled})=>{
             img4
         }
 
-         if (formType ==="Create Review"){
+        let error_obj = {}
+        if(review.review_text.length < 5){
+            error_obj.review_text="Review text must be at least 5 characters long"
+        }
+        if(!review.star_rating){
+            error_obj.star_rating="Must rate between 1-5"
+        }
+        if(img1){
+                     if(!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")){
+                 error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        }
+        }
+
+
+        // setErrors(error_obj)
+
+
+         if (formType ==="Create Review" && Object.keys(error_obj).length===0){
          await dispatch(thunkCreateReview(review))
             .then(closeModal)
 
          }
-         if(formType==="Edit Review"){
+         if(formType==="Edit Review" && Object.keys(error_obj).length===0){
             await dispatch(thunkEditReview(review))
             .then(closeModal)
+         }
+         if(error_obj){
+
+             setErrors(error_obj)
+             console.log("hi=============")
          }
     }
 
@@ -91,9 +114,11 @@ const ReviewForm = ({review, formType, disabled})=>{
             placeholder="We'd love to hear your thoughts!"
             onChange={e=>setReview_text(e.target.value)}
             />
+                     <p className="errors">{errors.review_text}</p>
                <div>
         {arr} Stars
         </div>
+        <p className="errors">{errors.star_rating}</p>
         <div>
         {/* <input
             id="img1"
@@ -110,6 +135,7 @@ const ReviewForm = ({review, formType, disabled})=>{
             value={img1}
             placeholder="image url"
             onChange={(e)=> setImg1(e.target.value)}/>
+                     <p className="errors">{errors.img1}</p>
 
 img2
             <input formAction="image"
