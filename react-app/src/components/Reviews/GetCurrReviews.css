@@ -1,0 +1,54 @@
+.mng-reviews{
+    /* border: 2px solid red; */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mng-review{
+    /* border:2px solid red; */
+    border-bottom:1px solid lightgray;
+    display:flex;
+    flex-direction: column;
+    width:90%;
+    padding-top:1.5rem;
+    padding-bottom:1.5rem;
+}
+
+.images-container-mng-review{
+    width: 6rem;
+    height:6rem;
+}
+.images-mng-reviews{
+    width: 100%;
+    height:100%;
+    border-radius:.5rem;
+}
+.mng-all-images{
+    /* border:2px solid pink; */
+    display:flex;
+    gap:.5rem;
+}
+.buttons-div-mgn-rvws{
+    /* border:2px solid red; */
+    width:24.5%;
+    margin-top:1rem;
+    display:flex;
+    gap:1rem;
+}
+.buttons-div-mgn-rvws button{
+    border: 2px solid rgb(192, 220, 241);
+    background-color:  rgb(192, 220, 241);
+    color:black;
+    width: 8rem;
+    height:2.3rem;
+    border-radius:1.2rem;
+    font-size: medium;
+    font-weight: 300;
+
+}
+.buttons-div-mgn-rvws button:hover{
+    background-color:black;
+    color:white;
+    /* box-shadow: 2px 2px 2px 2px lightblue; */
+    border: 1px solid black;
+}

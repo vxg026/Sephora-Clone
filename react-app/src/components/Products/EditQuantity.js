@@ -16,7 +16,7 @@ const EditQuantity = ({product_curr, quantity}) => {
     }
     return(
         <>
-        Inside the edit compoenent
+        {/* Inside the edit compoenent */}
         <CartForm
         product = {product_curr}
         formType = "Edit Quantity"

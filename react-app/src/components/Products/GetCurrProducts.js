@@ -5,6 +5,7 @@ import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
 import GetCurrCart from "../Carts/GetCurrCart";
 import RemoveProduct from "./RemoveProduct";
+import "./GetCurrProducts.css"
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
@@ -33,30 +34,41 @@ const GetCurrProducts=()=>{
 
 //    console.log(",....", productArr)
     return (
-        <>
-        Curr user products!
+        <div className="cart">
+        <div className="basket-container">
+          <div className="basket-container-div">
+        <h2>My Basket</h2>
+          <div className="basket-1">
         {productArr.map((product) => (
-            <div>
+            <div className="basket-product">
+              <div className="basket-img-container"><img className="basket-img" src={product.product.image}/></div>
+              <div>
                 {/* {const [id, name, price, description]=product.product} */}
                 {console.log("this is product.product~~~~~~~~~~~", product)}
        <h2 key={product.product.id}>{product.product.name}</h2>
        {/* {console.log("porduct.product`````````", product.quantity)} */}
           <h3>{product.product.price}</h3>
           <h3>{product.product.description}</h3>
-          <h3>{product.quantity}</h3>
+          {/* <h3>{product.quantity}</h3> */}
+          <div className="btns-basket">
+            <div>
             <EditQuantity
             product_curr={product.product}
             quantity={product.quantity}
-            />
+            /></div>
+            <div className="remove-item-cart">
             <RemoveProduct
             product_curr={product.product}
-            />
+            /></div>
             </div>
-
+            </div>
+            </div>
         ))}
- <div>Total Sum: {totalSum}</div>
+        </div></div>
+ <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum}</div></div>
+        </div>
         {/* <GetCurrCart/> */}
-      </>
+      </div>
     )
 }
 export default GetCurrProducts

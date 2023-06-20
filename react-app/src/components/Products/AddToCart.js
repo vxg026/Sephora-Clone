@@ -11,7 +11,7 @@ import React from 'react';
 const AddToCart = ({product})=>{
     const dispatch = useDispatch()
     const history = useHistory()
-
+    const currUser = useSelector(state=>state.session.user)
     // const notify = () =>toast("Wow so easy!")
 
     console.log("this is product", product)
@@ -23,9 +23,10 @@ const AddToCart = ({product})=>{
     }
     return(
         <form>
+            {currUser?
             <button type="button" onClick={handleClick}>
                 Att to Cart!
-            </button>
+            </button> : <h6>Please SignUp to shop</h6>}
         </form>
     )
 }

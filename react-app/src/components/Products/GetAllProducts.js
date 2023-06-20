@@ -25,7 +25,9 @@ const GetAllProducts = () =>{
             return(
                 <div className="div-products-all">
                     <div>
+                        <Link to={`/products/${product.id}`}>
                            <img className="img-all" src={product.image}/>
+</Link>
 </div>
                     <div className="product-detail-all">
 

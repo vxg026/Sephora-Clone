@@ -15,7 +15,7 @@ function Navigation({ isLoaded }) {
 			<div className="nav-icons-logo">
 				<div>
 
-					<NavLink className="sephoria-home" exact to="/">S E P H O R I A</NavLink>
+					<NavLink className="sephoria-home" exact to="/"><div className="sephoria-logo-home">S E P H O R I A</div></NavLink>
 				</div>
 				<div className="search-bar-nav">
 				<i className="fas fa-search"></i>
@@ -55,7 +55,12 @@ function Navigation({ isLoaded }) {
 
 				)}
 	<div>
+				<a className="reviews-link" href="/reviews/curr">
+					<div>
 				<img className="reviews-chat-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725077399863317/reviews.png"/>
+				Manage Reviews
+				</div>
+				</a>
 			</div>
 			<div>
 				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725148451385445/heart.png?width=418&height=343"/>
@@ -68,29 +73,29 @@ function Navigation({ isLoaded }) {
 			</div>
 					<div className="link-to-spec-products">
 
-						<div>
 							<NavLink to="/products/all">
+						<div className="div-black-nav-bar">
 						<p className="black-bar-style">All</p>
-						</NavLink>
 						</div>
-						<div>
+						</NavLink>
+						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Brands</p>
 						</div>
-						<div>
 							<NavLink to="/products/sunscreen">
+						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Sunscreens</p>
-						</NavLink>
 						</div>
-						<div>
+						</NavLink>
 							<NavLink to="/products/makeup">
+						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Makeup</p>
-						</NavLink>
 						</div>
-						<div>
+						</NavLink>
 							<NavLink to="/products/hair">
+						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Hair</p>
-						</NavLink>
 						</div>
+						</NavLink>
 
 					</div>
 		</ul>
