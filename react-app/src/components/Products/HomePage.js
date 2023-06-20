@@ -72,9 +72,9 @@ const Home = () => {
           <NavLink className="card-link" to="/products/sunscreen">
             <div className="card4">
               <div>
-                <img className="card-img4" src="https://media.discordapp.net/attachments/1062942242450460744/1119868815946297425/Screenshot_2023-06-17_at_10.58.16_PM.png?width=1694&height=1133" />
+                <img className="card-img4" src="https://cdn.discordapp.com/attachments/1062942242450460744/1120793308382363678/Screenshot_2023-06-20_at_12.12.08_PM.png" />
               </div>
-              <div className="card-details3">
+              <div className="card-details4">
                 <h2 className="info-card1">Sunscreen under $50</h2>
                 <h5 className="info-card2">Hydrating formulas that boost glow too</h5>
                 <h5 className="info-card3">SHOP NOW</h5>
@@ -86,7 +86,7 @@ const Home = () => {
       </div>
       <div className="bottom-tiles">
         <div className="f-card1">
-            <div >
+            <div>
             <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518471016498/Screenshot_2023-06-17_at_11.15.05_PM.png?width=1709&height=1133"/>
             </div>
             <div className="f1-text">
@@ -97,11 +97,12 @@ const Home = () => {
 
 
         <div className="f-card1">
-            <div >
+            <div className="planet-blue-div">
             <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518735261706/Screenshot_2023-06-17_at_11.15.16_PM.png?width=1700&height=1133"/>
             </div>
-            <div className="f1-text">
-                <h2>Our Commitment to Diversity, Equity & Inclusion</h2>
+            <div className="f2-text">
+                <h2>Beauty on Demand</h2>
+                <h4 className="on-demand">Fast and easy options that work for you.</h4>
 
             </div>
         </div>
@@ -109,11 +110,12 @@ const Home = () => {
 
 
         <div className="f-card1">
-            <div >
-            <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518169030747/Screenshot_2023-06-17_at_11.15.37_PM.png?width=1709&height=1133"/>
+            <div className="brown-div">
+            <img className="f-img1" src="https://cdn.discordapp.com/attachments/1062942242450460744/1120794372884140064/Screenshot_2023-06-20_at_12.16.32_PM.png"/>
             </div>
-            <div className="f1-text">
-                <h2>Our Commitment to Diversity, Equity & Inclusion</h2>
+            <div className="f3-text">
+                <h2>Clean + Planet Positive</h2>
+                <h4 className="on-demand">Brands on a mission to change your skin and the earth.</h4>
 
             </div>
         </div>

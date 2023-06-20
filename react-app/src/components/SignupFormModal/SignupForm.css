@@ -7,6 +7,8 @@
     justify-content: center;
     margin:0;
    border-radius:.5rem;
+   /* position:absolute; */
+   z-index:10;
 }
 .m1{
 display:flex;

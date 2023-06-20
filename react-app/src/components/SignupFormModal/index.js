@@ -26,7 +26,9 @@ function SignupFormModal() {
 		if (!email) errors.email = "Please enter your email address."
 		if (!password) errors.password = "Please enter a password between 6-12 characters (no spaces)."
 		if (!username) errors.username="Please enter a username"
-		if (!phone_number) errors.phone_number = "Please enter a valid phone number"
+		if (!phone_number) errors.phone_number = "Please enter a valid phone number!"
+		if(phone_number.length<10 || phone_number.length>10) errors.phone_number="Phone number must be 10 integers long"
+		if(isNaN(phone_number)) errors.phone_number="phone number cannot include non-numerical values"
 		if (!password) errors.password = "Password is required"
 		setValidationErrors(errors)
 
@@ -64,7 +66,7 @@ function SignupFormModal() {
 					{errors.map((error, idx) => (
 						<>
 
-							<p key={idx}>{error}</p>
+							<p className="error" key={idx}>{error}</p>
 						</>
 					))}
 					<div className="first-last-sign-up">

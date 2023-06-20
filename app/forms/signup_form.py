@@ -22,6 +22,9 @@ def validate_phone_number(form, field):
     phone_number=field.data
     if len(phone_number)!=10 or not phone_number.isdigit():
         raise ValidationError("Please enter a valid phone number")
+    phone=User.query.filter(User.phone_number==phone_number).first()
+    if phone:
+        raise ValidationError("Phone number is already associated with another account")
 
 
 class SignUpForm(FlaskForm):
