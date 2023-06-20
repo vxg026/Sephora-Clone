@@ -7,6 +7,8 @@
     justify-content: center;
     margin:0;
    border-radius:.5rem;
+   /* position:absolute; */
+   z-index:10;
 }
 .m1{
 display:flex;
@@ -70,6 +72,9 @@ height: 60%;
     height: 3rem;
     margin-bottom: 1.4rem;
     align-items: center;
+}
+.su-other-input button:hover{
+    cursor: pointer;
 }
 .div-e{
 /* display:flex; */

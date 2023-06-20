@@ -19,7 +19,7 @@ const GetAllProducts = () =>{
 
     return(
         <>
-        All Items!
+
         <div className="all-obj-contianer">
         {Object.values(allProducts).map(product=>{
             return(

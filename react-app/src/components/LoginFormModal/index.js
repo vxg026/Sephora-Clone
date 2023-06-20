@@ -84,7 +84,7 @@ const autoLogin = e=> {
         <div className="login-buttons">
           <div>
 
-        <button style={{ backgroundColor: (!email|| !password) ? 'lightgray' : 'black' , border: (!email || !password) ? "2px solid lightgray":"black"}}className="log-in-btn-black" type="submit" disabled={!email || !password}>Log In</button>
+        <button className="log-in-btn-black" type="submit">Log In</button>
           </div>
 
 <div>

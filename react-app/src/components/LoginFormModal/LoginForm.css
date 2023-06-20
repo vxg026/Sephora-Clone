@@ -39,12 +39,18 @@ div#modal-content{
     width: 10rem;
     border-radius:2rem;
 }
+.log-in-btn-black:hover{
+    cursor: pointer;
+}
 .demo-log-btn{
     color:black;
     background-color: white;
     height: 2.5rem;
     width: 10rem;
     border-radius:2rem;
+}
+.demo-log-btn:hover{
+    cursor: pointer;
 }
 .errors-p{
     color:red;

@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
 				)}
 	<div>
 				<a className="reviews-link" href="/reviews/curr">
-					<div>
+					<div className="reviews-home">
 				<img className="reviews-chat-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725077399863317/reviews.png"/>
 				Manage Reviews
 				</div>
@@ -78,9 +78,6 @@ function Navigation({ isLoaded }) {
 						<p className="black-bar-style">All</p>
 						</div>
 						</NavLink>
-						<div className="div-black-nav-bar">
-						<p className="black-bar-style">Brands</p>
-						</div>
 							<NavLink to="/products/sunscreen">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Sunscreens</p>
@@ -96,6 +93,9 @@ function Navigation({ isLoaded }) {
 						<p className="black-bar-style">Hair</p>
 						</div>
 						</NavLink>
+						<div className="div-black-nav-bar">
+						<p className="black-bar-style">Fragrance</p>
+						</div>
 
 					</div>
 		</ul>
