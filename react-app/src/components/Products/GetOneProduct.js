@@ -18,7 +18,7 @@ const GetOneProduct = () => {
     const currUser = useSelector(state => state.session.user)
 
 
-    console.log("===========", currUser.id)
+    // console.log("===========", currUser.id)
 
     useEffect(() => {
         dispatch(thunkOneProduct(productId))
@@ -30,7 +30,13 @@ const GetOneProduct = () => {
     }
     console.log(productReviews, "---------------------------------------)")
     // productReviews.forEach(review=>)
-    const leftReview = productReviews.find(review => review.user_id==parseInt(currUser.id))
+
+        let leftReview;
+if(currUser){
+
+    leftReview = productReviews.find(review => review.user_id==parseInt(currUser.id))
+}
+
 
 
     console.log("============================", leftReview)
