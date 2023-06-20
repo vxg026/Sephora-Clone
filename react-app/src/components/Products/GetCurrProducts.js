@@ -9,6 +9,7 @@ import "./GetCurrProducts.css"
 const GetCurrProducts=()=>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
+    const currUser = useSelector(state=>state.session.user)
     useEffect(()=>{
         dispatch(thunkCurrProducts())
     }, [dispatch])
@@ -34,7 +35,11 @@ const GetCurrProducts=()=>{
 
 //    console.log(",....", productArr)
     return (
+      <>
+      {!currUser ?
+      <h2>Please log in to view/edit cart</h2>:
         <div className="cart">
+
         <div className="basket-container">
           <div className="basket-container-div">
         <h2>My Basket</h2>
@@ -66,9 +71,12 @@ const GetCurrProducts=()=>{
         ))}
         </div></div>
  <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum}</div></div>
+
         </div>
         {/* <GetCurrCart/> */}
       </div>
+      }
+      </>
     )
 }
 export default GetCurrProducts

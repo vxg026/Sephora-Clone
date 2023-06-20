@@ -73,6 +73,9 @@ height: 60%;
     margin-bottom: 1.4rem;
     align-items: center;
 }
+.su-other-input button:hover{
+    cursor: pointer;
+}
 .div-e{
 /* display:flex; */
 /* border: 2px solid red; */

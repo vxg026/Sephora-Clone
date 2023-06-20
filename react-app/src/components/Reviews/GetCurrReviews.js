@@ -10,6 +10,7 @@ const GetCurrReviews = () =>{
     const dispatch = useDispatch()
 
     const reviews = useSelector(state=>state.reviews.allReviews)
+    const currUser = useSelector(state=>state.session.user)
     console.log("this is reviews --------->", reviews)
 
     useEffect(()=>{
@@ -17,10 +18,10 @@ const GetCurrReviews = () =>{
     }, [dispatch])
 
 if(!reviews) return ".."
-
+// if(!currUser) return "Please log in to view your reviews"
     return(
         <>
-        hidden
+        {!currUser && <h2>Please log in to view your reviews</h2>}
 
 <div className="mng-reviews">
 {Object.values(reviews).map(review=>{

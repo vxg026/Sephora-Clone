@@ -101,7 +101,7 @@ const Home = () => {
             <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518735261706/Screenshot_2023-06-17_at_11.15.16_PM.png?width=1700&height=1133"/>
             </div>
             <div className="f2-text">
-                <h2>Beauty on Demand</h2>
+                <h2 className="beaut-on-demand">Beauty on Demand</h2>
                 <h4 className="on-demand">Fast and easy options that work for you.</h4>
 
             </div>
@@ -114,7 +114,7 @@ const Home = () => {
             <img className="f-img1" src="https://cdn.discordapp.com/attachments/1062942242450460744/1120794372884140064/Screenshot_2023-06-20_at_12.16.32_PM.png"/>
             </div>
             <div className="f3-text">
-                <h2>Clean + Planet Positive</h2>
+                <h2 className="beaut-on-demand">Clean + Planet Positive</h2>
                 <h4 className="on-demand">Brands on a mission to change your skin and the earth.</h4>
 
             </div>
