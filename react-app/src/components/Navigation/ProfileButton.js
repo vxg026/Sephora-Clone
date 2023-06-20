@@ -5,12 +5,16 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
 
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+
+const currUser = useSelector(state=>state.session.user)
+console.log("this is user=============================", currUser)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -51,7 +55,8 @@ function ProfileButton({ user }) {
         {/* <i className="fas fa-user-circle" /> */}
           </div>
           <div className="login-words">
-            <h5 className="sign-in-btn">Sign In</h5>
+            {currUser!==null?
+             <h5 className="sign-in-btn">Log Out</h5>:<h5 className="sign-in-btn">Sign In</h5>}
             <h6 className="start-in-btn">To start Shopping</h6>
           </div>
       </button>
