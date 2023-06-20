@@ -13,6 +13,10 @@
   color:black;
   padding:1rem;
 }
+.sephoria-logo-home{
+  /* border:2px solid red; */
+  min-width:10rem;
+}
 .login-button{
   padding-top: 1rem;
   background-color: transparent;
@@ -24,8 +28,6 @@
   border: none;
   display:flex;
   align-items: center;
-
-
 }
 .img-login{
   object-fit:cover;
@@ -135,6 +137,7 @@
   /* border: 2px solid red; */
   align-items: center;
   gap: .3rem;
+  min-width:12rem;
 
 }
 .store-serv{
@@ -153,6 +156,12 @@ font-size: 80%;;
   height: 1.8rem;
 
 }
+.reviews-link{
+  text-decoration: none;
+  color:black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+}
 .link-to-spec-products{
   border:2px solid black;
   height:3rem;
@@ -167,6 +176,15 @@ font-size: 80%;;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
   font-size: 100%;
+  /* border:2px solid white; */
+}
+.div-black-nav-bar{
+  height:100%;
+  /* border:1px solid white; */
+  width:6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal-login{
   /* border: 2px solid red; */
