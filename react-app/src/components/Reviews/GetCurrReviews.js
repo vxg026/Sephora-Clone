@@ -4,6 +4,8 @@ import { thunkCurrReviews } from "../../store/review";
 import EditReview from "./EditForm";
 import OpenModalButton from "../OpenModalButton";
 import DeleteReview from "./DeleteReview";
+import "./GetCurrReviews.css"
+
 const GetCurrReviews = () =>{
     const dispatch = useDispatch()
 
@@ -20,18 +22,29 @@ if(!reviews) return ".."
         <>
         hidden
 
-
+<div className="mng-reviews">
 {Object.values(reviews).map(review=>{
     return (
-        <dvi>
+        <div className="mng-review">
             {/* {display(review?.star_rating)} */}
+            <div>
             <i className="fas fa-star"/>{(review?.star_rating)}
-
+            </div>
+            <div>
+            {review?.created_at}
+            </div>
+            <div>
             {review?.review_text}
-            <img src={review?.img1}/>
-            {review?.img2}
-            {review?.img3}
-            {review?.img4}
+            </div>
+            <div className="mng-all-images">
+            <div className="images-container-mng-review"><img className="images-mng-reviews" src={review?.img1}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img2}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img3}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img4}/></div>
+            </div>
+
+
+            <div className="buttons-div-mgn-rvws">
             <OpenModalButton
                 buttonText='Edit'
                 modalComponent={<EditReview review={review} />}
@@ -41,11 +54,12 @@ if(!reviews) return ".."
                 buttonText='Delete'
                 modalComponent={<DeleteReview review={review}/>}
                 />
-        </dvi>
+            </div>
+        </div>
 
 
     )
-})}
+})}</div>
         </>
     )
 }

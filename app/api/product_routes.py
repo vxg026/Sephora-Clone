@@ -58,10 +58,16 @@ def get_single_product(id):
 @login_required
 def get_curr_product():
     curr_user_id = current_user.id
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",curr_user_id)
+    # cart = Cart.query.filter_by(user_id=curr_user_id).first()
 
-    cart = Cart.query.filter_by(user_id=curr_user_id).first()
-    print("this is cart===========", cart.id)
-    if cart:
+
+    # print("this is user_id===========", cart.user_id)
+    cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
+    print("this is cart===========", cart)
+
+    if cart and cart is not None:
+
         #search for produt table and associated quanitity for join table.
         all_products = db.session.query(Product, cart_products.c.quantity)
         print(all_products, "<------all Products")
@@ -81,8 +87,15 @@ def get_curr_product():
             product_quantity_obj.append(product_obj)
 
         return jsonify(product_quantity_obj)
-    else:
-        return "Cart not found"
+    if cart is None:
+        new_cart = Cart(user_id=curr_user_id)
+        db.session.add(new_cart)
+        db.session.commit()
+
+        cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
+
+
+
 
 @product_routes.route('/<int:id>/cart', methods=["POST"])
 @login_required
@@ -94,11 +107,15 @@ def add_to_cart(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     product_obj = Product.query.get(id)
+
     if not product_obj:
         return "item not found"
+    print("this is form-------------------->", form.quantity)
 
     quantity = int(form.quantity.data)
     print("this is productob=======>", product_obj)
+
+
     if form.validate_on_submit():
         cart = Cart.query.filter_by(user_id=current_user.id).first()
         print('this is cart===>', cart)
@@ -106,7 +123,8 @@ def add_to_cart(id):
             cart = Cart(user_id=current_user.id)
 
         cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
-
+        #sqlalchemy docs:
+# Session.execute() accepts any executable clause construct, such as select(), insert(), update(), delete(), and text(). Plain SQL strings can be passed as well, which in the case of Session.execute() only will be interpreted the same as if it were passed via a text() construct.
 
         if not cart_product:
             db.session.execute(cart_products.insert().values(
@@ -115,11 +133,12 @@ def add_to_cart(id):
                 quantity=quantity
                 ))
         else:
-            db.session.execute(cart_products.update().values(
-                quantity=cart_product.quantity + quantity
-            ).where((cart_products.c.cart_id == cart.id) &
+            # ex. table.update().where(table.c.id==7).values(name='foo')
+            db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &
                     (cart_products.c.product_id ==product_obj.id
-                    )))
+                    )).values(
+                quantity=cart_product.quantity + quantity
+            ))
 
         print("cart total price===>", cart.total_price)
         # cart.products.append(product_obj)
@@ -162,11 +181,11 @@ def update_cart(id):
                 quantity=quantity
                 ))
         else:
-            db.session.execute(cart_products.update().values(
-                quantity=quantity
-            ).where((cart_products.c.cart_id == cart.id) &
+            db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &
                     (cart_products.c.product_id ==product_obj.id
-                    )))
+                    )).values(
+                quantity=quantity
+            ))
 
         db.session.commit()
 
@@ -182,6 +201,7 @@ def remove_item(id):
     """
 
     product_obj = Product.query.get(id)
+    #method sqlalchemy.orm.Query.filter_by(**kwargs)¶
     cart = Cart.query.filter_by(user_id=current_user.id).first()
 
     if not cart:

@@ -5,10 +5,12 @@
     min-width: 15%;
     transition: 0.25s;
     padding: 1rem;
+    /* background-color: rgb(244, 217, 181); */
+
 }
 .div-products-all:hover{
     box-shadow: 2px 5px 5px 3px rgb(240, 240, 240);
-    transform: translateY(-15px)
+    transform: translateY(-15px);
 }
 .img-all{
     width: 100%;

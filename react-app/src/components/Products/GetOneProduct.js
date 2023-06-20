@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { thunkAllReviews } from "../../store/review";
 import OpenModalButton from "../OpenModalButton";
 import CreateReview from "../Reviews/CreateReview";
-
+import "./GetOneProduct.css"
 const GetOneProduct = () => {
     const dispatch = useDispatch()
     const { productId } = useParams()
@@ -18,7 +18,7 @@ const GetOneProduct = () => {
     const currUser = useSelector(state => state.session.user)
 
 
-    console.log("===========", allReviews)
+    console.log("===========", currUser.id)
 
     useEffect(() => {
         dispatch(thunkOneProduct(productId))
@@ -30,38 +30,104 @@ const GetOneProduct = () => {
     }
     console.log(productReviews, "---------------------------------------)")
     // productReviews.forEach(review=>)
+    const leftReview = productReviews.find(review => review.user_id==parseInt(currUser.id))
+
+
+    console.log("============================", leftReview)
+
+
     return (
         <>
-            Single Product
-            {singleProduct.id}
+            <div className="one-prod-comp">
+            Single product
+            <div className="single-container1">
+                      <div className="container1-iamge">
+            <img className="sing-image-div" src={singleProduct.image}/>
+            </div>
+
+            <div className="single-product-details">
+                {/* <div className="single-product-id">
+                {singleProduct.id}
+                </div> */}
+                <div className="single-product-name">
             {singleProduct.name}
+                </div>
+            <div  className="single-product-description">
             {singleProduct.description}
-            {singleProduct.price}
+            </div>
+            <div className="single-product-star-rating">
+                <div>
+                <i className="fas fa-star"></i>
+                </div>
 
-
-            <div>
-
-                <OpenModalButton
-                    buttonText='Leave a Review!'
-                    modalComponent={<CreateReview productId={singleProduct.id} />}
-                />
-
+                <div>
+                    <p className="highly-rate-p-tag">Highly rated by customers</p>
+                </div>
+            </div>
+                <div className="single-product-price">
+            <h3>${singleProduct.price}</h3>
+                </div>
+            </div>
 
             </div>
 
-            <div>
+
+                    <div className="single-product-reviews-container">
+                    <div className="ratings-header">
+                        <h2 className="ratings-reviews">Ratings & Reviews</h2>
+                    </div>
+            <div className="modal-review-button">
+                {currUser && !leftReview &&
+                <OpenModalButton
+                    buttonText='Write a Review'
+                    modalComponent={<CreateReview productId={singleProduct.id} />}
+                />
+                }
+
+            </div>
+
+            <div className="review-details-single-product">
                 {productReviews.map(review => (
                     <>
-                        {review.review_text}
-                        {review.star_rating}
-                        <img src={review.img1}/>
-                        <img src={review.img2}/>
-                        <img src={review.img3}/>
-                        <img src={review.img4}/>
+                    <div className="individual-review-container">
 
+
+                    <div className="star-rating-div">
+                        <p className="date-reviews-container">{review.created_at}</p>
+                        <p>{review.star_rating}<i className="fas fa-star"></i></p>
+                    </div>
+                        <div className="contianer-second-review">
+                            <div>
+                            <p className="review-text-div-single">{review.review_text}</p>
+                            </div>
+                            <div className="reviews-all-imgs">
+
+                                <div className="reviews-images-image-container">
+                        <img className="reviews-images-image" src={review.img1}/>
+                                </div>
+                                <div className="reviews-images-image-container">
+                        <img className="reviews-images-image" src={review.img2}/>
+                                </div>
+                                <div className="reviews-images-image-container">
+                        <img className="reviews-images-image" src={review.img3}/>
+                                </div>
+                                <div className="reviews-images-image-container">
+                        <img className="reviews-images-image" src={review.img4}/>
+                                </div>
+                            </div>
+
+                        </div>
+
+   </div>
                     </>
 
                 ))}
+            </div>
+                    </div>
+                    <div className="single-product-footer">
+                        <h1>hi</h1>
+                    </div>
+
             </div>
         </>
     )

@@ -181,8 +181,8 @@ function SignupFormModal() {
 
 						<button type="submit">Join Now</button>
 					</div>
-					<div>
-						<h5>This is not the official sephora page. By clicking join now you acknowledge that you understand this is not the real site but a clone. </h5>
+					<div className="m1-terms">
+						<h5 className="terms-text-m1">This is not the official sephora page. By clicking join now you acknowledge that you understand this is not the real site but a clone. </h5>
 					</div>
 				</div>
 			</form>
