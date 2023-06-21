@@ -46,6 +46,34 @@ def get_all_hair_products():
     hair_obj = [hair.to_dict() for hair in hair_products_obj]
     return hair_obj
 
+@product_routes.route('/fragrance')
+def get_all_fragrance_products():
+    """
+    Gets all the products that are fragrance
+    """
+    fragrance_products_obj = Product.query.filter(Product.category.ilike("fragrance")).all()
+    fragrance_obj = [fragrance.to_dict() for fragrance in fragrance_products_obj]
+    return fragrance_obj
+
+@product_routes.route('/skincare')
+def get_all_skincare_products():
+    """
+    Gets all the products that are skincaare
+    """
+    skincare_products_obj = Product.query.filter(Product.category.ilike("skincare")).all()
+    skincare_obj = [skincare.to_dict() for skincare in skincare_products_obj]
+    return skincare_obj
+
+@product_routes.route('/body')
+def get_all_body_products():
+    """
+    Gets all the products that are skincaare
+    """
+    body_products_obj = Product.query.filter(Product.category.ilike("body")).all()
+    body_obj = [body.to_dict() for body in body_products_obj]
+    return body_obj
+
+
 @product_routes.route('/<int:id>')
 def get_single_product(id):
     """

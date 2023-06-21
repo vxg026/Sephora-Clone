@@ -114,6 +114,27 @@ export const thunkHair =()=> async (dispatch)=>{
         dispatch(getAllProductsAction(data))
     }
 }
+export const thunkFragrance =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/fragrance')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+export const thunkSkincare =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/skincare')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+export const thunkBody =()=> async (dispatch)=>{
+    const response = await fetch('/api/products/body')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
 
 const initialState = {allProducts:{}, currProducts:{}}
 

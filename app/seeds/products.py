@@ -59,7 +59,49 @@ def seed_products():
         category="hair",
         image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
     )
-    product_list = [product1, product2, product3, product4, product5, product6, product7, product8]
+    product9 = Product(
+        name="Chloé Chloé Naturelle Eau de Parfum",
+        price="118.00",
+        description=" The hero ingredient of this eau de parfum is a handpicked and ethically sourced organic rose, which opens the perfume with an airy and feminine aura complemented by Moroccan neroli.",
+        category="fragrance",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product10 = Product(
+        name="Marc Jacobs Fragrances Daisy",
+        price="128.00",
+        description=" Charmingly simple with a signature quality, Daisy Marc Jacobs transports you to a place that’s optimistic, beautiful, and pure.",
+        category="fragrance",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product11 = Product(
+        name="skincare Chloé Naturelle Eau de Parfum",
+        price="118.00",
+        description=" The hero ingredient of this eau de parfum is a handpicked and ethically sourced organic rose, which opens the perfume with an airy and feminine aura complemented by Moroccan neroli.",
+        category="skincare",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product12 = Product(
+        name="skinca Jacobs Fragrances Daisy",
+        price="128.00",
+        description=" Charmingly simple with a signature quality, Daisy Marc Jacobs transports you to a place that’s optimistic, beautiful, and pure.",
+        category="skincare",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product13 = Product(
+        name="body Jacobs Fragrances Daisy",
+        price="128.00",
+        description=" Charmingly simple with a signature quality, Daisy Marc Jacobs transports you to a place that’s optimistic, beautiful, and pure.",
+        category="body",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product14 = Product(
+        name="body Jacobs Fragrances Daisy",
+        price="128.00",
+        description=" Charmingly simple with a signature quality, Daisy Marc Jacobs transports you to a place that’s optimistic, beautiful, and pure.",
+        category="body",
+        image="https://cdn.discordapp.com/attachments/1062942242450460744/1120070237577023528/Screenshot_2023-06-18_at_12.16.14_PM.png",
+    )
+    product_list = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12, product13, product14]
 
     for product in product_list:
         db.session.add(product)
