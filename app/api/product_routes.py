@@ -146,6 +146,8 @@ def add_to_cart(id):
 
 
     if form.validate_on_submit():
+        # method sqlalchemy.orm.Query.filter_by(**kwargs)
+        # session.query(MyClass).filter_by(name = 'some name')
         cart = Cart.query.filter_by(user_id=current_user.id).first()
         print('this is cart===>', cart)
         if cart is None:
