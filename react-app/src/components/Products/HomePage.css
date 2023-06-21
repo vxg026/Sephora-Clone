@@ -1,3 +1,4 @@
+
 .card1{
     height: fit-content;
     /* border: 2px solid red; */
@@ -7,8 +8,6 @@
     background-color: #FAE99C ;
     margin-top:.5rem;
     margin-left:1rem;
-    /* object-fit: fill; */
-
 }
 
 .card2{
@@ -24,8 +23,6 @@
     margin-left:.75rem;
     padding-right:1rem;
     margin-right:0;
-    /* object-fit: fill; */
-
 
 }
 .card3{
@@ -41,17 +38,49 @@
 
 }
 .card4{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 96%;
+    display: flex;
+    flex-direction: column;
+    background-color:#FBCDCC;
+    margin-top:.5rem;
+
+
+}
+.card5{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 97%;
+    display: flex;
+    flex-direction: column;
+    background-color:#136BEA;
+    margin-top:.5rem;
+
+}
+.card6{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 97%;
+    display: flex;
+    flex-direction: column;
+    background-color:#FBCD53;
+    margin-top:.5rem;
+}
+
+.card5{
     /* border: 2px solid red; */
 
     height: fit-content;
     max-width: 95.8%;
     display: flex;
     flex-direction: column;
-    background-color:rgb(173, 117, 192);
+    background-color:#FAE99C;
     margin-top:.5rem;
 
 
 }
+
 .card-link{
     margin-left:0;
 
@@ -80,15 +109,62 @@
 .card-img4{
     /* height: 5%; */
     width: 100%;
-    height: 98%;
-    /* border:2px solid pink */
+    height: 114%;
+    /* object-fit:fill; */
+    border:2px solid pink;
 
+}
+.div-for-img{
+    height:20rem;
 }
 .card-details1{
     background-color:#FAE99C ;
     margin: 1rem;
     width: 90%;
     height:100%;
+}
+.card-details4{
+    background-color:#FBCDCC;
+    margin: 1rem;
+    width: 90%;
+    height:100%;
+}
+.card-details5{
+    background-color: #FAE99C;
+    margin: 1rem;
+    width: 90%;
+    height:100%;
+}
+.card-details6{
+    background-color:#FBCD53;
+    margin: 1rem;
+    width: 90%;
+    height:100%;
+}
+.card4{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 96%;
+    display: flex;
+    flex-direction: column;
+    background-color:#FBCDCC;
+    margin-top:.5rem;
+    /* margin-left:1rem; */
+    /* object-fit: fill; */
+
+}
+
+.card4{
+    height: fit-content;
+    /* border: 2px solid red; */
+    max-width: 96%;
+    display: flex;
+    flex-direction: column;
+    background-color:#FBCDCC;
+    margin-top:.5rem;
+    /* margin-left:1rem; */
+    /* object-fit: fill; */
+
 }
 .card-details2{
     background-color:rgb(252, 164, 56) ;
@@ -99,10 +175,6 @@
     margin: 1rem;
 }
 
-.card-details4{
-    background-color:rgb(173, 117, 192);
-    margin: 1rem;
-}
 .card-link{
     text-decoration: none;
 

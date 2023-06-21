@@ -93,10 +93,21 @@ function Navigation({ isLoaded }) {
 						<p className="black-bar-style">Hair</p>
 						</div>
 						</NavLink>
+						<NavLink to="/products/fragrance">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Fragrance</p>
 						</div>
-
+						</NavLink>
+						<NavLink to="/products/skincare">
+						<div className="div-black-nav-bar">
+						<p className="black-bar-style">Skincare</p>
+						</div>
+						</NavLink>
+						<NavLink to="/products/body">
+						<div className="div-black-nav-bar">
+						<p className="black-bar-style">Bath & Body</p>
+						</div>
+						</NavLink>
 					</div>
 		</ul>
 	);

@@ -18,6 +18,10 @@ import Home from "./components/Products/HomePage";
 import Suncscreen from "./components/Products/Sunscreen";
 import Makeup from "./components/Products/Makeup";
 import Hair from "./components/Products/Hair";
+import Fragrance from "./components/Products/Fragrance";
+import Skincare from "./components/Products/Skincare";
+
+import Body from "./components/Products/Body";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +51,9 @@ function App() {
         <Route exact path="/products/makeup" component={Makeup}></Route>
         <Route exact path="/products/sunscreen" component={Suncscreen}></Route>
         <Route exact path="/products/hair" component={Hair}></Route>
+        <Route exact path="/products/fragrance" component={Fragrance}></Route>
+        <Route exact path="/products/skincare" component={Skincare}></Route>
+        <Route exact path="/products/body" component={Body}></Route>
 
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
         <Route exact path="/products/:productId" component={GetOneProduct}></Route>
