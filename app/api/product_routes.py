@@ -140,32 +140,37 @@ def add_to_cart(id):
         return "item not found"
     print("this is form-------------------->", form.quantity)
 
-    quantity = int(form.quantity.data)
+    quantity_create = int(form.quantity.data)
+    # quantity_create=int((1,1))
     print("this is productob=======>", product_obj)
 
 
     if form.validate_on_submit():
         cart = Cart.query.filter_by(user_id=current_user.id).first()
         print('this is cart===>', cart)
-        if not cart:
+        if cart is None:
             cart = Cart(user_id=current_user.id)
-
+            db.session.add(cart)
+            (print("this is cartt.........=> cart"))
         cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
+
+
+        print("this is cart product........", cart_product)
         #sqlalchemy docs:
 # Session.execute() accepts any executable clause construct, such as select(), insert(), update(), delete(), and text(). Plain SQL strings can be passed as well, which in the case of Session.execute() only will be interpreted the same as if it were passed via a text() construct.
 
-        if not cart_product:
+        if cart_product is None:
             db.session.execute(cart_products.insert().values(
                 cart_id=cart.id,
                 product_id=product_obj.id,
-                quantity=quantity
+                quantity=quantity_create
                 ))
         else:
             # ex. table.update().where(table.c.id==7).values(name='foo')
             db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &
                     (cart_products.c.product_id ==product_obj.id
                     )).values(
-                quantity=cart_product.quantity + quantity
+                quantity_create=cart_product.quantity + quantity_create
             ))
 
         print("cart total price===>", cart.total_price)

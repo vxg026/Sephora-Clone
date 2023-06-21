@@ -73,7 +73,11 @@
 .sign-in-btn{
   padding:none;
   margin:0;
-  font-size: 110%;;
+  font-size: 110%;
+}
+.sign-outbtn{
+  min-width: 4rem;
+  /* border:2px solid red; */
 }
 .sign-in-btn:hover{
   cursor: pointer;
@@ -283,3 +287,24 @@ margin-bottom:1rem;
   margin-top:.3rem;
   margin-bottom:.3rem;
 }
+
+.log-out-menu{
+  border:2px solid red;
+  background-color: white;
+  width: 180%;
+  height: 5rem;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding:.2rem;
+  gap:.2rem;
+  padding-left:1rem;
+}
+.user-name-log-out{
+  text-decoration: none;
+  list-style-type: none;
+}
+
+
+/* When a user creates a new account and starts to add iteams to their cart, clicking on the basket does not reflect the additions right away. Perhaps implemnting a loading animation to medigate the wait time would be better vs. having the alert at the top of the page. Will send a video to show this to better explain. */

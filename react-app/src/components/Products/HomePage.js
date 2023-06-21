@@ -23,7 +23,7 @@ const Home = () => {
       <Carousel
         showDots={true}
         responsive={responsive}
-
+        swipeable={true}
       >
         <div>
           <NavLink className="card-link" to="/products/sunscreen">
