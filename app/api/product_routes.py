@@ -172,7 +172,7 @@ def add_to_cart(id):
             db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &
                     (cart_products.c.product_id ==product_obj.id
                     )).values(
-                quantity_create=cart_product.quantity + quantity_create
+                quantity=cart_product.quantity + quantity_create
             ))
 
         print("cart total price===>", cart.total_price)
