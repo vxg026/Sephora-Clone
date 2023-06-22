@@ -22,7 +22,7 @@ import Fragrance from "./components/Products/Fragrance";
 import Skincare from "./components/Products/Skincare";
 
 import Body from "./components/Products/Body";
-
+import Shipped from "./components/Products/Shipped"
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -54,6 +54,7 @@ function App() {
         <Route exact path="/products/fragrance" component={Fragrance}></Route>
         <Route exact path="/products/skincare" component={Skincare}></Route>
         <Route exact path="/products/body" component={Body}></Route>
+        <Route exact path="/products/shipped" component={Shipped}></Route>
 
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
         <Route exact path="/products/:productId" component={GetOneProduct}></Route>

@@ -56,8 +56,10 @@ console.log("this is user=============================", currUser)
           </div>
           <div className="login-words">
             {currUser!==null?
-             <h5 className="sign-in-btn">Log Out</h5>:<h5 className="sign-in-btn">Sign In</h5>}
-            <h6 className="start-in-btn">To start Shopping</h6>
+             <h5 className="sign-in-btn sign-outbtn">Sign Out</h5>:<h5 className="sign-in-btn">Sign In</h5>}
+             {currUser!==null? null:  <h6 className="start-in-btn">To start Shopping</h6>
+             }
+
           </div>
       </button>
     </div>
@@ -65,11 +67,14 @@ console.log("this is user=============================", currUser)
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
+          <div className="log-out-menu">
+            <li className="user-name-log-out">Hi, {user.username}!</li>
+            <li className="user-name-email">{user.email}</li>
+            <li className="logout-button-menu">
+              <button onClick={handleLogout}>Sign Out</button>
             </li>
+          </div>
+
           </>
         ) : (
           <>
@@ -86,15 +91,15 @@ console.log("this is user=============================", currUser)
                        <OpenModalButton
 className="login-modal-btn1"
               buttonText="Sign In"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
             </div>
-      
+
             <div className="signup-modal-btn">
                     <OpenModalButton
               buttonText="Create Account"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
             </div>

@@ -111,25 +111,25 @@ const GetOneProduct = () => {
                                             <div className="reviews-images-image-container">
                                                 {
                                                     review.img1 &&
-                                                <img className="reviews-images-image" src={review.img1} />
+                                                <img className="reviews-images-image" src={review.img1} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/>
                                                 }
                                             </div>
                                             <div className="reviews-images-image-container">
                                                 {review.img2 &&
 
-                                                    <img className="reviews-images-image" src={review.img2} />
+                                                    <img className="reviews-images-image" src={review.img2} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/>
                                                 }
                                             </div>
                                             <div className="reviews-images-image-container">
                                                 {
                                                 review.img3 &&
-                                                <img className="reviews-images-image" src={review.img3} />
+                                                <img className="reviews-images-image" src={review.img3} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/>
                                                 }
                                             </div>
                                             <div className="reviews-images-image-container">
                                                 {
                                                     review.img4 &&
-                                                <img className="reviews-images-image" src={review.img4} />
+                                                <img className="reviews-images-image" src={review.img4} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/>
                                                 }
                                             </div>
                                         </div>

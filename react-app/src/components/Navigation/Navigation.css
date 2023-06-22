@@ -73,7 +73,11 @@
 .sign-in-btn{
   padding:none;
   margin:0;
-  font-size: 110%;;
+  font-size: 110%;
+}
+.sign-outbtn{
+  min-width: 4rem;
+  /* border:2px solid red; */
 }
 .sign-in-btn:hover{
   cursor: pointer;
@@ -133,6 +137,9 @@
   align-items: center;
 
 }
+.community-image:hover{
+  cursor: pointer;
+}
 .com-word{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
@@ -146,6 +153,9 @@
   gap: .3rem;
   min-width:12rem;
 
+}
+.store-location-icon:hover{
+  cursor: pointer;
 }
 .store-serv{
   margin:0;
@@ -162,6 +172,9 @@ font-size: 80%;;
 .reviews-chat-icon{
   height: 1.8rem;
 
+}
+.reviews-chat-icon basket:hover{
+  cursor: pointer;
 }
 .reviews-link{
   text-decoration: none;
@@ -188,6 +201,9 @@ font-size: 80%;;
   font-weight: 300;
   font-size: 100%;
   /* border:2px solid white; */
+}
+.nav-bar-remove-text-decoration{
+  text-decoration: none;
 }
 .div-black-nav-bar{
   height:100%;
@@ -282,4 +298,42 @@ margin-bottom:1rem;
 .h3-hi{
   margin-top:.3rem;
   margin-bottom:.3rem;
+}
+
+.log-out-menu{
+  /* border:2px solid red; */
+  background-color: white;
+  width: fit-content;
+  height: 5rem;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding:.4rem;
+  gap:.2rem;
+  padding-left:1rem;
+  border-radius: .45rem;
+  box-shadow: 1px 1px 4px 1px lightgray;
+}
+.user-name-log-out{
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.user-name-email{
+list-style-type: none;
+}
+.logout-button-menu{
+  list-style-type:none;
+}
+.logout-button-menu button{
+  background-color: black;
+  color:white;
+  width:8rem;
+  border:2px solid black;
+  height:2rem;
+  border-radius: 1rem;
+}
+.logout-button-menu button:hover{
+ cursor: pointer;
 }

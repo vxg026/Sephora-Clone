@@ -23,7 +23,7 @@ const Home = () => {
       <Carousel
         showDots={true}
         responsive={responsive}
-
+        swipeable={true}
       >
         <div>
           <NavLink className="card-link" to="/products/sunscreen">
@@ -151,6 +151,22 @@ const Home = () => {
       </div>
       <div className="f-feedback">
         <h3 className="f-fbck-txt">Website feedback? Let us know</h3>
+      </div>
+      <div className="footer">
+          <div className="h3-div">
+        <a href="https://www.linkedin.com/in/vanessa-gonzalez-82667a1b3/">
+             <h3>Linked In</h3>
+                  </a>
+                  <a href="https://github.com/vxg026">
+                    <div className="github-url">
+                               <img className="github"src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU"/> <h3>GitHub</h3>
+                    </div>
+
+                  </a>
+
+          </div>
+
+
       </div>
     </div>
 
