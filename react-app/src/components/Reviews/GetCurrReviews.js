@@ -34,12 +34,12 @@ if(!reviews) return ".."
             <div>
             {review?.created_at}
             </div>
-            <div>
+            <div className="mng-review_text">
             {review?.review_text}
             </div>
             <div className="mng-all-images">
                 {review?.img1 &&
-            <div className="images-container-mng-review"><img className="images-mng-reviews" src={review?.img1}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews" src={review?.img1} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/></div>
                 }
                 {review?.img2 &&
             <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img2}/></div>

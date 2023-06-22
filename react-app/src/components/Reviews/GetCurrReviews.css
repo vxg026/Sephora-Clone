@@ -28,6 +28,9 @@
     display:flex;
     gap:.5rem;
 }
+.mng-review_text{
+    word-wrap:break-word;
+}
 .buttons-div-mgn-rvws{
     /* border:2px solid red; */
     width:24.5%;
