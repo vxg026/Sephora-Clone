@@ -27,10 +27,10 @@ function LoginFormModal() {
         }
     }
   };
-const autoLogin = e=> {
+const autoLogin = async (e)=> {
   setEmail('demo@aa.io')
   setPassword('password')
-   dispatch(login(email, password))
+   const data = await dispatch(login(email, password))
    .then(closeModal);
 
   // return dispatch(login({email, password}))
