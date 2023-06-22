@@ -137,6 +137,9 @@
   align-items: center;
 
 }
+.community-image:hover{
+  cursor: pointer;
+}
 .com-word{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
@@ -150,6 +153,9 @@
   gap: .3rem;
   min-width:12rem;
 
+}
+.store-location-icon:hover{
+  cursor: pointer;
 }
 .store-serv{
   margin:0;
@@ -166,6 +172,9 @@ font-size: 80%;;
 .reviews-chat-icon{
   height: 1.8rem;
 
+}
+.reviews-chat-icon basket:hover{
+  cursor: pointer;
 }
 .reviews-link{
   text-decoration: none;
@@ -193,6 +202,9 @@ font-size: 80%;;
   font-size: 100%;
   /* border:2px solid white; */
 }
+.nav-bar-remove-text-decoration{
+  text-decoration: none;
+}
 .div-black-nav-bar{
   height:100%;
   /* border:1px solid white; */
@@ -216,7 +228,7 @@ font-size: 80%;;
   top:10px;
   display:flex;
   gap:1rem;
-  /* z-index:1; */
+  z-index:1;
 
 
 }
@@ -289,22 +301,39 @@ margin-bottom:1rem;
 }
 
 .log-out-menu{
-  border:2px solid red;
+  /* border:2px solid red; */
   background-color: white;
-  width: 180%;
+  width: fit-content;
   height: 5rem;
   display:flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding:.2rem;
+  padding:.4rem;
   gap:.2rem;
   padding-left:1rem;
+  border-radius: .45rem;
+  box-shadow: 1px 1px 4px 1px lightgray;
 }
 .user-name-log-out{
   text-decoration: none;
   list-style-type: none;
 }
 
-
-/* When a user creates a new account and starts to add iteams to their cart, clicking on the basket does not reflect the additions right away. Perhaps implemnting a loading animation to medigate the wait time would be better vs. having the alert at the top of the page. Will send a video to show this to better explain. */
+.user-name-email{
+list-style-type: none;
+}
+.logout-button-menu{
+  list-style-type:none;
+}
+.logout-button-menu button{
+  background-color: black;
+  color:white;
+  width:8rem;
+  border:2px solid black;
+  height:2rem;
+  border-radius: 1rem;
+}
+.logout-button-menu button:hover{
+ cursor: pointer;
+}

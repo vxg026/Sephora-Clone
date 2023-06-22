@@ -54,4 +54,5 @@
     color:white;
     /* box-shadow: 2px 2px 2px 2px lightblue; */
     border: 1px solid black;
+    cursor: pointer;
 }

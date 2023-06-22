@@ -4,6 +4,7 @@ import { thunkAddProduct } from "../../store/product";
 import { useHistory } from "react-router-dom";
 import thunk from "redux-thunk";
 import React from 'react';
+import "./AddToCart.css"
 // import 'react-toastify/dist/ReactToastify.css';
 // import { ToastContainer, toast } from 'react-toastify';
 
@@ -24,8 +25,8 @@ const AddToCart = ({product})=>{
     return(
         <form>
             {currUser?
-            <button type="button" onClick={handleClick}>
-                Att to Cart!
+            <button type="button" className="add-to-cart-btn" onClick={handleClick}>
+                Add to Basket!
             </button> : <h6>Please SignUp to shop</h6>}
         </form>
     )

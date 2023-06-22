@@ -6,7 +6,8 @@ import EditQuantity from "./EditQuantity";
 import GetCurrCart from "../Carts/GetCurrCart";
 import RemoveProduct from "./RemoveProduct";
 import "./GetCurrProducts.css"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 const GetCurrProducts=()=>{
     const history=useHistory()
     const dispatch = useDispatch()
@@ -15,6 +16,9 @@ const GetCurrProducts=()=>{
     useEffect(()=>{
         dispatch(thunkCurrProducts())
     }, [dispatch])
+
+    const [errors, setErrors] = useState({})
+    let error_obj = {}
     // console.log("all products", products)
     //    console.log("this is array", productArr)
     if(!products){
@@ -43,14 +47,17 @@ const handleCheckout=async(e)=>{
     dispatch(thunkCurrProducts())
     history.push('/products/shipped')
   }
-
+else{
+  error_obj.checkout = "Cart is empty"
+  setErrors(error_obj)
+}
 }
 
 //    console.log(",....", productArr)
     return (
       <>
       {!currUser ?
-      <h2>Please log in to view/edit cart</h2>:
+      <h2 className="login-to-edit-view">Please log in to view/edit cart</h2>:
         <div className="cart">
 
         <div className="basket-container">
@@ -83,14 +90,20 @@ const handleCheckout=async(e)=>{
             </div>
         ))}
         </div></div>
- <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum}</div>
- <button onClick={handleCheckout}>Checkout</button>
+          <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum.toFixed(2)}</div>
+        <div className="tota-checkout-btn">
+ <button className="check-out-btn" onClick={handleCheckout}>Checkout Items</button>
+ <p className="errors">{errors.checkout}</p>
  </div>
+        </div>
+
 
         </div>
         {/* <GetCurrCart/> */}
       </div>
+
       }
+
       </>
     )
 }

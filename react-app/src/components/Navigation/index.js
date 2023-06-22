@@ -6,7 +6,9 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-
+const handlClick=()=>{
+	 alert("feature coming soon!")
+}
 	return (
 		<ul className="ul-root">
 			<div className="blue-div">
@@ -25,7 +27,7 @@ function Navigation({ isLoaded }) {
 						placeholder='Search'
 					/>
 				</div>
-				<div className="store-location-icon">
+				<div onClick={handlClick} className="store-location-icon">
 					<div>
 						<img className="store-review-likes" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725107829551204/store.png"/>
 					</div>
@@ -35,7 +37,7 @@ function Navigation({ isLoaded }) {
 					</div>
 
 				</div>
-				<div className="community-image">
+				<div onClick={handlClick}className="community-image">
 					<div >
 							<img className="community-forum-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725131355398184/community.png"/>
 					</div>
@@ -67,43 +69,43 @@ function Navigation({ isLoaded }) {
 			</div>
 			<div>
 				<a href="/products/curr">
-				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
+				<img className="reviews-chat-icon basket" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
 				</a>
 			</div>
 			</div>
 					<div className="link-to-spec-products">
 
-							<NavLink to="/products/all">
+							<NavLink className="nav-bar-remove-text-decoration" to="/products/all">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">All</p>
 						</div>
 						</NavLink>
-							<NavLink to="/products/sunscreen">
+							<NavLink className="nav-bar-remove-text-decoration" to="/products/sunscreen">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Sunscreens</p>
 						</div>
 						</NavLink>
-							<NavLink to="/products/makeup">
+							<NavLink className="nav-bar-remove-text-decoration" to="/products/makeup">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Makeup</p>
 						</div>
 						</NavLink>
-							<NavLink to="/products/hair">
+							<NavLink className="nav-bar-remove-text-decoration" to="/products/hair">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Hair</p>
 						</div>
 						</NavLink>
-						<NavLink to="/products/fragrance">
+						<NavLink className="nav-bar-remove-text-decoration" to="/products/fragrance">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Fragrance</p>
 						</div>
 						</NavLink>
-						<NavLink to="/products/skincare">
+						<NavLink className="nav-bar-remove-text-decoration" to="/products/skincare">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Skincare</p>
 						</div>
 						</NavLink>
-						<NavLink to="/products/body">
+						<NavLink className="nav-bar-remove-text-decoration" to="/products/body">
 						<div className="div-black-nav-bar">
 						<p className="black-bar-style">Bath & Body</p>
 						</div>

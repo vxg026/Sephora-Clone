@@ -16,17 +16,18 @@ const GetCurrReviews = () =>{
     useEffect(()=>{
         dispatch(thunkCurrReviews())
     }, [dispatch])
-
 if(!reviews) return ".."
 // if(!currUser) return "Please log in to view your reviews"
     return(
         <>
-        {!currUser && <h2>Please log in to view your reviews</h2>}
+        {!currUser && <h2 className="login-to-edit-view">Please log in to view your reviews</h2>}
 
 <div className="mng-reviews">
+<h2>Manage Reviews</h2>
 {Object.values(reviews).map(review=>{
     return (
         <div className="mng-review">
+
             {/* {display(review?.star_rating)} */}
             <div>
             <i className="fas fa-star"/>{(review?.star_rating)}
@@ -42,14 +43,14 @@ if(!reviews) return ".."
             <div className="images-container-mng-review"><img className="images-mng-reviews" src={review?.img1} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/></div>
                 }
                 {review?.img2 &&
-            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img2}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img2}onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/></div>
                 }
                 {
                     review?.img3 &&
-            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img3}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img3}onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/></div>
                 }
                 {review?.img4 &&
-            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img4}/></div>
+            <div className="images-container-mng-review"><img className="images-mng-reviews"  src={review?.img4}onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/></div>
                 }
             </div>
 

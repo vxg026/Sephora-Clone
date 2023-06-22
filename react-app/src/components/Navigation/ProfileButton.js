@@ -68,10 +68,10 @@ console.log("this is user=============================", currUser)
         {user ? (
           <>
           <div className="log-out-menu">
-            <li className="user-name-log-out">{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
+            <li className="user-name-log-out">Hi, {user.username}!</li>
+            <li className="user-name-email">{user.email}</li>
+            <li className="logout-button-menu">
+              <button onClick={handleLogout}>Sign Out</button>
             </li>
           </div>
 
@@ -91,7 +91,7 @@ console.log("this is user=============================", currUser)
                        <OpenModalButton
 className="login-modal-btn1"
               buttonText="Sign In"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
             </div>
@@ -99,7 +99,7 @@ className="login-modal-btn1"
             <div className="signup-modal-btn">
                     <OpenModalButton
               buttonText="Create Account"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
             </div>

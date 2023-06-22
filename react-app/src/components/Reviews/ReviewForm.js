@@ -86,7 +86,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         }
         if (img2) {
             if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
-                error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+                error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
             }
         }
         if (img3) {
@@ -122,9 +122,12 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
     return (
         <>
-            This is reviewForm!
-            <form onSubmit={handleSubmit}>
+        <div className="review-form-container">
+
+            <h4 className="leave-review-here">Leave your review here</h4>
+            <form className="review-form" onSubmit={handleSubmit}>
                 <textarea
+                    className="review-txt-are"
                     type="text"
                     value={review_text}
                     placeholder="We'd love to hear your thoughts!"
@@ -148,34 +151,40 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
                     img1
                     <input formAction="image"
+                    className="input-img-url"
                         value={img1}
-                        placeholder="image url"
+                        placeholder="image url (optional)"
                         onChange={(e) => setImg1(e.target.value)} />
                     <p className="errors">{errors.img1}</p>
 
                     img2
                     <input formAction="image"
+                    className="input-img-url"
                         value={img2}
-                        placeholder="image url"
+                        placeholder="image url (optional)"
                         onChange={(e) => setImg2(e.target.value)} />
                     <p className="errors">{errors.img2}</p>
                     img3
                     <input formAction="image"
+                    className="input-img-url"
                         value={img3}
-                        placeholder="image url"
+                        placeholder="image url (optional)"
                         onChange={(e) => setImg3(e.target.value)} />
                     <p className="errors">{errors.img3}</p>
                     img4
                     <input formAction="image"
+                    className="input-img-url"
                         value={img4}
-                        placeholder="image url"
+                        placeholder="image url (optional)"
                         onChange={(e) => setImg4(e.target.value)} />
                     <p className="errors">{errors.img4}</p>
                 </div>
                 <div>
-                    <button type="submit" >Submit your Review</button>
+                    <button className="subit-review" type="submit" >Submit your Review</button>
                 </div>
             </form>
+            </div>
+
         </>
     )
 
