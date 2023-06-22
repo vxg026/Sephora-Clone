@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
-import { thunkCurrProducts } from "../../store/product";
+import { thunkCurrProducts, thunkRemoveProduct } from "../../store/product";
 import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
 import GetCurrCart from "../Carts/GetCurrCart";
 import RemoveProduct from "./RemoveProduct";
 import "./GetCurrProducts.css"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const GetCurrProducts=()=>{
+    const history=useHistory()
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.currProducts)
     const currUser = useSelector(state=>state.session.user)
@@ -31,7 +33,18 @@ const GetCurrProducts=()=>{
     totalSum += price * quantity;
   }
 
+const handleCheckout=async(e)=>{
+  e.preventDefault()
+  if(productArr.length>0){
+     for(let i =0; i< productArr.length; i++){
+     await dispatch(thunkRemoveProduct(productArr[i]?.product.id))
+      console.log("..............product i ", productArr[i].product)
+    }
+    dispatch(thunkCurrProducts())
+    history.push('/products/shipped')
+  }
 
+}
 
 //    console.log(",....", productArr)
     return (
@@ -70,7 +83,9 @@ const GetCurrProducts=()=>{
             </div>
         ))}
         </div></div>
- <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum}</div></div>
+ <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum}</div>
+ <button onClick={handleCheckout}>Checkout</button>
+ </div>
 
         </div>
         {/* <GetCurrCart/> */}
