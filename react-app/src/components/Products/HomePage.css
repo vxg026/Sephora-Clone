@@ -287,3 +287,7 @@
     display:inline-block;
     gap:0;
 }
+.react-multi-carousel-list{
+    position: relative;
+z-index:-1;
+}
