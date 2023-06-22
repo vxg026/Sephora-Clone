@@ -3,8 +3,11 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { thunkCurrProducts } from "../../store/product";
 
 function LoginFormModal() {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,13 +21,22 @@ function LoginFormModal() {
       setErrors(data);
     } else {
         closeModal()
+        // history.push('/')
+        if(window.location.pathname==="/products/curr"){
+          dispatch(thunkCurrProducts())
+        }
     }
   };
 const autoLogin = e=> {
   setEmail('demo@aa.io')
   setPassword('password')
-  return dispatch(login({email, password}))
-  .then(closeModal)
+   dispatch(login({email, password}))
+   .then(closeModal);
+
+  // return dispatch(login({email, password}))
+  if(window.location.pathname==="/products/curr"){
+    dispatch(thunkCurrProducts())
+  }
 }
   return (
 
