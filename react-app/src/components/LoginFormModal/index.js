@@ -30,7 +30,7 @@ function LoginFormModal() {
 const autoLogin = e=> {
   setEmail('demo@aa.io')
   setPassword('password')
-   dispatch(login({email, password}))
+   dispatch(login(email, password))
    .then(closeModal);
 
   // return dispatch(login({email, password}))
