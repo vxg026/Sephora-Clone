@@ -93,12 +93,25 @@ def get_curr_product():
     # print("this is user_id===========", cart.user_id)
     cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
     print("this is cart===========", cart)
+    if cart is None:
+        new_cart = Cart(user_id=curr_user_id)
+        db.session.add(new_cart)
+        db.session.commit()
 
+        cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
     if cart and cart is not None:
 
         #search for produt table and associated quanitity for join table.
         all_products = db.session.query(Product, cart_products.c.quantity)
         print(all_products, "<------all Products")
+        # sqalchemy docs, sess.scalars(select(A).join(A.d)).all()
+        #from a join b as b_1 Join d as d_1 On b_1.d_id=d_1.id
+        # sess.scalars(
+        #     select(A)
+        #     .join(A.b)
+        #     .where(B_viacd_subquery.some_b_column == "some b")
+        #     .order_by(B_viacd_subquery.id)
+        # ).all()
         joined_products = all_products.join(cart_products)
 
         products= joined_products.filter(cart_products.c.cart_id==cart.id).all()
@@ -113,14 +126,9 @@ def get_curr_product():
                 "quantity":quantity
             }
             product_quantity_obj.append(product_obj)
-
+        print("==================================", (product_quantity_obj))
         return jsonify(product_quantity_obj)
-    if cart is None:
-        new_cart = Cart(user_id=curr_user_id)
-        db.session.add(new_cart)
-        db.session.commit()
 
-        cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
 
 
 
@@ -247,10 +255,7 @@ def remove_item(id):
     if not cart_product:
         return "Item not found in cart"
 
-    item_price = float(product_obj.price) * cart_product.quantity
-
     cart.products.remove(product_obj)
-    # cart.total_price = str(float(cart.total_price) - item_price)
 
     db.session.commit()
 
