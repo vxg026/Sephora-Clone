@@ -28,15 +28,16 @@ function LoginFormModal() {
     }
   };
 const autoLogin = async (e)=> {
+  // e.preventDefault(e)
   setEmail('demo@aa.io')
   setPassword('password')
-   const data = await dispatch(login(email, password))
-   .then(closeModal);
+   return dispatch(login({email:"demo@aa.io", password:"password"}))
+   closeModal();
 
   // return dispatch(login({email, password}))
-  if(window.location.pathname==="/products/curr"){
-    dispatch(thunkCurrProducts())
-  }
+  // if(window.location.pathname==="/products/curr"){
+  //   dispatch(thunkCurrProducts())
+  // }
 }
   return (
 
