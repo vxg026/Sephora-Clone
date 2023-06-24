@@ -15,7 +15,11 @@ const Suncscreen =()=>{
     if(!allProducts) return "..."
     return(
         <>
+        <div className="sunscrren-whole-page">
+
+
         <div className="all-obj-contianer">
+        <div className="img-container"><img className="img-suncreend" src="https://cdn.discordapp.com/attachments/1062942242450460744/1122251136351600750/Screenshot_2023-06-24_at_12.44.30_PM.png"/></div>
         {Object.values(allProducts).map(product=>{
             return(
                 <div className="div-products-all">
@@ -35,6 +39,7 @@ const Suncscreen =()=>{
                 </div>
             )
         })}
+                </div>
                 </div>
         </>
     )

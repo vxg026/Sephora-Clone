@@ -1,0 +1,15 @@
+
+.img-suncreend{
+    height: 100%;
+}
+.sunscrren-whole-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:2rem;
+}
+.img-container{
+    height:21rem;
+    /* width:60rem; */
+    /* border:2px solid red; */
+}
