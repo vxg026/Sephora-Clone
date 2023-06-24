@@ -1,0 +1,14 @@
+.order{
+    padding: 2rem;
+}
+.order-container{
+    margin-top:4rem;
+    display: flex;
+    align-items: center;
+    /* border:2px solid red; */
+    justify-content: center;
+    flex-direction: column;
+}
+.order-container img{
+    width:25rem;
+}
