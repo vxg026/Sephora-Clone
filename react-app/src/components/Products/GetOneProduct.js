@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { thunkAllReviews } from "../../store/review";
 import OpenModalButton from "../OpenModalButton";
 import CreateReview from "../Reviews/CreateReview";
+import AddToCart from "./AddToCart";
 import "./GetOneProduct.css"
 const GetOneProduct = () => {
     const dispatch = useDispatch()
@@ -73,6 +74,7 @@ const GetOneProduct = () => {
                         <div className="single-product-price">
                             <h3>${singleProduct.price}</h3>
                         </div>
+                        <div><AddToCart product={singleProduct}/></div>
                     </div>
 
                 </div>
