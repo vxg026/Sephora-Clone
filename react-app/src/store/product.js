@@ -206,6 +206,7 @@ const productsReducer = (state = initialState, action)=>{
             // }
              const newState = {...state, currProducts:{...state.currProducts}}
              delete newState.currProducts[action.productId]
+             return newState
         }
         default: return state
     }

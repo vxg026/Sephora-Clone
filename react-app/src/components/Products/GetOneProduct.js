@@ -6,6 +6,10 @@ import { NavLink } from 'react-router-dom';
 import { thunkAllReviews } from "../../store/review";
 import OpenModalButton from "../OpenModalButton";
 import CreateReview from "../Reviews/CreateReview";
+import EditReview from "../Reviews/EditForm"
+import DeleteReview from "../Reviews/DeleteReview"
+import AddToCart from "./AddToCart";
+import "../Reviews/GetCurrReviews.css"
 import "./GetOneProduct.css"
 const GetOneProduct = () => {
     const dispatch = useDispatch()
@@ -73,6 +77,7 @@ const GetOneProduct = () => {
                         <div className="single-product-price">
                             <h3>${singleProduct.price}</h3>
                         </div>
+                        <div><AddToCart product={singleProduct}/></div>
                     </div>
 
                 </div>
@@ -133,7 +138,19 @@ const GetOneProduct = () => {
                                                 }
                                             </div>
                                         </div>
-
+                                        {currUser && review.user_id===currUser.id &&
+                                        <div className="buttons-div-mgn-rvws">
+                                                <OpenModalButton
+                                                buttonText='Edit'
+                                                modalComponent={<EditReview review={review} />}
+                                                />
+                                                <OpenModalButton
+                                                className="one-button"
+                                                buttonText='Delete'
+                                                modalComponent={<DeleteReview review={review}/>}
+                                                />
+                                                </div>
+                                        }
                                     </div>
 
                                 </div>

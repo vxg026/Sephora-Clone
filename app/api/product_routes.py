@@ -94,6 +94,8 @@ def get_curr_product():
     cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
     print("this is cart===========", cart)
     if cart is None:
+        # An object of type User above will have a constructor which allows User objects to be created as:
+        # u1 = User(name="some name", fullname="some fullname")
         new_cart = Cart(user_id=curr_user_id)
         db.session.add(new_cart)
         db.session.commit()
@@ -120,7 +122,7 @@ def get_curr_product():
         product_quantity_obj = []
 
         for product, quantity in products:
-            print("`````````````````", products)
+            print("`````````````````", product, quantity)
             product_obj= {
                 "product": product.to_dict(),
                 "quantity":quantity
@@ -175,6 +177,8 @@ def add_to_cart(id):
                 product_id=product_obj.id,
                 quantity=quantity_create
                 ))
+        elif cart_product.quantity==10:
+            return
         else:
             # ex. table.update().where(table.c.id==7).values(name='foo')
             db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &

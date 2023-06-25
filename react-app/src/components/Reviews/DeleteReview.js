@@ -13,7 +13,7 @@ const DeleteReview = ({review})=>{
         dispatch(thunkDeleteReview(review))
         .then(closeModal)
         // dispatch(thunkCurrReviews())
-        history.push('/reviews/curr')
+        // history.push('/reviews/curr')
     }
     return(
         <>
