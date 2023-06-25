@@ -55,7 +55,7 @@ const CartForm = ({product, formType, quantitys})=>{
         // <form onSubmit={handleSubmit}>
         <form>
             <div>
-            <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+            <select max={10} value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                 <option
                 value="1"
                 >1</option>

@@ -177,6 +177,8 @@ def add_to_cart(id):
                 product_id=product_obj.id,
                 quantity=quantity_create
                 ))
+        elif cart_product.quantity==10:
+            return
         else:
             # ex. table.update().where(table.c.id==7).values(name='foo')
             db.session.execute(cart_products.update().where((cart_products.c.cart_id == cart.id) &

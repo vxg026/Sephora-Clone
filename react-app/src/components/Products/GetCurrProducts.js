@@ -91,6 +91,7 @@ else{
         ))}
         </div></div>
           <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum.toFixed(2)}</div>
+          <div><h5 className="limit-max">limit 10 per item*</h5></div>
         <div className="tota-checkout-btn">
  <button className="check-out-btn" onClick={handleCheckout}>Checkout Items</button>
  <p className="errors">{errors.checkout}</p>

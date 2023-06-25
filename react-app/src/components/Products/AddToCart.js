@@ -13,11 +13,14 @@ const AddToCart = ({product})=>{
     const dispatch = useDispatch()
     const history = useHistory()
     const currUser = useSelector(state=>state.session.user)
+
     // const notify = () =>toast("Wow so easy!")
 
     console.log("this is product", product)
+    
     // const product = useSelector
     const handleClick=()=>{
+
         dispatch(thunkAddProduct(product))
         alert("added to cart")
         // notify()

@@ -112,3 +112,6 @@ padding:2rem;
 .check-out-btn:hover{
 cursor: pointer;
 }
+.limit-max{
+    color:red;
+}
