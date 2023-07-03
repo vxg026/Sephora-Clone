@@ -4,10 +4,11 @@
 Sephoria is a Sephora clone. It is an e-commerce site that replicates Sephora's shopping functionality. Users can browse the website's products, but have to sign up/login to shop.
 
 ## Technologies
-Backend
+### Backend
  * Flask
  * SQLAlchemy
-Frontend:
+   
+### Frontend:
  * React
  * Redux
  * CSS
