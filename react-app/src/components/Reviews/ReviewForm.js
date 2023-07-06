@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 import { thunkCreateReview } from "../../store/review";
 import { thunkEditReview } from "../../store/review";
+
 import "./ReviewForm.css"
 const ReviewForm = ({ review, formType, disabled }) => {
     const dispatch = useDispatch()
@@ -61,29 +62,40 @@ const ReviewForm = ({ review, formType, disabled }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        console.log("pased review````````````", review)
+        // review = {
+        //     ...review,
+        //     review_text,
+        //     star_rating,
+        //     img1,
+        //     img2,
+        //     img3,
+        //     img4
+        // }
+        const reviewObj = new FormData();
+        reviewObj.append("review_text", review_text);
+        console.log("review_text",review_text)
+        reviewObj.append("star_rating", star_rating)
+        reviewObj.append("img1", img1)
+        reviewObj.append("img2", img2)
+        reviewObj.append("img3", img3)
+        reviewObj.append("img4", img4)
+        reviewObj.append("product_id", review.product_id)
 
-        review = {
-            ...review,
-            review_text,
-            star_rating,
-            img1,
-            img2,
-            img3,
-            img4
-        }
+        console.log("this is review===========================", reviewObj)
 
         let error_obj = {}
-        if (review.review_text.length < 2 || review.review_text.length > 500) {
+        if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
             error_obj.review_text = "Review text must be between 2 and 500 characters long"
         }
-        if (!review.star_rating) {
+        if (!reviewObj.get("star_rating")) {
             error_obj.star_rating = "Must rate between 1-5"
         }
-        if (img1) {
-            if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
-                error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-            }
-        }
+        // if (img1) {
+        //     if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
+        //         error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        //     }
+        // }
         if (img2) {
             if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
                 error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
@@ -105,7 +117,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
 
         if (formType === "Create Review" && Object.keys(error_obj).length === 0) {
-            await dispatch(thunkCreateReview(review))
+            await dispatch(thunkCreateReview(reviewObj))
                 .then(closeModal)
 
         }
@@ -152,9 +164,9 @@ const ReviewForm = ({ review, formType, disabled }) => {
                     img1
                     <input formAction="image"
                     className="input-img-url"
-                        value={img1}
+                    type="file"
                         placeholder="image url (optional)"
-                        onChange={(e) => setImg1(e.target.value)} />
+                        onChange={(e) => setImg1(e.target.files[0])} />
                     <p className="errors">{errors.img1}</p>
 
                     img2

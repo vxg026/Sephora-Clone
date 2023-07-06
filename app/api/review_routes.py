@@ -3,6 +3,9 @@ from app.models.review import Review
 from flask_login import login_required, current_user
 from app.models.db import db
 from app.forms.review_form import ReviewForm
+from .AWS_helpers import (
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
+
 review_routes = Blueprint('reviews', __name__, url_prefix='')
 
 @review_routes.route('/curr')
@@ -72,8 +75,15 @@ def delete_review(id):
         return {"message":"This review does not exist"}
 
     elif current_user.id == selected_review.user_id:
+        if selected_review.img1:
 
-        db.session.delete(selected_review)
-        db.session.commit()
-        return {"message": 'This has been deleted', "reviewId": id}
+            file_delete = remove_file_from_s3(selected_review.img1)
+            if file_delete:
+                db.session.delete(selected_review)
+                db.session.commit()
+                return {"message": 'This has been deleted'}
+        else:
+            db.session.delete(selected_review)
+            db.session.commit()
+            return{"message": "deleted"}
     return {"message": "This review does not belong to you"}

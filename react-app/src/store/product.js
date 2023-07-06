@@ -177,10 +177,10 @@ const productsReducer = (state = initialState, action)=>{
         }
         case EDIT_PRODUCT:{
             const newState = {...state, currProducts:{...state.currProducts}}
-            console.log("this is new stat===>", newState)
+            // console.log("this is new stat===>", newState)
             const productId = action.product
             const quantity = action.quantity
-            console.log("this is new sta=======t===>", typeof(productId), quantity)
+            // console.log("this is new sta=======t===>", typeof(productId), quantity)
 
             newState.currProducts[`${productId}`].quantity = quantity
 

@@ -8,6 +8,9 @@ from app.models.db import db
 from ..forms import ReviewForm
 from ..forms import CartForm
 from app.models.cart import Cart
+from .AWS_helpers import (
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
+
 product_routes = Blueprint('products', __name__, url_prefix="")
 
 @product_routes.route('/all')
@@ -282,13 +285,28 @@ def create_review(id):
     form = ReviewForm()
     form["csrf_token"].data=request.cookies["csrf_token"]
 
+
     if form.validate_on_submit():
+        url=None
+
+        if form.data["img1"]:
+            image1 = form.data["img1"]
+
+            image1.filename=get_unique_filename(image1.filename)
+            upload=upload_file_to_s3(image1)
+            if "url" not in upload:
+                errors=[upload]
+                return errors
+            url=upload["url"]
+
+
+
         user_new_review=Review(
             product_id = id,
             user_id=current_user.id,
             star_rating=form.data["star_rating"],
             review_text=form.data["review_text"],
-            img1=form.data["img1"],
+            img1=url,
             img2=form.data["img2"],
             img3=form.data["img3"],
             img4=form.data["img4"],
@@ -296,5 +314,5 @@ def create_review(id):
             )
         db.session.add(user_new_review)
         db.session.commit()
-        return user_new_review.to_dict()
+        return {"reviewPost": user_new_review.to_dict()}
     return form.errors
