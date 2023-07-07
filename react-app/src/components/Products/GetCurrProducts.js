@@ -103,7 +103,7 @@ else{
             <div className="shipping-details">
                  <div className="div-sum"><p>Merchendise Subtotal: </p><h4>${totalSum.toFixed(2)}</h4></div>
           <div className="sd1"><p>Shipping & Handling:</p> <h4>Free</h4></div>
-          <div className="sd1"><p>Estimated Tax & Other Fees </p><h4>{totalSum*.08.toFixed(2)}</h4></div>
+          <div className="sd1"><p>Estimated Tax & Other Fees </p><h4>{(totalSum*.08).toFixed(2)}</h4></div>
           <div className="sd1"><p>Total:</p><h4>{(totalSum+ totalSum*.08).toFixed(2)}</h4></div>
             </div>
 
