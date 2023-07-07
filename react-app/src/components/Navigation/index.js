@@ -1,11 +1,28 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-
+import { thunkCurrProducts } from '../../store/product';
+import {useEffect} from 'react'
 function Navigation({ isLoaded }) {
+	const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user);
+	const currProducts = useSelector(state=>state.products.currProducts)
+
+	console.log("currrr", currProducts)
+
+	useEffect(()=>{
+		dispatch(thunkCurrProducts())
+	}, [dispatch])
+
+	const productArr = Object.values(currProducts)
+
+	let items = 0;
+	for (let i = 0; i<productArr.length; i++){
+	  const quantity = parseInt(productArr[i]?.quantity)
+	  items+= quantity
+	}
 const handlClick=()=>{
 	 alert("feature coming soon!")
 }
@@ -67,10 +84,11 @@ const handlClick=()=>{
 			<div>
 				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725148451385445/heart.png?width=418&height=343"/>
 			</div>
-			<div>
+			<div className="cart_icon-item">
 				<a href="/products/curr">
-				<img className="reviews-chat-icon basket" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
+				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
 				</a>
+				{items!==0 && <span className="not">{items}</span>}
 			</div>
 			</div>
 					<div className="link-to-spec-products">

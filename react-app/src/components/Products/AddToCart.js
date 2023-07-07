@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
-import { thunkAddProduct } from "../../store/product";
+import { thunkAddProduct, thunkCurrProducts } from "../../store/product";
 import { useHistory } from "react-router-dom";
 import thunk from "redux-thunk";
 import React from 'react';
@@ -22,11 +22,12 @@ const AddToCart = ({product})=>{
     const handleClick=async()=>{
 
         let data = await dispatch(thunkAddProduct(product))
+        dispatch(thunkCurrProducts())
         // console.log("this is data....", data)
-        if(data!==undefined){
+        // if(data!==undefined){
 
-            alert("added to cart")
-        }
+        //     alert("added to cart")
+        // }
         // notify()
     }
     return(
