@@ -4,6 +4,8 @@ import { thunkCurrReviews } from "../../store/review";
 import EditReview from "./EditForm";
 import OpenModalButton from "../OpenModalButton";
 import DeleteReview from "./DeleteReview";
+import {thunkAllProducts} from "../../store/product"
+import {Link} from 'react-router-dom'
 import "./GetCurrReviews.css"
 
 const GetCurrReviews = () =>{
@@ -11,7 +13,14 @@ const GetCurrReviews = () =>{
 
     const reviews = useSelector(state=>state.reviews.allReviews)
     const currUser = useSelector(state=>state.session.user)
-    console.log("this is reviews --------->", reviews)
+    const products = useSelector(state=>state.products.allProducts)
+
+
+    console.log("this is products --------->", products)
+
+    useEffect(()=>{
+        dispatch(thunkAllProducts())
+    }, [dispatch])
 
     useEffect(()=>{
         dispatch(thunkCurrReviews())
@@ -27,11 +36,25 @@ if(!reviews) return ".."
 {Object.values(reviews).map(review=>{
     return (
         <div className="mng-review">
-
-            {/* {display(review?.star_rating)} */}
             <div>
             <i className="fas fa-star"/>{(review?.star_rating)}
             </div>
+            {products && Object.values(products).filter(product=> product.id===review.product_id).map(results=>{
+                return(
+                    <div>
+                        <Link to={`/products/${results.id}`}>
+
+                        {results.name}
+                        </Link>
+                        <img src={results.image}/>
+                        </div>
+                )
+            })
+
+
+
+
+}
             <div>
             {review?.created_at}
             </div>

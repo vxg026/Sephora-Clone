@@ -54,6 +54,7 @@ export const thunkAddProduct = (product)=>async dispatch=>{
     if(response.ok){
         const data = await response.json()
         dispatch(addProduct(data))
+        return data
     }
 }
 export const thunkEditProduct = (productId, quantity)=>async dispatch=>{
