@@ -109,7 +109,7 @@ const reviewsReducer = ( state = initialState, action)=>{
                 newState[review.id]=review
             })
             return {
-                ...state, allReviews:newState
+                allReviews:newState
             }
         }
         case GET_ALL_REVIEWS:{
@@ -124,9 +124,10 @@ const reviewsReducer = ( state = initialState, action)=>{
             const newState = {...state.allReviews}
             const reviewId = action.review.reviewId
             delete newState[reviewId]
-            return{
-                ...state, allReviews:newState
-            }
+            return newState
+            // return{
+            //     ...state, allReviews:newState
+            // }
         }
         default: return state
     }

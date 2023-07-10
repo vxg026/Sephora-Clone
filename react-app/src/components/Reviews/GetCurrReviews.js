@@ -25,6 +25,7 @@ const GetCurrReviews = () =>{
     useEffect(()=>{
         dispatch(thunkCurrReviews())
     }, [dispatch])
+
 if(!reviews) return ".."
 // if(!currUser) return "Please log in to view your reviews"
     return(
