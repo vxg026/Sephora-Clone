@@ -16,7 +16,7 @@ const GetOneProduct = () => {
     const { productId } = useParams()
     const singleProduct = useSelector(state => state.products.allProducts[productId])
 
-    const allReviews = useSelector(state => state.reviews.allReviews)
+    const allReviews = useSelector(state => state.reviews?.allReviews)
     const allReviewsArr = Object.values(allReviews)
 
     const currUser = useSelector(state => state.session.user)

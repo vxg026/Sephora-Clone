@@ -46,15 +46,21 @@ export const thunkEditReview = (review)=>async dispatch=>{
     }
 }
 
-export const thunkCreateReview = (review)=> async dispatch=>{
-    const response = await fetch(`/api/products/${review.product_id}/reviews`, {
+export const thunkCreateReview = (reviewObj)=> async dispatch=>{
+    console.log("this is review in create", reviewObj)
+    const response = await fetch(`/api/products/${reviewObj.get("product_id")}/reviews`, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(review)
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(review)
+        body: reviewObj
     })
     if(response.ok){
-        const data = await response.json()
-        dispatch(createReviewAction(data))
+        const {reviewPost} = await response.json()
+        console.log("this is reviewPost", reviewPost)
+        dispatch(createReviewAction(reviewPost))
+    }
+    else{
+        console.log("error making your post")
     }
 }
 export const thunkCurrReviews = () => async(dispatch)=>{
@@ -103,7 +109,7 @@ const reviewsReducer = ( state = initialState, action)=>{
                 newState[review.id]=review
             })
             return {
-                ...state, allReviews:newState
+                allReviews:newState
             }
         }
         case GET_ALL_REVIEWS:{
@@ -118,9 +124,10 @@ const reviewsReducer = ( state = initialState, action)=>{
             const newState = {...state.allReviews}
             const reviewId = action.review.reviewId
             delete newState[reviewId]
-            return{
-                ...state, allReviews:newState
-            }
+            return newState
+            // return{
+            //     ...state, allReviews:newState
+            // }
         }
         default: return state
     }
