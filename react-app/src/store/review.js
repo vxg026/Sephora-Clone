@@ -34,15 +34,18 @@ export const thunkDeleteReview=(review)=>async dispatch=>{
         dispatch(deleteReviewAction(data))
     }
 }
-export const thunkEditReview = (review)=>async dispatch=>{
+export const thunkEditReview = (reviewObj, review)=>async dispatch=>{
+    console.log("this is review in thunk~~~~~~~~~~~~~", review)
     const response = await fetch(`/api/reviews/edit/${review.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(review)
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify(review)
+        body: reviewObj
     })
     if (response.ok){
         const data = await response.json()
-        dispatch(editReviewAction(data))
+        await dispatch(editReviewAction(data))
+        return data
     }
 }
 

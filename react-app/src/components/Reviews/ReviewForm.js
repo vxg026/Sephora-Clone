@@ -63,15 +63,15 @@ const ReviewForm = ({ review, formType, disabled }) => {
         e.preventDefault()
 
         // console.log("pased review````````````", review)
-        // review = {
-        //     ...review,
-        //     review_text,
-        //     star_rating,
-        //     img1,
-        //     img2,
-        //     img3,
-        //     img4
-        // }
+        review = {
+            ...review,
+            review_text,
+            star_rating,
+            img1,
+            img2,
+            img3,
+            img4
+        }
         const reviewObj = new FormData();
         reviewObj.append("review_text", review_text);
         // console.log("review_text",review_text)
@@ -82,7 +82,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         reviewObj.append("img4", img4)
         reviewObj.append("product_id", review.product_id)
 
-        // console.log("this is review===========================", reviewObj.get("product_id"))
+        console.log("this is review===========================", reviewObj.get("product_id"), "thi si s just review", review.id)
 
         let error_obj = {}
         if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
@@ -123,7 +123,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
         }
         if (formType === "Edit Review" && Object.keys(error_obj).length === 0) {
-            await dispatch(thunkEditReview(review))
+            await dispatch(thunkEditReview(reviewObj, review))
                 .then(closeModal)
         }
         if (error_obj) {
