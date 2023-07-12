@@ -40,7 +40,7 @@ if(!reviews) return ".."
             <div>
             <i className="fas fa-star"/>{(review?.star_rating)}
             </div>
-            {products && Object.values(products).filter(product=> product.id===review.product_id).map(results=>{
+            {products && Object.values(products).filter(product=> product.id===review?.product_id).map(results=>{
                 return(
                     <div>
                         <Link to={`/products/${results.id}`}>
