@@ -47,7 +47,7 @@ export const thunkEditReview = (review)=>async dispatch=>{
 }
 
 export const thunkCreateReview = (reviewObj)=> async dispatch=>{
-    console.log("this is review in create", reviewObj)
+    console.log("this is review in create~~~~~~~~~", reviewObj)
     const response = await fetch(`/api/products/${parseInt(reviewObj.get("product_id"))}/reviews`, {
         method: "POST",
         // headers: { 'Content-Type': 'application/json' },
@@ -55,9 +55,11 @@ export const thunkCreateReview = (reviewObj)=> async dispatch=>{
         body: reviewObj
     })
     if(response.ok){
-        const reviewPost = await response.json()
-        console.log("this is reviewPost", reviewPost)
-        dispatch(createReviewAction(reviewPost))
+        // const {reviewPost} = await response.json()
+        const data = await response.json()
+        console.log("this is response......", response)
+        console.log("this is data", data)
+        dispatch(createReviewAction(data))
     }
     else{
         console.log("error making your post")
