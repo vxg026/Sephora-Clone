@@ -44,8 +44,9 @@ def edit_review(id):
     """
     Current user is able to get review by review id and edit
     """
+    print("this is the iddddddd~~~~~~~~~~~~~~", id)
     reviewObj = Review.query.get(id)
-
+    print("thi sis review obj~~~~~~~~~~~~~~~", reviewObj)
     if not reviewObj:
         return {"message":"This review does not exist"}
 
@@ -53,9 +54,24 @@ def edit_review(id):
 
     # review=reviewObj.to_dict()
         form = ReviewForm()
+        form["csrf_token"].data=request.cookies["csrf_token"]
+        image1 = form.data["img1"]
+        if image1:
+            image1.filename=get_unique_filename(image1.filename)
+            upload=upload_file_to_s3(image1)
+            if "url" not in upload:
+                errors=[upload]
+                return errors
+            url=upload["url"]
+            reviewObj.review_text = form.data["review_text"]
+            reviewObj.star_rating = form.data["star_rating"]
+            reviewObj.img1 = url
+            reviewObj.img2 = form.data["img2"]
+            reviewObj.img3 = form.data["img3"]
+            reviewObj.img4 = form.data["img4"]
         reviewObj.review_text = form.data["review_text"]
         reviewObj.star_rating = form.data["star_rating"]
-        reviewObj.img1 = form.data["img1"]
+        reviewObj.img1 = url
         reviewObj.img2 = form.data["img2"]
         reviewObj.img3 = form.data["img3"]
         reviewObj.img4 = form.data["img4"]
