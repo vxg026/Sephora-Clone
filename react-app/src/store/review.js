@@ -55,7 +55,7 @@ export const thunkCreateReview = (reviewObj)=> async dispatch=>{
         body: reviewObj
     })
     if(response.ok){
-        const {reviewPost} = await response.json()
+        const reviewPost = await response.json()
         console.log("this is reviewPost", reviewPost)
         dispatch(createReviewAction(reviewPost))
     }
