@@ -85,18 +85,18 @@ const ReviewForm = ({ review, formType, disabled }) => {
         console.log("this is review===========================", reviewObj.get("product_id"))
 
         let error_obj = {}
-        // if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
-        //     error_obj.review_text = "Review text must be between 2 and 500 characters long"
-        // }
-        // if (!reviewObj.get("star_rating")) {
-        //     error_obj.star_rating = "Must rate between 1-5"
-        // }
+        if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
+            error_obj.review_text = "Review text must be between 2 and 500 characters long"
+        }
+        if (!reviewObj.get("star_rating")) {
+            error_obj.star_rating = "Must rate between 1-5"
+        }
 
-        // if (img1) {
-        //     if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
-        //         error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-        //     }
-        // }
+        if (img1) {
+            if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
+                error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+            }
+        }
         // if (img2) {
         //     if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
         //         error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
@@ -114,7 +114,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         // }
 
 
-        // setErrors(error_obj)
+        setErrors(error_obj)
 
 
         if (formType === "Create Review" && Object.keys(error_obj).length === 0) {
