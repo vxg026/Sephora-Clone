@@ -92,11 +92,11 @@ const ReviewForm = ({ review, formType, disabled }) => {
             error_obj.star_rating = "Must rate between 1-5"
         }
 
-        if (img1) {
-            if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
-                error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-            }
-        }
+        // if (img1) {
+        //     if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
+        //         error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        //     }
+        // }
         // if (img2) {
         //     if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
         //         error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
