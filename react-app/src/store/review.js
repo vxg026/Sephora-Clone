@@ -48,7 +48,7 @@ export const thunkEditReview = (review)=>async dispatch=>{
 
 export const thunkCreateReview = (reviewObj)=> async dispatch=>{
     console.log("this is review in create~~~~~~~~~", reviewObj)
-    const response = await fetch(`/api/products/${parseInt(reviewObj.get("product_id"))}/reviews`, {
+    const response = await fetch(`/api/products/${(reviewObj.get("product_id"))}/reviews`, {
         method: "POST",
         // headers: { 'Content-Type': 'application/json' },
         // body: JSON.stringify(review)
