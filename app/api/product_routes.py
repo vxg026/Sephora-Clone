@@ -314,5 +314,5 @@ def create_review(id):
             )
         db.session.add(user_new_review)
         db.session.commit()
-        return {"reviewPost": user_new_review.to_dict()}
+        return  user_new_review.to_dict()
     return form.errors

@@ -82,7 +82,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         reviewObj.append("img4", img4)
         reviewObj.append("product_id", review.product_id)
 
-        console.log("this is review===========================", reviewObj.get("product_id"))
+        // console.log("this is review===========================", reviewObj.get("product_id"))
 
         let error_obj = {}
         if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
@@ -129,7 +129,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         if (error_obj) {
 
             setErrors(error_obj)
-            console.log("hi=============")
+            // console.log("hi=============")
         }
     }
 
