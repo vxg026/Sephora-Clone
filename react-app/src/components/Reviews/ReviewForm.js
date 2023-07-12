@@ -62,7 +62,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log("pased review````````````", review)
+        // console.log("pased review````````````", review)
         // review = {
         //     ...review,
         //     review_text,
@@ -74,7 +74,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         // }
         const reviewObj = new FormData();
         reviewObj.append("review_text", review_text);
-        console.log("review_text",review_text)
+        // console.log("review_text",review_text)
         reviewObj.append("star_rating", star_rating)
         reviewObj.append("img1", img1)
         reviewObj.append("img2", img2)
@@ -82,35 +82,36 @@ const ReviewForm = ({ review, formType, disabled }) => {
         reviewObj.append("img4", img4)
         reviewObj.append("product_id", review.product_id)
 
-        console.log("this is review===========================", reviewObj)
+        console.log("this is review===========================", reviewObj.get("product_id"))
 
         let error_obj = {}
-        if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
-            error_obj.review_text = "Review text must be between 2 and 500 characters long"
-        }
-        if (!reviewObj.get("star_rating")) {
-            error_obj.star_rating = "Must rate between 1-5"
-        }
+        // if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
+        //     error_obj.review_text = "Review text must be between 2 and 500 characters long"
+        // }
+        // if (!reviewObj.get("star_rating")) {
+        //     error_obj.star_rating = "Must rate between 1-5"
+        // }
+
         // if (img1) {
         //     if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
         //         error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
         //     }
         // }
-        if (img2) {
-            if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
-                error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-            }
-        }
-        if (img3) {
-            if (!img3.endsWith(".png") && !img3.endsWith(".jpg") && !img3.endsWith(".jpeg")) {
-                error_obj.img3 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-            }
-        }
-        if (img4) {
-            if (!img4.endsWith(".png") && !img4.endsWith(".jpg") && !img4.endsWith(".jpeg")) {
-                error_obj.img4 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-            }
-        }
+        // if (img2) {
+        //     if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
+        //         error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        //     }
+        // }
+        // if (img3) {
+        //     if (!img3.endsWith(".png") && !img3.endsWith(".jpg") && !img3.endsWith(".jpeg")) {
+        //         error_obj.img3 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        //     }
+        // }
+        // if (img4) {
+        //     if (!img4.endsWith(".png") && !img4.endsWith(".jpg") && !img4.endsWith(".jpeg")) {
+        //         error_obj.img4 = "Preview Image URL must end with .png, .jpg, or .jpeg";
+        //     }
+        // }
 
 
         // setErrors(error_obj)
