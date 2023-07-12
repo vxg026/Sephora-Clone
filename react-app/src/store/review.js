@@ -59,7 +59,8 @@ export const thunkCreateReview = (reviewObj)=> async dispatch=>{
         const data = await response.json()
         console.log("this is response......", response)
         console.log("this is data", data)
-        dispatch(createReviewAction(data))
+        await dispatch(createReviewAction(data))
+        return data
     }
     else{
         console.log("error making your post")
