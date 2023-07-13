@@ -44,3 +44,19 @@
     right:2;
     bottom:2;
 }
+.far.fa-heart{
+    color: rgb(234, 211, 215);
+    font-size: x-large
+}
+.far.fa-heart:hover{
+ color:red;
+}
+
+.heart-button{
+    background-color:transparent;
+    border:none;
+}
+.hearts-container{
+    display:flex;
+    justify-content: flex-end;
+}

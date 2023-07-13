@@ -316,3 +316,41 @@ def create_review(id):
         print("jsonified ..", jsonify(user_new_review.to_dict()))
         return  jsonify(user_new_review.to_dict())
     return form.errors
+
+
+@product_routes.route('/<int:id>/like', methods=["POST"])
+@login_required
+def like_product(id):
+    """
+    Like a product
+    """
+    product = Product.query.get(id)
+    print("this is product................", product)
+    # curr_user_id = current_user.id
+    # print("this is curr_user................", curr_user_id)
+    curr_user = User.query.filter(User.id== current_user.id).first()
+    print("this is curr_user................", curr_user.user_likes)
+    if not product:
+        return "product not found"
+    if not curr_user:
+        return "user not found"
+    if product not in curr_user.user_likes:
+        curr_user.user_likes.append(product)
+        db.session.add(product)
+        db.session.commit()
+    else:
+        curr_user.user_likes.remove(product)
+        db.session.commit()
+
+    return {"message": "succesffully update likes"}
+
+@product_routes.route('/likes', methods=["GET"])
+@login_required
+def get_likes():
+    """
+    get likes products
+    """
+    curr_user = User.query.filter(User.id== current_user.id).first()
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", curr_user.user_likes)
+    likes = curr_user.user_likes
+    return [product.to_dict() for product in likes]

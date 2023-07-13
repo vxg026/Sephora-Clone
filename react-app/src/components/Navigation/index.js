@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 	}, [dispatch, sessionUser])
 
 	const productArr = Object.values(currProducts)
-	console.log("this is products aRrr when logi=ging in~~~~~~~~~~~~~~~~~", productArr)
+	// console.log("this is products aRrr when logi=ging in~~~~~~~~~~~~~~~~~", productArr)
 
 	let items = 0;
 	for (let i = 0; i<productArr.length; i++){

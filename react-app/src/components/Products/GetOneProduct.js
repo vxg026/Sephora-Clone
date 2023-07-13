@@ -11,6 +11,8 @@ import DeleteReview from "../Reviews/DeleteReview"
 import AddToCart from "./AddToCart";
 import "../Reviews/GetCurrReviews.css"
 import "./GetOneProduct.css"
+import { thunkLikesProduct } from "../../store/product";
+
 const GetOneProduct = () => {
     const dispatch = useDispatch()
     const { productId } = useParams()
@@ -42,14 +44,16 @@ const GetOneProduct = () => {
     }
 
 
-
+    const handleLike =  () =>{
+         dispatch(thunkLikesProduct(singleProduct))
+    }
     console.log("============================", leftReview)
 
 
     return (
         <>
             <div className="one-prod-comp">
-      
+
                 <div className="single-container1">
                     <div className="container1-iamge">
                         <img className="sing-image-div" src={singleProduct.image} />
@@ -77,7 +81,13 @@ const GetOneProduct = () => {
                         <div className="single-product-price">
                             <h3>${singleProduct.price}</h3>
                         </div>
+                        <div className = "add-to-cart-likes">
+
                         <div><AddToCart product={singleProduct}/></div>
+
+                        <div><i onClick={handleLike} className="far fa-heart"></i></div>
+        
+                        </div>
                     </div>
 
                 </div>

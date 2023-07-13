@@ -5,6 +5,7 @@ import AddToCart from "./AddToCart";
 import { thunkAllProducts } from "../../store/product";
 import thunk from "redux-thunk";
 import "./GetAllProducts.css"
+import { thunkLikesProduct } from "../../store/product";
 
 const GetAllProducts = () =>{
     const dispatch = useDispatch()
@@ -18,6 +19,10 @@ const GetAllProducts = () =>{
     }, [dispatch])
     if (!allProducts)return "..."
 
+
+    // const handleLike =  () =>{
+    //      dispatch(thunkLikesProduct(product))
+    // }
     return(
         <>
 
@@ -26,7 +31,13 @@ const GetAllProducts = () =>{
             return(
                 <div className="div-products-all">
                     <div>
+                            <div className="hearts-container">
+                            {/* <button onClick={handleLike}className="heart-button">
+                            <i className="far fa-heart"></i>
+                            </button> */}
+                            </div>
                         <Link to={`/products/${product.id}`}>
+
                            <img className="img-all" src={product.image}/>
 </Link>
 </div>
