@@ -36,6 +36,11 @@ const GetCurrProducts=()=>{
     const quantity = parseInt(productArr[i]?.quantity);
     totalSum += price * quantity;
   }
+  let items = 0;
+  for (let i = 0; i<productArr.length; i++){
+    const quantity = parseInt(productArr[i]?.quantity)
+    items+= quantity
+  }
 
 const handleCheckout=async(e)=>{
   e.preventDefault()
@@ -90,9 +95,23 @@ else{
             </div>
         ))}
         </div></div>
-          <div className="total-sum"><div className="div-sum"><h4>Merchendise sum total: </h4>${totalSum.toFixed(2)}</div>
+        <div>
+
+        </div>
+          <div className="total-sum">
+
+            <div className="shipping-details">
+                 <div className="div-sum"><p>Merchendise Subtotal: </p><h4>${totalSum.toFixed(2)}</h4></div>
+          <div className="sd1"><p>Shipping & Handling:</p> <h4>Free</h4></div>
+          <div className="sd1"><p>Estimated Tax & Other Fees </p><h4>{(totalSum*.08).toFixed(2)}</h4></div>
+          <div className="sd1"><p>Total:</p><h4>{(totalSum+ totalSum*.08).toFixed(2)}</h4></div>
+            </div>
+
+
           <div><h5 className="limit-max">limit 10 per item*</h5></div>
+
         <div className="tota-checkout-btn">
+
  <button className="check-out-btn" onClick={handleCheckout}>Checkout Items</button>
  <p className="errors">{errors.checkout}</p>
  </div>
