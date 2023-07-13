@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
 
 	useEffect(()=>{
 		dispatch(thunkCurrProducts())
-	}, [dispatch])
+	}, [dispatch, sessionUser])
 
 	const productArr = Object.values(currProducts)
 	console.log("this is products aRrr when logi=ging in~~~~~~~~~~~~~~~~~", productArr)
