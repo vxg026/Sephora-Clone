@@ -82,9 +82,11 @@ const handlClick=()=>{
 				</div>
 				</a>
 			</div>
+			<NavLink to="/products/likes">
 			<div>
 				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725148451385445/heart.png?width=418&height=343"/>
 			</div>
+			</NavLink>
 			<div className="cart_icon-item">
 			{/* <a to="/products/curr">
 				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
