@@ -337,3 +337,25 @@ list-style-type: none;
 .logout-button-menu button:hover{
  cursor: pointer;
 }
+a.notification{
+  text-decoration: none;
+}
+.not{
+  background-color: red;
+  color:white;
+  font-size:12px;
+  vertical-align:top;
+  position:relative;
+  text-decoration:none;
+  right: 1.1rem;
+  top:-.1rem;
+  /*   top:120px;
+  right:120px; */
+  padding:3px 8px;
+  border-radius: 100%;
+}
+.cart_icon-item{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}

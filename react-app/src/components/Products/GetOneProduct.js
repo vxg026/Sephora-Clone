@@ -49,7 +49,7 @@ const GetOneProduct = () => {
     return (
         <>
             <div className="one-prod-comp">
-                Single product
+      
                 <div className="single-container1">
                     <div className="container1-iamge">
                         <img className="sing-image-div" src={singleProduct.image} />

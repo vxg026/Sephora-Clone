@@ -60,8 +60,7 @@ def edit_review(id):
             image1.filename=get_unique_filename(image1.filename)
             upload=upload_file_to_s3(image1)
             if "url" not in upload:
-                errors=[upload]
-                return errors
+                return {"errors":"could not update img"}
             url=upload["url"]
             reviewObj.review_text = form.data["review_text"]
             reviewObj.star_rating = form.data["star_rating"]
