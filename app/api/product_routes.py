@@ -325,11 +325,11 @@ def like_product(id):
     Like a product
     """
     product = Product.query.get(id)
-    print("this is product................", product)
+    # print("this is product................", product)
     # curr_user_id = current_user.id
     # print("this is curr_user................", curr_user_id)
     curr_user = User.query.filter(User.id== current_user.id).first()
-    print("this is curr_user................", curr_user.user_likes)
+    # print("this is curr_user................", curr_user.user_likes)
     if not product:
         return "product not found"
     if not curr_user:
@@ -338,11 +338,18 @@ def like_product(id):
         curr_user.user_likes.append(product)
         db.session.add(product)
         db.session.commit()
+        likes = curr_user.user_likes
+        print("when addding~~~~~~~~~~~", likes)
+        return [product.to_dict() for product in likes]
     else:
         curr_user.user_likes.remove(product)
         db.session.commit()
+        likes = curr_user.user_likes
+        print("when removing~~~~~~~~~~~", [product.to_dict() for product in likes])
 
-    return {"message": "succesffully update likes"}
+        return [product.to_dict() for product in likes]
+
+    # return {"message": "succesffully update likes"}
 
 @product_routes.route('/likes', methods=["GET"])
 @login_required
@@ -351,6 +358,6 @@ def get_likes():
     get likes products
     """
     curr_user = User.query.filter(User.id== current_user.id).first()
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", curr_user.user_likes)
+    # print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", curr_user.user_likes)
     likes = curr_user.user_likes
     return [product.to_dict() for product in likes]

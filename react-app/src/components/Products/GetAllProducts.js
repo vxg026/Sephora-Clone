@@ -5,7 +5,8 @@ import AddToCart from "./AddToCart";
 import { thunkAllProducts } from "../../store/product";
 import thunk from "redux-thunk";
 import "./GetAllProducts.css"
-import { thunkLikesProduct } from "../../store/product";
+// import { thunkLikesProduct } from "../../store/product";
+import {thunkLikesProduct} from "../../store/session"
 
 const GetAllProducts = () =>{
     const dispatch = useDispatch()

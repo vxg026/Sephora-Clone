@@ -6,7 +6,7 @@ const GET_ONE_PRODUCT = "products/getoneproduct"
 const EDIT_PRODUCT = "products/editproduct"
 const ADD_PRODUCT = "products/addproducts"
 const REMOVE_PRODUCT = "products/removeproducts"
-const LIKES_PRODUCT="products/likesproducts"
+// const LIKES_PRODUCT="products/likesproducts"
 const CURR_LIKES="products/currlikes"
 const removeProduct = (productId) =>({
     type: REMOVE_PRODUCT,
@@ -33,10 +33,10 @@ const addProduct = product =>({
     type: ADD_PRODUCT,
     product
 })
-const likesProduct = product=>({
-    type: LIKES_PRODUCT,
-    product
-})
+// const likesProduct = product=>({
+//     type: LIKES_PRODUCT,
+//     product
+// })
 const currLikesProducts = (products)=>({
     type: CURR_LIKES,
     products
@@ -55,19 +55,19 @@ export const thunkAllProducts = () => async (dispatch) =>{
         dispatch(getAllProductsAction(data))
     }
 }
-export const thunkLikesProduct = (product) =>async dispatch=>{
-    const response = await fetch(`/api/products/${product.id}/like`,{
-        "method": "POST",
-        "headers": { 'Content-Type': 'application/json' },
-        "body": product
-    }
-    )
-    if(response.ok){
-        const data = await response.json()
-        dispatch(likesProduct(data))
-        return data
-    }
-}
+// export const thunkLikesProduct = (product) =>async dispatch=>{
+//     const response = await fetch(`/api/products/${product.id}/like`,{
+//         "method": "POST",
+//         "headers": { 'Content-Type': 'application/json' },
+//         // "body": product
+//     }
+//     )
+//     if(response.ok){
+//         const data = await response.json()
+//         dispatch(likesProduct(data))
+//         return data
+//     }
+// }
 export const thunkRemoveProduct = (productId)=>async dispatch=>{
     const response = await fetch(`/api/products/delete/${productId}`, {
         method:'DELETE'
@@ -232,11 +232,15 @@ const productsReducer = (state = initialState, action)=>{
              delete newState.currProducts[action.productId]
              return newState
         }
-        case LIKES_PRODUCT:{
-            const newState = {...state}
-            const likedProduct = action.product
-            newState.allProducts[action.product.id]=likedProduct
-        }
+        // case LIKES_PRODUCT:{
+        //     const newState = {...state, allProducts:{}}
+        //     const likedProduct = action.product
+        //     console.log("this is action .product~~~~~~~~~~~~~", action.product)
+        //     console.log("thi sis state", newState)
+        //         newState.allProducts.undefined=likedProduct
+
+        //     return newState
+        // }
         default: return state
     }
 }

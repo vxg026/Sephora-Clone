@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { thunkLikedProducts } from "../../store/product";
+import { thunkLikedProducts, thunkOneProduct } from "../../store/product";
 
 const GetCurrLikes = () =>{
     const dispatch = useDispatch()
     const products = useSelector(state=>state.products.allProducts)
     const sessionUser = useSelector(state => state.session.user);
 
-    console.log("hopeuflly liked proucts!!!!!!!", products)
+    console.log("hopeuflly liked proucts!!!!!!!", sessionUser.likes)
+
     useEffect(()=>{
         dispatch(thunkLikedProducts())
-    }, [dispatch])
+        dispatch(thunkOneProduct())
+    }, [dispatch, sessionUser.likes])
 
 
     return(

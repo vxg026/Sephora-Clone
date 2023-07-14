@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { thunkOneProduct } from "../../store/product";
+import { thunkLikedProducts, thunkOneProduct } from "../../store/product";
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { thunkAllReviews } from "../../store/review";
@@ -11,30 +11,36 @@ import DeleteReview from "../Reviews/DeleteReview"
 import AddToCart from "./AddToCart";
 import "../Reviews/GetCurrReviews.css"
 import "./GetOneProduct.css"
-import { thunkLikesProduct } from "../../store/product";
+// import { thunkLikesProduct } from "../../store/product";
+import {thunkLikesProduct} from "../../store/session"
+import LikeAProduct from "./LikeAProduct";
 
 const GetOneProduct = () => {
     const dispatch = useDispatch()
     const { productId } = useParams()
     const singleProduct = useSelector(state => state.products.allProducts[productId])
-
+    const likedProducts = useSelector(state=>state.products.allProducts)
     const allReviews = useSelector(state => state.reviews?.allReviews)
     const allReviewsArr = Object.values(allReviews)
 
     const currUser = useSelector(state => state.session.user)
 
-
-    // console.log("===========", currUser.id)
+    const liked = currUser.likes
+    const likedArr = Object.values(liked)
+    // console.log("this is likedArr", likedArr)
+    // console.log("===========", likedProducts)
 
     useEffect(() => {
         dispatch(thunkOneProduct(productId))
         dispatch(thunkAllReviews())
-    }, [dispatch, productId])
+    }, [dispatch, productId, currUser.likes])
+
+
     const productReviews = allReviewsArr.filter(review => review.product_id === parseInt(productId))
     if (!singleProduct) {
         return "sorry not found:("
     }
-    console.log(productReviews, "---------------------------------------)")
+    // console.log(productReviews, "---------------------------------------)")
     // productReviews.forEach(review=>)
 
     let leftReview;
@@ -43,11 +49,17 @@ const GetOneProduct = () => {
         leftReview = productReviews.find(review => review.user_id == parseInt(currUser.id))
     }
 
+    // const handleLike = async () =>{
+    //     await dispatch(thunkLikesProduct(singleProduct))
+    //     await dispatch(thunkOneProduct(singleProduct.id))
 
-    const handleLike =  () =>{
-         dispatch(thunkLikesProduct(singleProduct))
-    }
-    console.log("============================", leftReview)
+
+
+    // }
+    // let heart = []
+    // const className=likedArr.find(product => product.id === singleProduct.id) ? 'fas fa-heart': "far fa-heart"
+    // heart.push(<div className={className} onClick={()=>handleLike()}></div>)
+    // console.log("============================", leftReview)
 
 
     return (
@@ -84,9 +96,14 @@ const GetOneProduct = () => {
                         <div className = "add-to-cart-likes">
 
                         <div><AddToCart product={singleProduct}/></div>
+                        <LikeAProduct
+                        singleProduct={singleProduct}
+                        />
+                        {/* {heart} */}
+                        {/* {likedArr.find(product => product.id === singleProduct.id) ? <div><i onClick={handleLike} className="fas fa-heart"></i></div>:<div><i onClick={handleLike} className="far fa-heart"></i></div>
+                        } */}
+                        {/* <div><i onClick={handleLike} className={heart}></i></div> */}
 
-                        <div><i onClick={handleLike} className="far fa-heart"></i></div>
-        
                         </div>
                     </div>
 
