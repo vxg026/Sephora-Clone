@@ -128,13 +128,20 @@ export default function reducer(state = initialState, action) {
 		case LIKES_PRODUCT:{
 			const newState = { ...state};
 			const likedProducts = action.product;
+			console.log("this is liked..................", likedProducts.length)
 
-			likedProducts.forEach(likedProduct => {
-				console.log("this is liked..................", likedProduct)
-				const id = likedProduct.id;
-				newState.user.likes[id] = likedProduct;
-				console.log("new state........", newState.user.likes[id])
-			});
+				newState.user.likes = {};
+				likedProducts.forEach(likedProduct => {
+				  const id = likedProduct.id;
+				  newState.user.likes[id] = likedProduct;
+				});
+		
+
+			// likedProducts.forEach(likedProduct => {
+			// 	const id = likedProduct.id;
+			// 	console.log("new before state........", state.user.likes)
+			// 	newState.user.likes[id] = likedProduct;
+			// });
 
 			return newState;
 			// const newState = {...state}

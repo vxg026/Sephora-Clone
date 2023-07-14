@@ -5,6 +5,7 @@ import "./GetCurrProducts.css"
 import { NavLink } from "react-router-dom";
 import AddToCart from "./AddToCart";
 import "./Likes.css"
+import LikeAProduct from "./LikeAProduct";
 
 const GetCurrLikes = () => {
     const dispatch = useDispatch()
@@ -40,6 +41,9 @@ const GetCurrLikes = () => {
                                      <h3 className="h3-first" key={product.id}>{product.name}</h3>
                                 <h3>{product.description}</h3>
                                 <h3>{product.price}</h3>
+                                <div>
+                                {/* <LikeAProduct singleProduct={product}/> */}
+                                    </div>
                                     </div>
 
 
@@ -47,6 +51,7 @@ const GetCurrLikes = () => {
                                     <AddToCart
                                         product={product}
                                     />
+
                                 </div>
 
                             </div>
