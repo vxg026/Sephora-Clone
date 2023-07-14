@@ -22,7 +22,9 @@ import Fragrance from "./components/Products/Fragrance";
 import Skincare from "./components/Products/Skincare";
 
 import Body from "./components/Products/Body";
-import Shipped from "./components/Products/Shipped"
+import Shipped from "./components/Products/Shipped";
+import GetCurrLikes from "./components/Products/Likes";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -42,6 +44,7 @@ function App() {
             <SignupFormPage />
           </Route>
         <Route exact path="/" component={Home}></Route>
+        <Route exact path="/products/likes" component={GetCurrLikes}></Route>
         <Route exact path="/cart" component={GetCurrCart}></Route>
         <Route exact path="/products/curr" component={GetCurrProducts}></Route>
         <Route exact path="/products/all" component={GetAllProducts}></Route>

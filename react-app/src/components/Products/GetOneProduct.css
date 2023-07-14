@@ -145,3 +145,15 @@
     word-wrap: break-word;
     max-width:78%;
 }
+.add-to-cart-likes{
+    display: flex;
+    gap: 1rem;
+}
+.far.fa-heart{
+    color: rgb(235, 228, 229);
+    font-size: larger;
+    font-weight: lighter;
+}
+.far.fa-heart:hover{
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .likes import likes
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -19,6 +19,12 @@ class User(db.Model, UserMixin):
 
     carts = db.relationship("Cart", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
+
+    user_likes = db.relationship(
+        "Product",
+        secondary=likes,
+        back_populates="post_likes"
+    )
 
     @property
     def password(self):
@@ -39,5 +45,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'username': self.username,
             'email': self.email,
+            'likes': [product.to_dict() for product in self.user_likes],
             'phone_number': self.phone_number
         }

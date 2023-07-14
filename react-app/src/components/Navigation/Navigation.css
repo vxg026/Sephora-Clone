@@ -114,6 +114,9 @@
   gap:.5rem;
   /* justify-content: center; */
 }
+.search-bar-nav:hover{
+  cursor: not-allowed
+}
 .search-text{
   border:none;
   background-color: transparent;
@@ -155,7 +158,7 @@
 
 }
 .store-location-icon:hover{
-  cursor: pointer;
+  cursor: not-allowed;
 }
 .store-serv{
   margin:0;

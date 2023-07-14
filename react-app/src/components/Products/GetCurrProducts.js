@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, Fragment } from "react";
+import { useEffect } from "react";
 import { thunkCurrProducts, thunkRemoveProduct } from "../../store/product";
-import CartForm from "../Products/CartForm";
 import EditQuantity from "./EditQuantity";
-import GetCurrCart from "../Carts/GetCurrCart";
 import RemoveProduct from "./RemoveProduct";
 import "./GetCurrProducts.css"
 import { useHistory } from "react-router-dom";
@@ -49,7 +47,7 @@ const handleCheckout=async(e)=>{
      await dispatch(thunkRemoveProduct(productArr[i]?.product.id))
       console.log("..............product i ", productArr[i].product)
     }
-    dispatch(thunkCurrProducts())
+    await dispatch(thunkCurrProducts())
     history.push('/products/shipped')
   }
 else{

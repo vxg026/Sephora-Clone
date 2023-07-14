@@ -1,11 +1,13 @@
+import GetCurrLikes from "../components/Products/Likes"
+
 const GET_ALL_PRODUCTS = "products/getallproducts"
 const GET_CURR_PRODUCTS = "products/getcurrproducts"
 const GET_ONE_PRODUCT = "products/getoneproduct"
 const EDIT_PRODUCT = "products/editproduct"
 const ADD_PRODUCT = "products/addproducts"
 const REMOVE_PRODUCT = "products/removeproducts"
-
-
+// const LIKES_PRODUCT="products/likesproducts"
+const CURR_LIKES="products/currlikes"
 const removeProduct = (productId) =>({
     type: REMOVE_PRODUCT,
     productId
@@ -31,7 +33,41 @@ const addProduct = product =>({
     type: ADD_PRODUCT,
     product
 })
-
+// const likesProduct = product=>({
+//     type: LIKES_PRODUCT,
+//     product
+// })
+const currLikesProducts = (products)=>({
+    type: CURR_LIKES,
+    products
+})
+export const thunkLikedProducts = () => async(dispatch)=>{
+    const response = await fetch('/api/products/likes')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(currLikesProducts(data))
+    }
+}
+export const thunkAllProducts = () => async (dispatch) =>{
+    const response = await fetch('/api/products/all')
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getAllProductsAction(data))
+    }
+}
+// export const thunkLikesProduct = (product) =>async dispatch=>{
+//     const response = await fetch(`/api/products/${product.id}/like`,{
+//         "method": "POST",
+//         "headers": { 'Content-Type': 'application/json' },
+//         // "body": product
+//     }
+//     )
+//     if(response.ok){
+//         const data = await response.json()
+//         dispatch(likesProduct(data))
+//         return data
+//     }
+// }
 export const thunkRemoveProduct = (productId)=>async dispatch=>{
     const response = await fetch(`/api/products/delete/${productId}`, {
         method:'DELETE'
@@ -86,13 +122,7 @@ export const thunkCurrProducts = () => async(dispatch)=>{
         dispatch(getCurrProductsAction(data))
     }
 }
-export const thunkAllProducts = () => async (dispatch) =>{
-    const response = await fetch('/api/products/all')
-    if(response.ok){
-        const data = await response.json()
-        dispatch(getAllProductsAction(data))
-    }
-}
+
 export const thunkSunScreen =()=> async (dispatch)=>{
     const response = await fetch('/api/products/sunscreen')
     if(response.ok){
@@ -150,20 +180,21 @@ const productsReducer = (state = initialState, action)=>{
                 newState.allProducts[product.id]=product
             })
             return newState
-        //     const newState={}
-        //     const allProducts = action.products
-        //     allProducts.forEach(product=>{
-        //         newState[product.id]=product
-        //     })
-        //     return {...state, allProducts: newState}
         }
         case GET_CURR_PRODUCTS:{
-            // return { ...state, allProducts: action.products };
             const newState={currProducts:{}, allProducts:{...state.allProducts}}
             const products = action.products
             products.map(product=>{
                 console.log("this is products====>", product)
                 newState.currProducts[product.product.id]=product
+            })
+            return newState
+        }
+        case CURR_LIKES:{
+            const newState = {currProducts:{...state.currProducts}, allProducts:{}}
+            const products = action.products
+            products.map(product=>{
+                newState.allProducts[product.id]=product
             })
             return newState
         }
@@ -177,7 +208,6 @@ const productsReducer = (state = initialState, action)=>{
         }
         case EDIT_PRODUCT:{
             const newState = {...state, currProducts:{...state.currProducts}}
-            // console.log("this is new stat===>", newState)
             const productId = action.product
             const quantity = action.quantity
             // console.log("this is new sta=======t===>", typeof(productId), quantity)
@@ -198,17 +228,19 @@ const productsReducer = (state = initialState, action)=>{
             }
         }
         case REMOVE_PRODUCT:{
-            // const newState = {...state.currProducts}
-            // const newSingleState = {...state.allProducts}
-            // const productId = action.product.productId
-            // delete newState[productId]
-            // return {
-            //     currProducts: newState
-            // }
              const newState = {...state, currProducts:{...state.currProducts}}
              delete newState.currProducts[action.productId]
              return newState
         }
+        // case LIKES_PRODUCT:{
+        //     const newState = {...state, allProducts:{}}
+        //     const likedProduct = action.product
+        //     console.log("this is action .product~~~~~~~~~~~~~", action.product)
+        //     console.log("thi sis state", newState)
+        //         newState.allProducts.undefined=likedProduct
+
+        //     return newState
+        // }
         default: return state
     }
 }

@@ -8,7 +8,7 @@ const RemoveProduct = ({product_curr})=>{
         e.preventDefault()
 
         await dispatch(thunkRemoveProduct(product_curr.id))
-        dispatch(thunkCurrProducts())
+        await dispatch(thunkCurrProducts())
     }
     return(
         <button onClick={handleDelete}>Remove</button>

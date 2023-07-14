@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 # from .models.cart_product import cart_products
 from ..models.cart_product import cart_products
-
+from .likes import likes
 
 class Product(db.Model):
     __tablename__="products"
@@ -19,7 +19,11 @@ class Product(db.Model):
     created_at= db.Column(db.DateTime(),default=datetime.now)
 
     reviews = db.relationship("Review", back_populates="product", cascade="all, delete")
-
+    post_likes = db.relationship(
+        "User",
+        secondary=likes,
+        back_populates="user_likes"
+    )
     carts = db.relationship(
         "Cart",
         secondary=cart_products,

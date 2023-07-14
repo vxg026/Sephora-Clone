@@ -1,0 +1,57 @@
+.likes-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.basket-1.likes{
+
+    width: 80%;
+    min-width: 80%;
+
+}
+.basket-product.inlikes{
+width: 100%;
+}
+.product-container-likes{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(236, 232, 232);
+}
+.add-to-cart-likes{
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
+.div-likes-info{
+    width: 90%;
+    margin: 1rem;
+    /* border:2px solid red; */
+}
+.div-loves h2{
+    display: flex;
+    justify-content: flex-start;
+
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+}
+.div-loves{
+    width: 80%;
+}
+/* h3{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: smaller;
+
+} */
+.div-likes-info h3{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: medium;
+}
+.h3-first{
+    font-weight: 500 !important;
+    /* border: 2px solid red; */
+}
