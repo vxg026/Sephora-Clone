@@ -33,8 +33,8 @@ const LikeAProduct = ({singleProduct}) =>{
 
 }
 let heart = []
-const className=likedArr.find(product => product.id === singleProduct.id) ? 'fas fa-heart': "far fa-heart"
-heart.push(<div className={className} onClick={()=>handleLike()}></div>)
+const className=likedArr.find(product => product.id === singleProduct.id) ? heart.push(<div style={{color: "red"}}className='fas fa-heart' onClick={()=>handleLike()}></div>): heart.push(<div style={{color: "lightgray"}}className='far fa-heart' onClick={()=>handleLike()}></div>)
+
 
 
 
