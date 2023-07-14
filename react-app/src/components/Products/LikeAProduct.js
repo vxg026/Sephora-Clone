@@ -28,7 +28,7 @@ const LikeAProduct = ({singleProduct}) =>{
     const handleLike = async () =>{
 
     await dispatch(thunkLikesProduct(singleProduct))
-    await dispatch(thunkOneProduct(singleProduct.id))
+    // await dispatch(thunkOneProduct(singleProduct.id))
     // .then(history.push(`/products/${singleProduct.id}`))
 
 }

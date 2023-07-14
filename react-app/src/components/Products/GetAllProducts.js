@@ -34,10 +34,10 @@ const GetAllProducts = () =>{
             return(
                 <div className="div-products-all">
                     <div>
-                          {/* { currUser && <div className="hearts-container">
+                          { currUser && <div className="hearts-container">
 
                             <LikeAProduct singleProduct={product}/>
-                            </div>} */}
+                            </div>}
                         <Link to={`/products/${product.id}`}>
 
                            <img className="img-all" src={product.image}/>
