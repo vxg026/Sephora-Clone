@@ -12,7 +12,7 @@
 
 }
 .basket-product.inlikes{
-width: fit-content;
+width: 100%;
 }
 .product-container-likes{
     display: flex;
@@ -25,8 +25,9 @@ width: fit-content;
     margin-right: 5%;
 }
 .div-likes-info{
-    width: 100%;
+    width: 90%;
     margin: 1rem;
+    /* border:2px solid red; */
 }
 .div-loves h2{
     display: flex;

@@ -16,7 +16,7 @@ const GetCurrLikes = () => {
 
     useEffect(() => {
         dispatch(thunkLikedProducts())
-        dispatch(thunkOneProduct())
+        // dispatch(thunkOneProduct())
     }, [dispatch, sessionUser.likes])
 
 
@@ -36,15 +36,16 @@ const GetCurrLikes = () => {
 
                                         <div className="basket-img-container"><img className="basket-img" src={product.image} /></div>
                                     </NavLink>
-                                </div>
                                 <div className="div-likes-info">
                                      <h3 className="h3-first" key={product.id}>{product.name}</h3>
                                 <h3>{product.description}</h3>
                                 <h3>{product.price}</h3>
+                                <LikeAProduct singleProduct={product}/>
                                 <div>
-                                {/* <LikeAProduct singleProduct={product}/> */}
+
                                     </div>
                                     </div>
+                                </div>
 
 
                                 <div className="add-to-cart-likes">

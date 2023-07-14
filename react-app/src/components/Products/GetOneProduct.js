@@ -25,15 +25,15 @@ const GetOneProduct = () => {
 
     const currUser = useSelector(state => state.session.user)
 
-    const liked = currUser.likes
-    const likedArr = Object.values(liked)
+    // const liked = currUser.likes
+    // const likedArr = Object.values(liked)
     // console.log("this is likedArr", likedArr)
     // console.log("===========", likedProducts)
 
     useEffect(() => {
         dispatch(thunkOneProduct(productId))
         dispatch(thunkAllReviews())
-    }, [dispatch, productId, currUser.likes])
+    }, [dispatch, productId])
 
 
     const productReviews = allReviewsArr.filter(review => review.product_id === parseInt(productId))
@@ -96,9 +96,9 @@ const GetOneProduct = () => {
                         <div className = "add-to-cart-likes">
 
                         <div><AddToCart product={singleProduct}/></div>
-                        <LikeAProduct
+                     {currUser &&   <LikeAProduct
                         singleProduct={singleProduct}
-                        />
+                        />}
                         {/* {heart} */}
                         {/* {likedArr.find(product => product.id === singleProduct.id) ? <div><i onClick={handleLike} className="fas fa-heart"></i></div>:<div><i onClick={handleLike} className="far fa-heart"></i></div>
                         } */}

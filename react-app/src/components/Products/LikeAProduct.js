@@ -17,13 +17,13 @@ const LikeAProduct = ({singleProduct}) =>{
 
     const liked = currUser.likes
     const likedArr = Object.values(liked)
-    useEffect(() => {
+    // useEffect(() => {
 
-         dispatch(thunkOneProduct(singleProduct.id))
+    //      dispatch(thunkOneProduct(singleProduct.id))
 
         //  dispatch(thunkLikedProducts())
 
-    }, [liked, dispatch])
+    // }, [ dispatch])
 
     const handleLike = async () =>{
 
