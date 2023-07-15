@@ -96,9 +96,9 @@ def delete_review(id):
             if file_delete:
                 db.session.delete(selected_review)
                 db.session.commit()
-                return {"message": 'This has been deleted'}
+                return {"reviewId": id}
         else:
             db.session.delete(selected_review)
             db.session.commit()
-            return{"message": "deleted"}
+            return{"reviewId":id}
     return {"message": "This review does not belong to you"}
