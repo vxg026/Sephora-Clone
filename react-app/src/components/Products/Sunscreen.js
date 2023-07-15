@@ -5,9 +5,11 @@ import AddToCart from "./AddToCart";
 import {Link} from "react-router-dom"
 import "./Sunscreen.css"
 import "./GetAllProducts.css"
+import LikeAProduct from "./LikeAProduct";
 const Suncscreen =()=>{
     const dispatch=useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
+    const currUser = useSelector(state=>state.session.user)
 
     useEffect(()=>{
         dispatch(thunkSunScreen())
@@ -24,6 +26,10 @@ const Suncscreen =()=>{
             return(
                 <div className="div-products-all">
                 <div>
+                { currUser && <div className="hearts-container">
+
+<LikeAProduct singleProduct={product}/>
+</div>}
                 <Link to={`/products/${product.id}`}>
                 <img className="img-all" src={product.image}/>
 </Link>

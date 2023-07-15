@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, Fragment } from "react";
 import {thunkSkincare } from "../../store/product";
 import AddToCart from "./AddToCart";
+import LikeAProduct from "./LikeAProduct";
 import {Link} from "react-router-dom"
 import "./Sunscreen.css"
 import "./GetAllProducts.css"
 const Skincare =()=>{
     const dispatch=useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
+    const currUser = useSelector(state=>state.session.user)
 
     useEffect(()=>{
         dispatch(thunkSkincare())
@@ -20,6 +22,10 @@ const Skincare =()=>{
             return(
                 <div className="div-products-all">
                 <div>
+                { currUser && <div className="hearts-container">
+
+<LikeAProduct singleProduct={product}/>
+</div>}
                 <Link to={`/products/${product.id}`}>
                 <img className="img-all" src={product.image}/>
 </Link>
