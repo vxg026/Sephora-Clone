@@ -70,7 +70,7 @@ def edit_review(id):
             reviewObj.img4 = form.data["img4"]
         reviewObj.review_text = form.data["review_text"]
         reviewObj.star_rating = form.data["star_rating"]
-        reviewObj.img1 = url
+        # reviewObj.img1 = url
         reviewObj.img2 = form.data["img2"]
         reviewObj.img3 = form.data["img3"]
         reviewObj.img4 = form.data["img4"]
