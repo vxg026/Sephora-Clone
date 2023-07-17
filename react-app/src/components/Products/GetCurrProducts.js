@@ -6,6 +6,7 @@ import RemoveProduct from "./RemoveProduct";
 import "./GetCurrProducts.css"
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 const GetCurrProducts=()=>{
     const history=useHistory()
     const dispatch = useDispatch()
@@ -67,7 +68,7 @@ else{
           <div className="basket-container-div">
         <h2>My Basket</h2>
           <div className="basket-1">
-        {productArr.map((product) => (
+        {productArr.length>0? productArr.map((product) => (
             <div className="basket-product">
               <div className="basket-img-container"><img className="basket-img" src={product.product.image}/></div>
               <div>
@@ -91,7 +92,7 @@ else{
             </div>
             </div>
             </div>
-        ))}
+        )): <div className="empty-cart-div"><h3>Your basket is currently empty</h3><NavLink to="/products/all"><button>Shop All Products</button></NavLink></div>}
         </div></div>
         <div>
 
