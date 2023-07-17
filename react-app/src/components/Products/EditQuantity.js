@@ -9,14 +9,14 @@ import {thunkOneProduct} from '../../store/product'
 const EditQuantity = ({product_curr, quantity}) => {
     const dispatch = useDispatch()
 
-    console.log("This is product id======>", product_curr)
+
 
     if(!product_curr){
         return null
     }
     return(
         <>
-        {/* Inside the edit compoenent */}
+   
         <CartForm
         product = {product_curr}
         formType = "Edit Quantity"

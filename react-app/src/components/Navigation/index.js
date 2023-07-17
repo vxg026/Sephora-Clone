@@ -10,14 +10,11 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 	const currProducts = useSelector(state=>state.products.currProducts)
 
-	console.log("currrr", currProducts)
-
 	useEffect(()=>{
 		dispatch(thunkCurrProducts())
 	}, [dispatch, sessionUser])
 
 	const productArr = Object.values(currProducts)
-	// console.log("this is products aRrr when logi=ging in~~~~~~~~~~~~~~~~~", productArr)
 
 	let items = 0;
 	for (let i = 0; i<productArr.length; i++){
@@ -87,9 +84,7 @@ const handlClick=()=>{
 			</div>
 			</NavLink>}
 			<div className="cart_icon-item">
-			{/* <a to="/products/curr">
-				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
-				</a> */}
+	
 			{sessionUser &&	<a href="/products/curr">
 				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
 				</a>}

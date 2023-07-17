@@ -28,7 +28,7 @@ const Suncscreen =()=>{
         <div className="img-container"><img className="img-suncreend" src="https://cdn.discordapp.com/attachments/1062942242450460744/1122251136351600750/Screenshot_2023-06-24_at_12.44.30_PM.png"/></div>
         {Object.values(allProducts).map(product=>{
             return(
-                <div className="div-products-all">
+                <div key={product.id} className="div-products-all">
                 <div>
                 { currUser && <div className="hearts-container">
 

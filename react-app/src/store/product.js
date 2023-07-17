@@ -78,7 +78,7 @@ export const thunkRemoveProduct = (productId)=>async dispatch=>{
     }
 }
 export const thunkAddProduct = (product)=>async dispatch=>{
-    console.log("this is product in thunk", product)
+    // console.log("this is product in thunk", product)
     const response = await fetch(`/api/products/${product.id}/cart`,{
 
             "method": "POST",
@@ -94,7 +94,7 @@ export const thunkAddProduct = (product)=>async dispatch=>{
     }
 }
 export const thunkEditProduct = (productId, quantity)=>async dispatch=>{
-    console.log("insde product edit thunk", productId)
+    // console.log("insde product edit thunk", productId)
     const response = await fetch(`/api/products/${productId}/cart`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
@@ -175,7 +175,7 @@ const productsReducer = (state = initialState, action)=>{
 
             const newState = {currProducts:{...state.currProducts}, allProducts:{}}
             const products = action.products
-            console.log("products in all products reducer`````````", products)
+            // console.log("products in all products reducer`````````", products)
             products.map(product=>{
                 newState.allProducts[product.id]=product
             })
@@ -185,7 +185,7 @@ const productsReducer = (state = initialState, action)=>{
             const newState={currProducts:{}, allProducts:{...state.allProducts}}
             const products = action.products
             products.map(product=>{
-                console.log("this is products====>", product)
+                // console.log("this is products====>", product)
                 newState.currProducts[product.product.id]=product
             })
             return newState

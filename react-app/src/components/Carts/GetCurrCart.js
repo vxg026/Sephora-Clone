@@ -9,28 +9,23 @@ const GetCurrCart = () =>{
     const dispatch = useDispatch()
 
     const cart_obj = useSelector(state=> state.cart.currentUserCart)
-    // const cart_arr = Object.values(cart_obj)
-    // console.log("this is cart arr````````````", cart_arr)
-    // const cart_arr = Object.values(cart_obj)
-    // console.log("cart_arrrr", cart_arr[0])
-    // const cart_info = cart_arr[0]
-    // return cart_obj
+
     useEffect(()=>{
         dispatch(thunkCurrUserCart())
     }, [dispatch])
 
-    // console.log("thi sis cart_obj!!```````````````````````````", cart_obj)
+
     if (!cart_obj) return "..."
     return(
         <>
         in cart!
         <GetCurrProducts/>
-        {/* <h3>Total: ${cart_info?.total_price}</h3> */}
+
         {Object.values(cart_obj).map(item=>{
-            console.log("....", item)
+            // console.log("....", item)
             return(
                 <div>
-                    {/* <h3>Total: ${item.total_price}</h3> */}
+
                 </div>
             )
         })}

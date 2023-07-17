@@ -6,33 +6,24 @@ import { thunkEditProduct } from "../../store/product";
 const CartForm = ({product, formType, quantitys})=>{
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log("THISISI S product inside cart from!!!!!!========>", product)
 
     const [quantity, setQuantity] = useState(quantitys)
 
     const handleSubmit = async (e)=>{
         // e.preventDefault()
 
-
-        console.log("in handle submit?")
-
-            console.log(quantity, "this is quantity")
+            // console.log(quantity, "this is quantity")
             const updatedProduct = {
                 ...product,
                 quantity: Number(quantity)
               };
 
 
-
-            console.log("aggain-------", updatedProduct.id)
-            console.log("this is quantity", quantity)
-
             if(formType =="Edit Quantity"){
-                // console.log("im product inside before dispatch!!!===>", updatedProduct.id)
-                // console.log("im quantity inside the if statement before dispatch===>", quantity)
+
                 dispatch(thunkEditProduct(updatedProduct.id, updatedProduct.quantity))
                 dispatch(thunkCurrProducts())
-                // history.push('/products/curr')
+
 
             }else {
                 setQuantity("1")
@@ -41,10 +32,6 @@ const CartForm = ({product, formType, quantitys})=>{
     }
 
 
-    // useEffect(() => {
-    //     localStorage.setItem("selectedQuantity", quantity);
-    //   }, [quantity]);
-
     useEffect(()=>{
         handleSubmit()
     }, [quantity])
@@ -52,7 +39,7 @@ const CartForm = ({product, formType, quantitys})=>{
 
 
     return(
-        // <form onSubmit={handleSubmit}>
+
         <form>
             <div>
             <select max={10} value={quantity} onChange={(e) => setQuantity(e.target.value)}>
@@ -88,7 +75,6 @@ const CartForm = ({product, formType, quantitys})=>{
                 >10</option>
             </select>
             </div>
-            {/* // <button type="submit">submit</button> */}
 
         </form>
     )

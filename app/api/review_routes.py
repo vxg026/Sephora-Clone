@@ -36,7 +36,7 @@ def get_one_review(id):
     """
 
     one_review = Review.query.get(id)
-    print("THISI IS ID IN GET ONE REVIEW", one_review.to_dict())
+    # print("THISI IS ID IN GET ONE REVIEW", one_review.to_dict())
     return one_review.to_dict()
 @review_routes.route('/edit/<int:id>', methods=["PUT"])
 @login_required
@@ -44,9 +44,9 @@ def edit_review(id):
     """
     Current user is able to get review by review id and edit
     """
-    print("this is the iddddddd~~~~~~~~~~~~~~", id)
+    # print("this is the iddddddd~~~~~~~~~~~~~~", id)
     reviewObj = Review.query.get(id)
-    print("thi sis review obj~~~~~~~~~~~~~~~", reviewObj)
+    # print("thi sis review obj~~~~~~~~~~~~~~~", reviewObj)
     if not reviewObj:
         return {"message":"This review does not exist"}
 

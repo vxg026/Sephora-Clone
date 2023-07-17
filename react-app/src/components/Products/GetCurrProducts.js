@@ -46,7 +46,7 @@ const handleCheckout=async(e)=>{
   if(productArr.length>0){
      for(let i =0; i< productArr.length; i++){
      await dispatch(thunkRemoveProduct(productArr[i]?.product.id))
-      console.log("..............product i ", productArr[i].product)
+
     }
     await dispatch(thunkCurrProducts())
     history.push('/products/shipped')
@@ -57,7 +57,6 @@ else{
 }
 }
 
-//    console.log(",....", productArr)
     return (
       <>
       {!currUser ?
@@ -69,13 +68,13 @@ else{
         <h2>My Basket</h2>
           <div className="basket-1">
         {productArr.length>0? productArr.map((product) => (
-            <div className="basket-product">
+            <div key={product.id} className="basket-product">
               <div className="basket-img-container"><img className="basket-img" src={product.product.image}/></div>
               <div>
-                {/* {const [id, name, price, description]=product.product} */}
-                {console.log("this is product.product~~~~~~~~~~~", product)}
+
+                {/* {console.log("this is product.product~~~~~~~~~~~", product)} */}
        <h2 key={product.product.id}>{product.product.name}</h2>
-       {/* {console.log("porduct.product`````````", product.quantity)} */}
+
           <h3>{product.product.price}</h3>
           <h3>{product.product.description}</h3>
           {/* <h3>{product.quantity}</h3> */}

@@ -136,7 +136,7 @@ const GetOneProduct = () => {
                     <div className="review-details-single-product">
                         {productReviews.map(review => (
                             <>
-                                <div className="individual-review-container">
+                                <div key={review.id} className="individual-review-container">
 
 
                                     <div className="star-rating-div">

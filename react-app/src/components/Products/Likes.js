@@ -12,7 +12,7 @@ const GetCurrLikes = () => {
     const products = useSelector(state => state.products.allProducts)
     const sessionUser = useSelector(state => state.session.user);
 
-    console.log("hopeuflly liked proucts!!!!!!!", sessionUser.likes)
+    // console.log("hopeuflly liked proucts!!!!!!!", sessionUser.likes)
 
     useEffect(() => {
         dispatch(thunkLikedProducts())
@@ -30,7 +30,7 @@ const GetCurrLikes = () => {
                 <div className="basket-1 likes">
                     {sessionUser && Object.values(products).length>0 ? Object.values(products).map(product => {
                         return (
-                            <div className="product-container-likes">
+                            <div key={product.id} className="product-container-likes">
                             <div className="basket-product inlikes">
                                     <NavLink to={`/products/${product.id}`}>
 

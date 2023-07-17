@@ -23,7 +23,7 @@ const Makeup =()=>{
         <div className="all-obj-contianer">
         {Object.values(allProducts).map(product=>{
             return(
-                <div className="div-products-all">
+                <div key={product.id} className="div-products-all">
                 <div>
                 { currUser && <div className="hearts-container">
 

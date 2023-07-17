@@ -82,7 +82,7 @@ function SignupFormModal() {
 									onChange={(e) => setfirst_name(e.target.value)}
 								/>
 							</label>
-							{console.log("~~~~~~~~~", validationErrors.first_name)}
+							{/* {console.log("~~~~~~~~~", validationErrors.first_name)} */}
 
 							{validationErrors.first_name ? (<p className="error">{validationErrors.first_name}</p>) : null}
 						</div>

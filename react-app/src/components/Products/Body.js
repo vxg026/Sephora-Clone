@@ -24,7 +24,7 @@ const Body =()=>{
         <div className="all-obj-contianer">
         {Object.values(allProducts).map(product=>{
             return(
-                <div className="div-products-all">
+                <div key={product.id} className="div-products-all">
                 <div>
                 { currUser && <div className="hearts-container">
 
@@ -35,7 +35,7 @@ const Body =()=>{
 </Link>
 </div>
 <div className="product-detail-all">
-                    <div>{product.name}</div>
+                    <div key={product.id} >{product.name}</div>
                     <div>{product.price}</div>
                     {/* <div>{product.description}</div> */}
                     <AddToCart

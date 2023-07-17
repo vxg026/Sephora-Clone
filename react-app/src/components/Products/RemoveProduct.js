@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { thunkCurrProducts, thunkRemoveProduct } from "../../store/product";
 
 const RemoveProduct = ({product_curr})=>{
-    console.log("this is product in remove------>", product_curr)
+    // console.log("this is product in remove------>", product_curr)
     const dispatch = useDispatch()
     const handleDelete = async(e)=>{
         e.preventDefault()
