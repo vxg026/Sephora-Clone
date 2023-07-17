@@ -74,14 +74,14 @@ const handlClick=()=>{
 
 
 				)}
-	<div>
+{sessionUser &&	<div>
 				<a className="reviews-link" href="/reviews/curr">
 					<div className="reviews-home">
 				<img className="reviews-chat-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725077399863317/reviews.png"/>
 				Manage Reviews
 				</div>
 				</a>
-			</div>
+			</div>}
 			{sessionUser && <NavLink to="/products/likes">
 			<div>
 				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725148451385445/heart.png?width=418&height=343"/>
