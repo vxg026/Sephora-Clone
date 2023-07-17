@@ -34,11 +34,11 @@ if(!reviews) return ".."
 
 <div className="mng-reviews">
 <h2>Manage Reviews</h2>
-{Object.values(reviews).map(review=>{
+{Object.values(reviews).length > 0 ?Object.values(reviews).map(review=>{
     return (
         <div className="mng-review">
             <div>
-  
+
             {products && Object.values(products).filter(product=> product.id===review.product_id).map(results=>{
                 return(
                     <div>
@@ -96,7 +96,7 @@ if(!reviews) return ".."
 
 
     )
-})}</div>
+}): <div className="no-reviews-div"><div className="no-reviews-img"><img className="img-no-reviews" src="https://cdn.discordapp.com/attachments/1062942242450460744/1130332735035166880/Screenshot_2023-07-16_at_7.57.16_PM.png"/></div><p>Looks like you have no reviews at the moment.</p></div>}</div>
         </>
     )
 }
