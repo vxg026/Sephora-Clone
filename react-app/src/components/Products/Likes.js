@@ -28,7 +28,7 @@ const GetCurrLikes = () => {
 
                 </div>
                 <div className="basket-1 likes">
-                    {sessionUser && Object.values(products).map(product => {
+                    {sessionUser && Object.values(products).length>0 ? Object.values(products).map(product => {
                         return (
                             <div className="product-container-likes">
                             <div className="basket-product inlikes">
@@ -57,7 +57,7 @@ const GetCurrLikes = () => {
 
                             </div>
                         )
-                    })}
+                    }): <div className="no-likes-container"><div className="no-likes-img-div"><img className="img-no-likes" src="https://cdn.discordapp.com/attachments/1062942242450460744/1130332735035166880/Screenshot_2023-07-16_at_7.57.16_PM.png"/></div><div><h4 className="h4-div-no-likes">You haven’t added any product to your Loves list.</h4><div className="div-p"><p className="p-class">Collect all your favorite and must-try products by <div>clicking on the <i className="far fa-heart"></i> while you shop.</div></p></div></div></div>}
                 </div>
             </div>
 
