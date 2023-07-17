@@ -6,6 +6,10 @@ import LikeAProduct from "./LikeAProduct";
 import {Link} from "react-router-dom"
 import "./Sunscreen.css"
 import "./GetAllProducts.css"
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
+
 const Skincare =()=>{
     const dispatch=useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
@@ -37,6 +41,13 @@ const Skincare =()=>{
                     <AddToCart
                     product={product}
                     />
+                            {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
                 </div>
                 </div>
             )

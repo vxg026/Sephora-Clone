@@ -6,7 +6,9 @@ import {Link} from "react-router-dom"
 import "./Sunscreen.css"
 import "./GetAllProducts.css"
 import LikeAProduct from "./LikeAProduct";
-
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
 
 const Body =()=>{
     const dispatch=useDispatch()
@@ -39,6 +41,13 @@ const Body =()=>{
                     <AddToCart
                     product={product}
                     />
+                     {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
                 </div>
                 </div>
             )

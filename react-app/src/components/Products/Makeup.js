@@ -5,7 +5,9 @@ import AddToCart from "./AddToCart";
 import "./GetAllProducts.css"
 import { Link } from "react-router-dom"
 import LikeAProduct from "./LikeAProduct";
-
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
 
 const Makeup =()=>{
     const dispatch=useDispatch()
@@ -38,6 +40,13 @@ const Makeup =()=>{
                     <AddToCart
                     product={product}
                     />
+                      {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
                                </div>
                 </div>
             )

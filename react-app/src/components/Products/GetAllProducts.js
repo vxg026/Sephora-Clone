@@ -8,6 +8,10 @@ import "./GetAllProducts.css"
 // import { thunkLikesProduct } from "../../store/product";
 import {thunkLikesProduct} from "../../store/session"
 import LikeAProduct from "./LikeAProduct";
+import ProfileButton from "../Navigation/ProfileButton";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
 
 const GetAllProducts = () =>{
     const dispatch = useDispatch()
@@ -50,10 +54,16 @@ const GetAllProducts = () =>{
                     {/* <h4>{product.description}</h4> */}
                     {console.log("product before passing it", product)}
 
-                           <AddToCart
+                       <AddToCart
                     product={product}
                     />
-
+             {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
 
                     </div>
                 </div>

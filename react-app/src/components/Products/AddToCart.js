@@ -32,10 +32,10 @@ const AddToCart = ({product})=>{
     }
     return(
         <form>
-            {currUser?
+            {currUser &&
             <button type="button" className="add-to-cart-btn" onClick={handleClick}>
                 Add to Basket!
-            </button> : <h6>Please SignUp to shop</h6>}
+            </button>}
         </form>
     )
 }

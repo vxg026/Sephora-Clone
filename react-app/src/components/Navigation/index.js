@@ -66,7 +66,6 @@ const handlClick=()=>{
 					</div>
 				</div>
 
-
 				{isLoaded && (
 					<div>
 						<ProfileButton user={sessionUser} />
@@ -91,9 +90,9 @@ const handlClick=()=>{
 			{/* <a to="/products/curr">
 				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
 				</a> */}
-				<a href="/products/curr">
+			{sessionUser &&	<a href="/products/curr">
 				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
-				</a>
+				</a>}
 				{sessionUser && currProducts && items!==0 && <span className="not">{items}</span>}
 			</div>
 			</div>
