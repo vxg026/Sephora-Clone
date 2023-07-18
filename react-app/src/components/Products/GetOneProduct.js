@@ -200,6 +200,7 @@ const GetOneProduct = () => {
                 </div>
 
             </div>
+
         </>
     )
 }
