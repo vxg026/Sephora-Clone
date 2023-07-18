@@ -286,7 +286,8 @@
 
 }
 .f-fbck-txt{
-    font-weight: 500;
+    font-weight: 400;
+    font-size: medium;
 }
 .cards-con-car{
     /* border: 2px solid blue; */
@@ -324,6 +325,19 @@
     gap:4rem;
     justify-content: center;
     align-items: center;
+}
+.h3-div a{
+    text-decoration: none;
+
+}
+.linkedin-connect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem
+}
+.linkedin-connect i{
+    color:white;
 }
 .github{
     width:2rem;
