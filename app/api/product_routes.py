@@ -89,13 +89,13 @@ def get_single_product(id):
 @login_required
 def get_curr_product():
     curr_user_id = current_user.id
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",curr_user_id)
+    # print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",curr_user_id)
     # cart = Cart.query.filter_by(user_id=curr_user_id).first()
 
 
     # print("this is user_id===========", cart.user_id)
     cart = Cart.query.filter(Cart.user_id == curr_user_id).first()
-    print("this is cart===========", cart)
+    # print("this is cart===========", cart)
     if cart is None:
         # An object of type User above will have a constructor which allows User objects to be created as:
         # u1 = User(name="some name", fullname="some fullname")
@@ -108,7 +108,7 @@ def get_curr_product():
 
         #search for produt table and associated quanitity for join table.
         all_products = db.session.query(Product, cart_products.c.quantity)
-        print(all_products, "<------all Products")
+        # print(all_products, "<------all Products")
         # sqalchemy docs, sess.scalars(select(A).join(A.d)).all()
         #from a join b as b_1 Join d as d_1 On b_1.d_id=d_1.id
         # sess.scalars(
@@ -120,18 +120,18 @@ def get_curr_product():
         joined_products = all_products.join(cart_products)
 
         products= joined_products.filter(cart_products.c.cart_id==cart.id).all()
-        print("~~~~~~~~~~~~~~~~~", products)
+        # print("~~~~~~~~~~~~~~~~~", products)
 
         product_quantity_obj = []
 
         for product, quantity in products:
-            print("`````````````````", product, quantity)
+            # print("`````````````````", product, quantity)
             product_obj= {
                 "product": product.to_dict(),
                 "quantity":quantity
             }
             product_quantity_obj.append(product_obj)
-        print("==================================", (product_quantity_obj))
+        # print("==================================", (product_quantity_obj))
         return jsonify(product_quantity_obj)
 
 
@@ -151,26 +151,26 @@ def add_to_cart(id):
 
     if not product_obj:
         return "item not found"
-    print("this is form-------------------->", form.quantity)
+    # print("this is form-------------------->", form.quantity)
 
     quantity_create = int(form.quantity.data)
     # quantity_create=int((1,1))
-    print("this is productob=======>", product_obj)
+    # print("this is productob=======>", product_obj)
 
 
     if form.validate_on_submit():
         # method sqlalchemy.orm.Query.filter_by(**kwargs)
         # session.query(MyClass).filter_by(name = 'some name')
         cart = Cart.query.filter_by(user_id=current_user.id).first()
-        print('this is cart===>', cart)
+        # print('this is cart===>', cart)
         if cart is None:
             cart = Cart(user_id=current_user.id)
             db.session.add(cart)
-            (print("this is cartt.........=> cart"))
+            # (print("this is cartt.........=> cart"))
         cart_product = db.session.query(cart_products).filter_by(cart_id=cart.id, product_id=product_obj.id).first()
 
 
-        print("this is cart product........", cart_product)
+        # print("this is cart product........", cart_product)
         #sqlalchemy docs:
 # Session.execute() accepts any executable clause construct, such as select(), insert(), update(), delete(), and text(). Plain SQL strings can be passed as well, which in the case of Session.execute() only will be interpreted the same as if it were passed via a text() construct.
 
@@ -190,9 +190,9 @@ def add_to_cart(id):
                 quantity=cart_product.quantity + quantity_create
             ))
 
-        print("cart total price===>", cart.total_price)
+        # print("cart total price===>", cart.total_price)
         # cart.products.append(product_obj)
-        print("cart products===>", cart.products)
+        # print("cart products===>", cart.products)
         db.session.commit()
 
         return {"message":"added to cart"}
@@ -209,14 +209,14 @@ def update_cart(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     product_obj = Product.query.get(id)
-    print("this is product obj!==>", product_obj)
+    # print("this is product obj!==>", product_obj)
     if not product_obj:
         return "Product is not in cart:()"
     quantity = int(form.quantity.data)
 
     cart = Cart.query.filter_by(user_id=current_user.id).first()
 
-    print("this is cart==>", cart)
+    # print("this is cart==>", cart)
     if not cart:
         return "Please log in"
     if form.validate_on_submit():
@@ -279,9 +279,9 @@ def create_review(id):
 
     product_obj = Product.query.get(id)
 
-    print("this is product_obj---------->", product_obj)
+    # print("this is product_obj---------->", product_obj)
 
-    print("this is userr---------->", current_user.id)
+    # print("this is userr---------->", current_user.id)
     form = ReviewForm()
     form["csrf_token"].data=request.cookies["csrf_token"]
 
@@ -313,7 +313,7 @@ def create_review(id):
             )
         db.session.add(user_new_review)
         db.session.commit()
-        print("jsonified ..", jsonify(user_new_review.to_dict()))
+        # print("jsonified ..", jsonify(user_new_review.to_dict()))
         return  jsonify(user_new_review.to_dict())
     return form.errors
 
@@ -339,13 +339,13 @@ def like_product(id):
         db.session.add(product)
         db.session.commit()
         likes = curr_user.user_likes
-        print("when addding~~~~~~~~~~~", likes)
+        # print("when addding~~~~~~~~~~~", likes)
         return [product.to_dict() for product in likes]
     else:
         curr_user.user_likes.remove(product)
         db.session.commit()
         likes = curr_user.user_likes
-        print("when removing~~~~~~~~~~~", [product.to_dict() for product in likes])
+        # print("when removing~~~~~~~~~~~", [product.to_dict() for product in likes])
 
         return [product.to_dict() for product in likes]
 

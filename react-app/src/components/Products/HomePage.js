@@ -154,10 +154,10 @@ const Home = () => {
       </div>
       <div className="footer">
           <div className="h3-div">
-        <a href="https://www.linkedin.com/in/vanessa-gonzalez-82667a1b3/">
+        <a target="_blank" href="https://www.linkedin.com/in/vanessa-gonzalez-82667a1b3/">
              <h3>Linked In</h3>
                   </a>
-                  <a href="https://github.com/vxg026">
+                  <a target="_blank" href="https://github.com/vxg026">
                     <div className="github-url">
                                <img className="github"src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU"/> <h3>GitHub</h3>
                     </div>

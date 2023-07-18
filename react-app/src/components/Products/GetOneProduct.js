@@ -14,6 +14,8 @@ import "./GetOneProduct.css"
 // import { thunkLikesProduct } from "../../store/product";
 import {thunkLikesProduct} from "../../store/session"
 import LikeAProduct from "./LikeAProduct";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 
 const GetOneProduct = () => {
     const dispatch = useDispatch()
@@ -95,7 +97,14 @@ const GetOneProduct = () => {
                         </div>
                         <div className = "add-to-cart-likes">
 
-                        <div><AddToCart product={singleProduct}/></div>
+                        {currUser && <div><AddToCart product={singleProduct}/></div>}
+                        {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
                      {currUser &&   <LikeAProduct
                         singleProduct={singleProduct}
                         />}
@@ -127,7 +136,7 @@ const GetOneProduct = () => {
                     <div className="review-details-single-product">
                         {productReviews.map(review => (
                             <>
-                                <div className="individual-review-container">
+                                <div key={review.id} className="individual-review-container">
 
 
                                     <div className="star-rating-div">

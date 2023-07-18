@@ -49,7 +49,7 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
-	console.log("email.......", email)
+	// console.log("email.......", email)
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: {
@@ -126,32 +126,11 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case LIKES_PRODUCT:{
-			const newState = { ...state};
+			const newState = {};
 			const likedProducts = action.product;
-			console.log("this is liked..................", likedProducts.length)
+				newState.likes = likedProducts;
+			return {user:{...state.user, likes:{...newState.likes}}}
 
-				newState.user.likes = {};
-				likedProducts.forEach(likedProduct => {
-				  const id = likedProduct.id;
-				  newState.user.likes[id] = likedProduct;
-				});
-		
-
-			// likedProducts.forEach(likedProduct => {
-			// 	const id = likedProduct.id;
-			// 	console.log("new before state........", state.user.likes)
-			// 	newState.user.likes[id] = likedProduct;
-			// });
-
-			return newState;
-			// const newState = {...state}
-			// const likes = action.product
-			// likes.map(like=>{
-			// 	console.log("new state........", newState.user.likes)
-
-			// 	newState.user.likes[like.id]=like
-			// })
-			// return newState
 		}
 		default:
 			return state;

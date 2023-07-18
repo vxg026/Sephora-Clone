@@ -11,7 +11,7 @@ const DeleteReview = ({review})=>{
     const {closeModal}=useModal()
     const handleDelete = async e=>{
         await dispatch(thunkDeleteReview(review))
-        await dispatch(thunkCurrReviews())
+        // await dispatch(thunkCurrReviews())
         .then(closeModal)
         // history.push('/reviews/curr')
     }

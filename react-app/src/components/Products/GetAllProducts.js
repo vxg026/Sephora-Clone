@@ -8,14 +8,18 @@ import "./GetAllProducts.css"
 // import { thunkLikesProduct } from "../../store/product";
 import {thunkLikesProduct} from "../../store/session"
 import LikeAProduct from "./LikeAProduct";
+import ProfileButton from "../Navigation/ProfileButton";
+import OpenModalButton from "../OpenModalButton";
+import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
 
 const GetAllProducts = () =>{
     const dispatch = useDispatch()
     const allProducts = useSelector(state=>state.products.allProducts)
-    console.log("all rpoucts=====>", allProducts)
+
     const currUser = useSelector(state=>state.session.user)
     // const allProductsArr=Object.values(allProducts)
-    // console.log("alll products!!", allProductsArr[0])
+
 
     useEffect(()=>{
         dispatch(thunkAllProducts())
@@ -23,21 +27,19 @@ const GetAllProducts = () =>{
     if (!allProducts)return "..."
 
 
-    // const handleLike =  () =>{
-    //      dispatch(thunkLikesProduct(product))
-    // }
+
     return(
         <>
 
         <div className="all-obj-contianer">
         {Object.values(allProducts).map(product=>{
             return(
-                <div className="div-products-all">
+                <div key={product.id} className="div-products-all">
                     <div>
-                          {/* { currUser && <div className="hearts-container">
+                          { currUser && <div className="hearts-container">
 
                             <LikeAProduct singleProduct={product}/>
-                            </div>} */}
+                            </div>}
                         <Link to={`/products/${product.id}`}>
 
                            <img className="img-all" src={product.image}/>
@@ -48,12 +50,18 @@ const GetAllProducts = () =>{
                     <h3>{product.name}</h3>
                     <h4>{product.price}</h4>
                     {/* <h4>{product.description}</h4> */}
-                    {console.log("product before passing it", product)}
 
-                           <AddToCart
+
+                       <AddToCart
                     product={product}
                     />
-
+             {!currUser &&  <div className="not-logged-in-btn"> <OpenModalButton
+                buttonText="Sign In"
+                modalComponent={<LoginFormModal/>}
+                 /> / <OpenModalButton
+                 buttonText="Create Account"
+                 modalComponent={<SignupFormModal/>}
+                  /></div>}
 
                     </div>
                 </div>

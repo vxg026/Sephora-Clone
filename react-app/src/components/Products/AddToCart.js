@@ -16,26 +16,20 @@ const AddToCart = ({product})=>{
 
     // const notify = () =>toast("Wow so easy!")
 
-    console.log("this is product", product)
+
 
     // const product = useSelector
     const handleClick=async()=>{
 
         let data = await dispatch(thunkAddProduct(product))
         dispatch(thunkCurrProducts())
-        // console.log("this is data....", data)
-        // if(data!==undefined){
-
-        //     alert("added to cart")
-        // }
-        // notify()
     }
     return(
         <form>
-            {currUser?
+            {currUser &&
             <button type="button" className="add-to-cart-btn" onClick={handleClick}>
                 Add to Basket!
-            </button> : <h6>Please SignUp to shop</h6>}
+            </button>}
         </form>
     )
 }
