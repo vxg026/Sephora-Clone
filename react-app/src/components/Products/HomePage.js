@@ -13,6 +13,12 @@ const Home = () => {
       items: 3,
       slidesToSlide: 2,
 
+    },
+    smaller: {
+      breakpoint: { max: 1024, min: 760 },
+      items: 2,
+      slidesToSlide: 2,
+
     }
   };
 

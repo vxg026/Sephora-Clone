@@ -62,6 +62,96 @@
   padding-left:8rem;
   padding-right:8rem;
 
+
+}
+@media screen and (max-width: 1024px){
+  .modal-login{
+    /* border: 2px solid red; */
+    height: 9rem;
+    width: 25rem;
+    background-color: white;
+    border-radius: .3rem;
+    box-shadow: 1px 1px 6px lightgray;
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+    /* z-index: 1; */
+    right:-20px !important;
+    top:10px;
+    display:flex;
+    gap:1rem;
+    z-index:1;
+
+
+  }
+  .nav-icons-logo{
+    max-width: 1023px;
+    /* border:2px solid red; */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: space-around;
+    padding-left:1rem;
+    padding-right: 1rem;
+  }
+  .search-bar-nav{
+    width:20%;
+  }
+  .store-review-likes{
+    height:1.5rem !important;
+    width:2rem !important;
+  }
+  .community-forum-icon{
+    height:1.5rem;
+    width: 2rem;
+  }
+  .store-location-icon{
+    display:flex;
+    /* border: 2px solid red; */
+    align-items: center;
+    gap: .3rem;
+    min-width:5rem !important;
+
+
+  }
+  .reviews-chat-icon{
+    height: 1rem;
+
+  }
+  .reviews-home{
+    min-width: 8rem;
+    /* border:2px solid red; */
+  }
+  .sephoria-logo-home{
+    min-width: 7rem;
+    font-size: 1rem;
+  }
+  .store-serv{
+    font-size: x-small !important;
+    width: 4rem;
+    /* border:2px solid red; */
+  }
+  .marina-sqr{
+    font-size: x-small !important;
+    width: 5rem;
+  }
+  .community-image{
+    font-size: x-small !important;
+  }
+  .button-image{
+    font-size: x-small !important;
+    width: 6rem !important
+  }
+  .sign-in-btn{
+    font-size: x-small !important;
+  }
+  .img-login{
+    font-size: small !important;
+    padding:0 !important
+  }
+  .search-bar-nav{
+    width: 25% !important;
+  }
 }
 .login-words{
   display:flex;
@@ -120,11 +210,13 @@
 .search-text{
   border:none;
   background-color: transparent;
+  cursor: not-allowed
 
 }
 .fa-search{
   color: rgb(200, 198, 198);
   padding-left:.5rem;
+  cursor: not-allowed
 }
 .store-review-likes{
   height:2.5rem;
