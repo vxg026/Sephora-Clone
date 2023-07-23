@@ -24,6 +24,7 @@ import Skincare from "./components/Products/Skincare";
 import Body from "./components/Products/Body";
 import Shipped from "./components/Products/Shipped";
 import GetCurrLikes from "./components/Products/Likes";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+
       {isLoaded && (
         <Switch>
           <Route path="/login" >
@@ -64,7 +66,9 @@ function App() {
         {/* <Route exact path="/products/:productId/reviews/new" component={GetOneProduct}></Route> */}
 
         </Switch>
+
       )}
+      <Footer/>
     </>
   );
 }
