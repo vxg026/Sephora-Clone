@@ -195,9 +195,7 @@ const GetOneProduct = () => {
                         ))}
                     </div>
                 </div>
-                <div className="single-product-footer">
-                    <h1>hi</h1>
-                </div>
+        
 
             </div>
 
