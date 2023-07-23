@@ -97,32 +97,7 @@ if(!reviews) return ".."
 
     )
 }): <div className="no-reviews-div"><div className="no-reviews-img"><img className="img-no-reviews" src="https://cdn.discordapp.com/attachments/1062942242450460744/1130332735035166880/Screenshot_2023-07-16_at_7.57.16_PM.png"/></div><p>Looks like you have no reviews at the moment.</p></div>}</div>
-    <div className="f-feedback">
-        <h3 className="f-fbck-txt">Website feedback? Let us know</h3>
-      </div>
-      <div className="footer">
-          <div className="h3-div">
-        <a target="_blank" href="https://www.linkedin.com/in/vanessa-gonzalez-82667a1b3/">
-             <div className="linkedin-connect"><i class="fab fa-linkedin"></i><h3>Linked In</h3></div>
-                  </a>
-                  <a target="_blank" href="https://github.com/vxg026">
-                    <div className="linkedin-connect">
-                               {/* <img className="github"src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU"/> */}
-                               <i class="fab fa-github"></i> <h3>GitHub</h3>
-                    </div>
-
-                  </a>
-                  <a target="_blank" href="https://wellfound.com/u/vanessa-gonzalez-41">
-                  <div className="linkedin-connect">
-                   <i class="fab fa-angellist"></i><h3>WellFound</h3>
-                   </div>
-                  </a>
-
-
-          </div>
-
-
-      </div>
+  
         </>
     )
 }
