@@ -24,3 +24,13 @@ def get_all_posts():
     all_posts_obj = Post.query.all()
     all_posts = [post.to_dict() for post in all_posts_obj]
     return all_posts
+
+@post_routes.route("/<int:id>/post")
+@login_required
+def get_one_post(id):
+    """
+    Gets one posts of the current user
+    """
+    one_post = Post.query.get(id)
+    return one_post.to_dict()
+
