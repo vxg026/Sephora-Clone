@@ -34,3 +34,18 @@ def get_one_post(id):
     one_post = Post.query.get(id)
     return one_post.to_dict()
 
+@post_routes.route('/new', methods=["POST"])
+@login_required
+def create_post():
+    form = PostForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_post = Post(
+            post_text = form.data["post_text"],
+            user_id=current_user.id,
+        )
+        db.session.add(new_post)
+        db.session.commit()
+        return jsonify(new_post.to_dict())
+    return form.errors
