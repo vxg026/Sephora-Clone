@@ -49,3 +49,20 @@ def create_post():
         db.session.commit()
         return jsonify(new_post.to_dict())
     return form.errors
+
+@post_routes.route('/edit/<int:id>', methods=["PUT"])
+@login_required
+def edit_post(id):
+    """
+    Current user is able to get post by id and edit
+    """
+    post_obj = Post.query.get(id)
+    if not post_obj:
+        return {"message": "this post does not exist"}
+    elif current_user.id == post_obj.user_id:
+        form = PostForm()
+        form ["csrf_token"].data = request.cookies["csrf_token"]
+        post_obj.post_text = form.data["post_text"]
+        db.session.commit()
+        return post_obj.to_dict()
+    return {"message": "this post does not belong to you"}
