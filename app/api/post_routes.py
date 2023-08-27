@@ -16,3 +16,11 @@ def get_current_posts():
     new_posts = [post.to_dict() for post in all_posts]
     # print(" THIS IS ALL posts", new_posts)
     return new_posts
+@post_routes.route('all')
+def get_all_posts():
+    """
+    Gets all posts from community
+    """
+    all_posts_obj = Post.query.all()
+    all_posts = [post.to_dict() for post in all_posts_obj]
+    return all_posts
