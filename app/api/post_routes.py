@@ -16,7 +16,7 @@ def get_current_posts():
     new_posts = [post.to_dict() for post in all_posts]
     # print(" THIS IS ALL posts", new_posts)
     return new_posts
-@post_routes.route('all')
+@post_routes.route('/all')
 def get_all_posts():
     """
     Gets all posts from community
@@ -66,3 +66,19 @@ def edit_post(id):
         db.session.commit()
         return post_obj.to_dict()
     return {"message": "this post does not belong to you"}
+
+@post_routes.route('/delete/<int:id>', methods=['DELETE'])
+@login_required
+def delete_post(id):
+    """
+    Current user is able to delete post by id
+    """
+    selected_post = Post.query.get(id)
+    if not selected_post:
+        return {"message":"post does not exist"}
+    if current_user.id == selected_post.user_id:
+        db.session.delete(selected_post)
+        db.session.commit()
+        return {"message":"deleted post"}
+
+    return {"message":"this post does not belong to you"}
