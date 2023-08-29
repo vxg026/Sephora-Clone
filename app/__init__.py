@@ -12,6 +12,7 @@ from .config import Config
 from .api.product_routes import product_routes
 from .api.cart_routes import cart_routes
 from .api.review_routes import review_routes
+from .api.post_routes import post_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -34,6 +35,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(product_routes, url_prefix="/api/products")
 app.register_blueprint(cart_routes, url_prefix="/api/carts")
 app.register_blueprint(review_routes, url_prefix="/api/reviews")
+app.register_blueprint(post_routes, url_prefix="/api/posts")
+
 db.init_app(app)
 Migrate(app, db)
 
