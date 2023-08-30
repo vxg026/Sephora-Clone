@@ -1,0 +1,37 @@
+.posts-beut-insider{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 3rem;
+    margin-left:1rem;
+    margin-bottom:2rem;
+}
+.posts-beut-insider img{
+    margin:0;
+    width: 22%;
+}
+.posts-beut-insider h3{
+    font-size: 3rem;
+    /* width: 25%; */
+    margin:0;
+    margin-left: .6rem;
+    font-weight: lighter;
+    /* font-family: Arial, Helvetica, sans-serif */
+
+}
+.posts-ask-ques{
+    margin-left: .5rem;
+    /* border:2px solid red; */
+    width:33%;
+
+}
+.posts-ask-ques h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    margin:0;
+    margin-top:.3rem;
+}
+.posts{
+    border-top: 1px solid rgb(231, 229, 229);
+}
