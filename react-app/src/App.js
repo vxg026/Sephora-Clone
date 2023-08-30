@@ -25,7 +25,8 @@ import Body from "./components/Products/Body";
 import Shipped from "./components/Products/Shipped";
 import GetCurrLikes from "./components/Products/Likes";
 import Footer from "./components/Footer/Footer";
-import GetCurrPosts from "./components/Posts/GetCurrPosts";
+// import GetCurrPosts from "./components/Posts/GetCurrPosts";
+import PostHomePage from "./components/Posts/PostHomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ function App() {
         <Route exact path="/products/skincare" component={Skincare}></Route>
         <Route exact path="/products/body" component={Body}></Route>
         <Route exact path="/products/shipped" component={Shipped}></Route>
-        <Route exact path="/posts/curr" component={GetCurrPosts}></Route>
+        <Route exact path="/posts" component={PostHomePage}></Route>
 
         <Route exact path="/reviews/curr" component={GetCurrReviews}></Route>
         <Route exact path="/products/:productId" component={GetOneProduct}></Route>
