@@ -13,12 +13,18 @@ const ReviewForm = ({ review, formType, disabled }) => {
     const [review_text, setReview_text] = useState(review?.review_text)
     const [star_rating, setStar_rating] = useState(review?.star_rating)
     const [activeRating, setActiveRating] = useState(star_rating)
-    const [img1, setImg1] = useState(review?.img1)
-    const [img2, setImg2] = useState(review?.img2)
-    const [img3, setImg3] = useState(review?.img3)
-    const [img4, setImg4] = useState(review?.img4)
+    const [images, setImages]= useState(review?.images || [])
     const [errors, setErrors] = useState({})
     const { closeModal } = useModal()
+
+    const handleFileChange = (e) => {
+        const files = e.target.files;
+        setImages([...files]);
+        // console.log("Updated images:", images);
+    };
+    useEffect(() => {
+        console.log("Updated images:", images);
+    }, [images]);
 
     useEffect(() => {
         setActiveRating(star_rating)
@@ -67,20 +73,23 @@ const ReviewForm = ({ review, formType, disabled }) => {
             ...review,
             review_text,
             star_rating,
-            img1,
-            img2,
-            img3,
-            img4
+            images
+
         }
         const reviewObj = new FormData();
         reviewObj.append("review_text", review_text);
-        // console.log("review_text",review_text)
-        reviewObj.append("star_rating", star_rating)
-        reviewObj.append("img1", img1)
-        reviewObj.append("img2", img2)
-        reviewObj.append("img3", img3)
-        reviewObj.append("img4", img4)
-        reviewObj.append("product_id", review.product_id)
+        reviewObj.append("star_rating", star_rating);
+        console.log("these are images~~~~~~~~~~~~~~~~~~~", images)
+        images.forEach((image, index) => {
+            // Append all images to the same key 'images[]'
+            reviewObj.append("images[]", image);
+        });
+
+        console.log(reviewObj.get("image1"), ".......................this is after image append")
+        reviewObj.append("product_id", review.product_id);
+
+        console.log("Review Object:", reviewObj); // Log the FormData object
+
 
         // console.log("this is review===========================", reviewObj.get("product_id"), "thi si s just review", review.id)
 
@@ -92,32 +101,14 @@ const ReviewForm = ({ review, formType, disabled }) => {
             error_obj.star_rating = "Must rate between 1-5"
         }
 
-        // if (img1) {
-        //     if (!img1.endsWith(".png") && !img1.endsWith(".jpg") && !img1.endsWith(".jpeg")) {
-        //         error_obj.img1 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-        //     }
-        // }
-        // if (img2) {
-        //     if (!img2.endsWith(".png") && !img2.endsWith(".jpg") && !img2.endsWith(".jpeg")) {
-        //         error_obj.img2 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-        //     }
-        // }
-        // if (img3) {
-        //     if (!img3.endsWith(".png") && !img3.endsWith(".jpg") && !img3.endsWith(".jpeg")) {
-        //         error_obj.img3 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-        //     }
-        // }
-        // if (img4) {
-        //     if (!img4.endsWith(".png") && !img4.endsWith(".jpg") && !img4.endsWith(".jpeg")) {
-        //         error_obj.img4 = "Preview Image URL must end with .png, .jpg, or .jpeg";
-        //     }
-        // }
 
 
         setErrors(error_obj)
 
-
+        console.log("before create")
         if (formType === "Create Review" && Object.keys(error_obj).length === 0) {
+            console.log("fater if create")
+            console.log(reviewObj, "thi sis reviewObj....................")
             await dispatch(thunkCreateReview(reviewObj))
                 .then(closeModal)
 
@@ -152,45 +143,20 @@ const ReviewForm = ({ review, formType, disabled }) => {
                 </div>
                 <p className="errors">{errors.star_rating}</p>
                 <div>
-                    {/* <input
-            id="img1"
-            name="img1"
-            type="text"
-            value={img1}
-            placeholder="Image URL 1"
-            onChange={(e) => setImg1(e.target.value)}
-          />
-     {img1 && <img src={img1} alt="Image 1" />} */}
 
-                    img1
-                    <input formAction="image"
-                    className="input-img-url"
-                    type="file"
-                        placeholder="image url (optional)"
-                        onChange={(e) => setImg1(e.target.files[0])} />
-                    <p className="errors">{errors.img1}</p>
-
-                    img2
-                    <input formAction="image"
-                    className="input-img-url"
-                        value={img2}
-                        placeholder="image url (optional)"
-                        onChange={(e) => setImg2(e.target.value)} />
-                    <p className="errors">{errors.img2}</p>
-                    img3
-                    <input formAction="image"
-                    className="input-img-url"
-                        value={img3}
-                        placeholder="image url (optional)"
-                        onChange={(e) => setImg3(e.target.value)} />
-                    <p className="errors">{errors.img3}</p>
-                    img4
-                    <input formAction="image"
-                    className="input-img-url"
-                        value={img4}
-                        placeholder="image url (optional)"
-                        onChange={(e) => setImg4(e.target.value)} />
-                    <p className="errors">{errors.img4}</p>
+                     <div>
+                     <div>
+          <input type="file" onChange={handleFileChange} multiple />
+          {images.length > 0 &&
+            images.map((file, index) => (
+              <div key={index}>
+                Image {index + 1}
+                {file && <img src={URL.createObjectURL(file)} alt={`Image ${index + 1}`} />}
+                <p className="errors">{errors[`img${index + 1}`]}</p>
+              </div>
+            ))}
+        </div>
+</div>
                 </div>
                 <div>
                     <button className="subit-review" type="submit" >Submit your Review</button>

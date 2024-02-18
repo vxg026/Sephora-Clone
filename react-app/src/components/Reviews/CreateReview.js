@@ -8,10 +8,14 @@ const CreateReview=({productId})=>{
     const review = {
       review_text: "",
       star_rating: "",
-      img1:"",
-      img2:"",
-      img3:"",
-      img4:"",
+      image1:"",
+      image2:"",
+      image3:"",
+      image4:"",
+      // img1:"",
+      // img2:"",
+      // img3:"",
+      // img4:"",
       product_id: productId
     }
 

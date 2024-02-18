@@ -69,6 +69,7 @@ const GetOneProduct = () => {
             <div className="one-prod-comp">
 
                 <div className="single-container1">
+
                     <div className="container1-iamge">
                         <img className="sing-image-div" src={singleProduct.image} />
                     </div>
@@ -150,6 +151,13 @@ const GetOneProduct = () => {
                                         <div className="reviews-all-imgs">
 
                                             <div className="reviews-images-image-container">
+                                            <div className="reviews-all-imgs">
+    {review.images && review.images.map((image, index) => (
+        <div key={index} className="reviews-images-image-container">
+            <img className="reviews-images-image" src={image} onError={(e) => { e.currentTarget.src = "https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg" }} />
+        </div>
+    ))}
+</div>
                                                 {
                                                     review.img1 &&
                                                 <img className="reviews-images-image" src={review.img1} onError={e=>{e.currentTarget.src="https://cdn.discordapp.com/attachments/1062942242450460744/1121263492327030874/Image_6-21-23_at_7.11_PM.jpeg"}}/>
@@ -195,7 +203,7 @@ const GetOneProduct = () => {
                         ))}
                     </div>
                 </div>
-        
+
 
             </div>
 

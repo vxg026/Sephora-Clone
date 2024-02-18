@@ -9,7 +9,7 @@ from ..forms import ReviewForm
 from ..forms import CartForm
 from app.models.cart import Cart
 from .AWS_helpers import (
-    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3, )
 
 product_routes = Blueprint('products', __name__, url_prefix="")
 
@@ -268,54 +268,112 @@ def remove_item(id):
 
     return "Item successfully removed from cart"
 
+from flask import request
 
+from flask import request
 
 @product_routes.route('/<int:id>/reviews', methods=["POST"])
 @login_required
 def create_review(id):
-    """
-    Post a review on product page
-    """
-
-    product_obj = Product.query.get(id)
-
-    # print("this is product_obj---------->", product_obj)
-
-    # print("this is userr---------->", current_user.id)
     form = ReviewForm()
-    form["csrf_token"].data=request.cookies["csrf_token"]
-
+    form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        url=None
+        images = []
+        for index in range(1, 5):
+            image_key = f"images[]"
+            if image_key in request.files:
+                files = request.files.getlist(image_key)
+                if index <= len(files):
+                    image = files[index - 1]
+                    image.filename = get_unique_filename(image.filename)
+                    upload = upload_file_to_s3(image)
 
-        if form.data["img1"]:
-            image1 = form.data["img1"]
+                    if "url" not in upload:
+                        return {"errors": "could not upload image"}
+                    images.append(upload["url"])
+                else:
+                    break
 
-            image1.filename=get_unique_filename(image1.filename)
-            upload=upload_file_to_s3(image1)
-            if "url" not in upload:
-                return {"errors":"could not uploda img"}
-            url=upload["url"]
-
-
-
-        user_new_review=Review(
-            product_id = id,
+        user_new_review = Review(
+            product_id=id,
             user_id=current_user.id,
             star_rating=form.data["star_rating"],
             review_text=form.data["review_text"],
-            img1=url,
-            img2=form.data["img2"],
-            img3=form.data["img3"],
-            img4=form.data["img4"],
+            images=images,
+        )
 
-            )
         db.session.add(user_new_review)
         db.session.commit()
-        # print("jsonified ..", jsonify(user_new_review.to_dict()))
-        return  jsonify(user_new_review.to_dict())
+
+        return jsonify(user_new_review.to_dict())
+
     return form.errors
+# @product_routes.route('/<int:id>/reviews', methods=["POST"])
+# @login_required
+# def create_review(id):
+#     """
+#     Post a review on product page
+#     """
+
+#     # product_obj = Product.query.get(id)
+
+#     # print("this is product_obj---------->", product_obj)
+
+#     # print("this is userr---------->", current_user.id)
+#     form = ReviewForm()
+#     form["csrf_token"].data=request.cookies["csrf_token"]
+
+
+#     if form.validate_on_submit():
+#         images = []
+#         for index in range(1, 5):
+#             image_key = f"img{index}"
+#             if image_key in request.files:
+#                 image = request.files[image_key]
+#                 image.filename = get_unique_filename(image.filename)
+#                 upload = upload_file_to_s3(image)
+
+#                 if "url" not in upload:
+#                     return {"errors": "could not upload image"}
+#                 images.append(upload["url"])
+
+#         user_new_review = Review(
+#             product_id=id,
+#             user_id=current_user.id,
+#             star_rating=form.data["star_rating"],
+#             review_text=form.data["review_text"],
+#             images=images,
+#             )
+
+#         # for image in form.data["images"]:
+#         #     image.filename=get_unique_filename(image.filename)
+#         #     upload=upload_file_to_s3(image)
+
+#         #     if "url" not in upload:
+#         #         return {"errors": "could not upload image"}
+#         #     images.append(upload["url"])
+#         # images = images or None
+
+#         # url=None
+
+#         # if form.data["img1"]:
+#         #     image1 = form.data["img1"]
+
+#         #     image1.filename=get_unique_filename(image1.filename)
+#         #     upload=upload_file_to_s3(image1)
+
+#         #     if "url" not in upload:
+#         #         return {"errors":"could not upload img"}
+
+#         #     url=upload["url"]
+
+
+#         db.session.add(user_new_review)
+#         db.session.commit()
+#         # print("jsonified ..", jsonify(user_new_review.to_dict()))
+#         return  jsonify(user_new_review.to_dict())
+#     return form.errors
 
 
 @product_routes.route('/<int:id>/like', methods=["POST"])

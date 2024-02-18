@@ -48,27 +48,54 @@ export const thunkEditReview = (reviewObj, review)=>async dispatch=>{
         return data
     }
 }
+export const thunkCreateReview = (reviewObj) => async (dispatch) => {
+    console.log("this is review in create~~~~~~~~~", reviewObj);
 
-export const thunkCreateReview = (reviewObj)=> async dispatch=>{
-    // console.log("this is review in create~~~~~~~~~", reviewObj)
-    const response = await fetch(`/api/products/${(reviewObj.get("product_id"))}/reviews`, {
+    // Append additional form fields manually
+    reviewObj.append("review_text", reviewObj.get("review_text"));
+    reviewObj.append("star_rating", reviewObj.get("star_rating"));
+
+    const response = await fetch(`/api/products/${reviewObj.get("product_id")}/reviews`, {
         method: "POST",
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify(review)
-        body: reviewObj
-    })
-    if(response.ok){
-        // const {reviewPost} = await response.json()
-        const data = await response.json()
-        // console.log("this is response......", response)
-        // console.log("this is data", data)
-        await dispatch(createReviewAction(data))
-        return data
+        // No need to set headers here
+        body: reviewObj,
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(createReviewAction(data));
+        return data;
+    } else {
+        // Handle the error or throw an exception
+        console.error("Error making the post:", response.statusText);
     }
-    else{
-        // console.log("error making your post")
-    }
-}
+};
+
+
+// export const thunkCreateReview = (reviewObj)=> async dispatch=>{
+//     console.log("this is review in create~~~~~~~~~", reviewObj)
+//     const response = await fetch(`/api/products/${(reviewObj.get("product_id"))}/reviews`, {
+//         method: "POST",
+//         headers: {
+//             // Add the Content-Type header for FormData
+//             'Content-Type': 'multipart/form-data',
+//         },
+//         // headers: { 'Content-Type': 'application/json' },
+//         // body: JSON.stringify(review)
+//         body: reviewObj
+//     })
+//     if(response.ok){
+//         // const {reviewPost} = await response.json()
+//         const data = await response.json()
+//         // console.log("this is response......", response)
+//         // console.log("this is data", data)
+//         await dispatch(createReviewAction(data))
+//         return data
+//     }
+//     else{
+//         // console.log("error making your post")
+//     }
+// }
 export const thunkCurrReviews = () => async(dispatch)=>{
     const response = await fetch(`/api/reviews/curr`)
 

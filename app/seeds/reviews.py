@@ -7,6 +7,7 @@ def seed_reviews():
         user_id=1,
         star_rating=1,
         review_text="This sunscreen made me break out.",
+
         # img1="image.url",
         # img2="image.url",
         # img3="image.url",
