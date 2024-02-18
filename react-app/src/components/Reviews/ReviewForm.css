@@ -42,3 +42,18 @@
 .input-img-url{
     width:100%;
 }
+
+.form-img-container{
+    margin-top: 1rem;
+    /* border: 2px solid pink; */
+    display:flex;
+    width: 100%;
+}
+.smaller-img-container{
+    /* border: 2px solid purple; */
+    width: 23%;
+}
+.form-img{
+    /* border:2px solid red; */
+    width: 100%;
+}

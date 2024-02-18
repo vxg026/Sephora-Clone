@@ -108,11 +108,8 @@
     width:100%;
 }
 .reviews-all-imgs{
-    /* border:2px solid purple; */
     display:flex;
-    /* justify-content: space-evenly; */
     gap:.7rem;
-
 }
 .contianer-second-review{
     width:100%;

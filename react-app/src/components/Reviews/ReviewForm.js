@@ -142,22 +142,22 @@ const ReviewForm = ({ review, formType, disabled }) => {
                     {arr} Stars
                 </div>
                 <p className="errors">{errors.star_rating}</p>
-                <div>
 
-                     <div>
-                     <div>
+
+
           <input type="file" onChange={handleFileChange} multiple />
+                     <div className="form-img-container">
           {images.length > 0 &&
             images.map((file, index) => (
-              <div key={index}>
+              <div className="smaller-img-container" key={index}>
                 Image {index + 1}
-                {file && <img src={URL.createObjectURL(file)} alt={`Image ${index + 1}`} />}
+                {file && <img className="form-img" src={URL.createObjectURL(file)} alt={`Image ${index + 1}`} />}
                 <p className="errors">{errors[`img${index + 1}`]}</p>
               </div>
             ))}
         </div>
-</div>
-                </div>
+
+
                 <div>
                     <button className="subit-review" type="submit" >Submit your Review</button>
                 </div>
