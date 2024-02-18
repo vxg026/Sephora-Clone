@@ -19,6 +19,11 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
     const handleFileChange = (e) => {
         const files = e.target.files;
+        if (files.length>4){
+            setErrors({ fileError: 'You can only upload up to 4 images. Only the first four images selected will be displayed' });
+return
+        }
+        // setErrors({});
         setImages([...files]);
         // console.log("Updated images:", images);
     };
@@ -94,6 +99,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
         // console.log("this is review===========================", reviewObj.get("product_id"), "thi si s just review", review.id)
 
         let error_obj = {}
+
         if (reviewObj.get("review_text").length < 2 || reviewObj.get("review_text").length > 500) {
             error_obj.review_text = "Review text must be between 2 and 500 characters long"
         }
@@ -101,7 +107,9 @@ const ReviewForm = ({ review, formType, disabled }) => {
             error_obj.star_rating = "Must rate between 1-5"
         }
 
-
+        if (errors?.fileError){
+            error_obj.images ="must select max four images"
+        }
 
         setErrors(error_obj)
 
@@ -145,7 +153,7 @@ const ReviewForm = ({ review, formType, disabled }) => {
 
 
 
-          <input type="file" onChange={handleFileChange} multiple />
+          <input type="file" accept=".png, .jpg, .jpeg, .gif" onChange={handleFileChange} multiple />
                      <div className="form-img-container">
           {images.length > 0 &&
             images.map((file, index) => (
@@ -156,7 +164,8 @@ const ReviewForm = ({ review, formType, disabled }) => {
               </div>
             ))}
         </div>
-
+        {errors.fileError && <p className="errors">{errors.fileError}</p>}
+        <p className="errors">{errors.images}</p>
 
                 <div>
                     <button className="subit-review" type="submit" >Submit your Review</button>

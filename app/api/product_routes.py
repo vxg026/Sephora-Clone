@@ -8,8 +8,9 @@ from app.models.db import db
 from ..forms import ReviewForm
 from ..forms import CartForm
 from app.models.cart import Cart
+from werkzeug.utils import secure_filename
 from .AWS_helpers import (
-    upload_file_to_s3, get_unique_filename, remove_file_from_s3, )
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3, ALLOWED_EXTENSIONS)
 
 product_routes = Blueprint('products', __name__, url_prefix="")
 
@@ -270,7 +271,9 @@ def remove_item(id):
 
 from flask import request
 
-from flask import request
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @product_routes.route('/<int:id>/reviews', methods=["POST"])
 @login_required
@@ -286,15 +289,23 @@ def create_review(id):
                 files = request.files.getlist(image_key)
                 if index <= len(files):
                     image = files[index - 1]
-                    image.filename = get_unique_filename(image.filename)
-                    upload = upload_file_to_s3(image)
 
-                    if "url" not in upload:
-                        return {"errors": "could not upload image"}
-                    images.append(upload["url"])
+
+                    # Check if the file has an allowed extension
+                    if image and allowed_file(image.filename):
+                        # Ensure secure filename to prevent path traversal
+                        image.filename = secure_filename(image.filename)
+                        image.filename = get_unique_filename(image.filename)
+
+                        upload = upload_file_to_s3(image)
+
+                        if "url" not in upload:
+                            return {"errors": "could not upload image"}
+                        images.append(upload["url"])
+                    else:
+                        return {"errors": "Invalid file type. Allowed types are pdf, png, jpg, jpeg, gif."}
                 else:
                     break
-
         user_new_review = Review(
             product_id=id,
             user_id=current_user.id,
