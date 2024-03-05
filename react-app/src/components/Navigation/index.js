@@ -5,6 +5,8 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { thunkCurrProducts } from '../../store/product';
 import {useEffect} from 'react'
+import communityIcon from "../../images/community.png";
+import storeIcon from "../../images/store.png"
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user);
@@ -44,7 +46,7 @@ const handlClick=()=>{
 				</div>
 				<div onClick={handlClick} className="store-location-icon">
 					<div>
-						<img className="store-review-likes" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725107829551204/store.png"/>
+						<img className="store-review-likes" src={storeIcon}/>
 					</div>
 					<div>
 						<h5 className="store-serv">Stores & Services</h5>
@@ -54,7 +56,7 @@ const handlClick=()=>{
 				</div>
 				<div onClick={handlClick}className="community-image">
 					<div >
-							<img className="community-forum-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725131355398184/community.png"/>
+							<img className="community-forum-icon" src={communityIcon} alt="Community Icon"/>
 					</div>
 
 					<div className="com-word">
@@ -84,7 +86,7 @@ const handlClick=()=>{
 			</div>
 			</NavLink>}
 			<div className="cart_icon-item">
-	
+
 			{sessionUser &&	<a href="/products/curr">
 				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
 				</a>}
