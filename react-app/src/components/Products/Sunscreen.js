@@ -25,7 +25,7 @@ const Suncscreen =()=>{
 
 
         <div className="all-obj-contianer">
-        <div className="img-container"><img className="img-suncreend" src="https://cdn.discordapp.com/attachments/1062942242450460744/1122251136351600750/Screenshot_2023-06-24_at_12.44.30_PM.png"/></div>
+        <div className="img-container"><img className="img-suncreend" src="https://media.discordapp.net/attachments/1062942242450460744/1122251136351600750/Screenshot_2023-06-24_at_12.44.30_PM.png?ex=65ecbc51&is=65da4751&hm=9aec1a6cc7303edbace9387ea06af84f66c8a30e0e6a85b97015a539348bf8cd&=&format=webp&quality=lossless&width=1210&height=572"/></div>
         {Object.values(allProducts).map(product=>{
             return(
                 <div key={product.id} className="div-products-all">
@@ -58,7 +58,7 @@ const Suncscreen =()=>{
         })}
                 </div>
                 </div>
-   
+
         </>
     )
 }

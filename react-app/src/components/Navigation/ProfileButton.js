@@ -6,7 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
-
+import sephoraLogin from "../../images/sephora-login.png"
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const currUser = useSelector(state=>state.session.user)
     <div className="button-image">
          <button className="login-button" onClick={openMenu}>
           <div>
-        <img  className="img-login" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119323050186387546/sephora.png"
+        <img  className="img-login" src={sephoraLogin}
 
         />
         {/* <i className="fas fa-user-circle" /> */}

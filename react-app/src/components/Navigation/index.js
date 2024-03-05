@@ -5,6 +5,11 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { thunkCurrProducts } from '../../store/product';
 import {useEffect} from 'react'
+import communityIcon from "../../images/community.png";
+import storeIcon from "../../images/store.png"
+import reviewsIcon from "../../images/reviews.png"
+import heartIcon from "../../images/heart.png"
+import cartIcon from "../../images/cart.png"
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user);
@@ -44,7 +49,7 @@ const handlClick=()=>{
 				</div>
 				<div onClick={handlClick} className="store-location-icon">
 					<div>
-						<img className="store-review-likes" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725107829551204/store.png"/>
+						<img className="store-review-likes" src={storeIcon}/>
 					</div>
 					<div>
 						<h5 className="store-serv">Stores & Services</h5>
@@ -54,7 +59,7 @@ const handlClick=()=>{
 				</div>
 				<div onClick={handlClick}className="community-image">
 					<div >
-							<img className="community-forum-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725131355398184/community.png"/>
+							<img className="community-forum-icon" src={communityIcon} alt="Community Icon"/>
 					</div>
 
 					<div className="com-word">
@@ -73,20 +78,20 @@ const handlClick=()=>{
 {sessionUser &&	<div>
 				<a className="reviews-link" href="/reviews/curr">
 					<div className="reviews-home">
-				<img className="reviews-chat-icon" src="https://cdn.discordapp.com/attachments/1062942242450460744/1119725077399863317/reviews.png"/>
+				<img className="reviews-chat-icon" src={reviewsIcon}/>
 				Manage Reviews
 				</div>
 				</a>
 			</div>}
 			{sessionUser && <NavLink to="/products/likes">
 			<div>
-				<img className="reviews-chat-icon" src="https://media.discordapp.net/attachments/1062942242450460744/1119725148451385445/heart.png?width=418&height=343"/>
+				<img className="reviews-chat-icon" src={heartIcon}/>
 			</div>
 			</NavLink>}
 			<div className="cart_icon-item">
-	
+
 			{sessionUser &&	<a href="/products/curr">
-				<img className="reviews-chat-icon basket notification" src="https://media.discordapp.net/attachments/1062942242450460744/1119725163261472879/cart.png?width=484&height=400"/>
+				<img className="reviews-chat-icon basket notification" src={cartIcon}/>
 				</a>}
 				{sessionUser && currProducts && items!==0 && <span className="not">{items}</span>}
 			</div>
