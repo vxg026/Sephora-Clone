@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './HomePage.css';
-
+import diversityIcon from "../../images/splash-page-imgs/diversity.png"
+import optionsIcon from "../../images/splash-page-imgs/options.png"
+import environmentalIcon from "../../images/splash-page-imgs/environment.png"
 
 const Home = () => {
 
@@ -122,7 +124,7 @@ const Home = () => {
       <div className="bottom-tiles">
         <div className="f-card1">
             <div>
-            <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518471016498/Screenshot_2023-06-17_at_11.15.05_PM.png?width=1709&height=1133"/>
+            <img className="f-img1" src={diversityIcon}/>
             </div>
             <div className="f1-text">
                 <h2>Our Commitment to Diversity, Equity & Inclusion</h2>
@@ -133,7 +135,7 @@ const Home = () => {
 
         <div className="f-card1">
             <div className="planet-blue-div">
-            <img className="f-img1" src="https://media.discordapp.net/attachments/1062942242450460744/1119876518735261706/Screenshot_2023-06-17_at_11.15.16_PM.png?width=1700&height=1133"/>
+            <img className="f-img1" src={optionsIcon}/>
             </div>
             <div className="f2-text">
                 <h2 className="beaut-on-demand">Beauty on Demand</h2>
@@ -146,7 +148,7 @@ const Home = () => {
 
         <div className="f-card1">
             <div className="brown-div">
-            <img className="f-img1" src="https://cdn.discordapp.com/attachments/1062942242450460744/1120794372884140064/Screenshot_2023-06-20_at_12.16.32_PM.png"/>
+            <img className="f-img1" src={environmentalIcon}/>
             </div>
             <div className="f3-text">
                 <h2 className="beaut-on-demand">Clean + Planet Positive</h2>
